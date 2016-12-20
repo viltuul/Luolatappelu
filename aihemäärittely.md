@@ -8,6 +8,7 @@ lopputulos määrittyy jonkin satunnaisgeneraattorin avulla. Kun päähahmo pä�
 etenee pelissä viholliset vaikeutuvat. Päähahmolla saattaa olla myös jokin 
 kehityskäyrä: pelaaja voi valita osuuko hahmo paremmin, lyökö hän kovempaa 
 vai saako hän lisää elämiä.
+
 Kun ohjelman ajaa tulee ruutuun kolme painiketta: Pelaa, ohje ja sammuta. 
 Ohjetta klikatessa näkyy käyttäjälle pelinaikaiset toiminnot ja pelin kulku. 
 Sammuttaessa ikkuna sulkeutuu ja ohjelma sammuu. Peliä painettaessa peli alkaa 
@@ -16,8 +17,11 @@ Isoimmassa ruudussa näkyy luola / huone, jossa pelaaminen tapahtuu. Sivulla
 kaksi ruutua, jossa toisessa lukee hahmon tiedot ja elämien määrät. Toisessa 
 lukee minkälaisia vihollisia huoneessa on. Mahdollisesti käyttöliittymään 
 lisätään neljäs ruutu, jossa lukee tapahtumahistoria.
+
 Pelissä on esimerkiksi kymmenen tasoa, jotka kukin toistaan vaikeampia. 
 Vihollisten sijainnit lisätään satunnaisesti huoneeseen. Huoneesta pääsee 
 eteenpäin kun kaikki viholliset on tuhottu.
+
 Käyttäjät: Pelaaja
+
 Käyttäjän toiminnot: Pelin aloitus, nimen kirjoittaminen ja pelaaminen.
