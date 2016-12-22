@@ -57,4 +57,10 @@ public class Olio {
         this.y = y;
     }
 
+    @Override
+    public String toString() {
+        return this.nimi;
+    }
+   
+
 }

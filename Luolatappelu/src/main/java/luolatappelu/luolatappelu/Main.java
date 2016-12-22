@@ -5,6 +5,9 @@
  */
 package luolatappelu.luolatappelu;
 
+import luolatappelu.luolatappelu.hahmot.Olio;
+import luolatappelu.luolatappelu.kayttoliittyma.Peli;
+
 /**
  *
  * @author tuulio
@@ -15,8 +18,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("asd");
+        Peli kl = new Peli();
+        kl.uusiHuone();
+        kl.getHuoneet();
     }
     
 }

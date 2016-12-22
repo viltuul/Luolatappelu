@@ -20,8 +20,18 @@ public class Paahahmo extends Olio implements Liikkuva {
 
     @Override
     public void liiku(Suunta suunta) {
-        super.setX(0);
-        super.setY(0);
+        if (suunta.equals(suunta.ALAS)){
+            super.setY(super.getY()+1);
+        }
+        if (suunta.equals(suunta.YLOS)){
+            super.setY(super.getY()-1);
+        }
+        if (suunta.equals(suunta.VASEN)){
+            super.setX(super.getX()-1);
+        }
+        if(suunta.equals(suunta.OIKEA)){
+            super.setX(super.getX()+1);
+        }
     }
 
 }
