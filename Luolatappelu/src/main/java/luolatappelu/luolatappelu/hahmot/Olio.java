@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hahmot;
+package luolatappelu.luolatappelu.hahmot;
 
 /**
  *
  * @author tuulio
  */
 public class Olio {
+
     private String nimi;
     private int elamat;
     private double osumatarkkuus;
     private int voima;
+    private int x;
+    private int y;
 
     public Olio(String nimi) {
         this.nimi = nimi;
@@ -37,8 +40,21 @@ public class Olio {
     public void setElamat(int elamat) {
         this.elamat = elamat;
     }
-    
-    
-    
-    
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
 }

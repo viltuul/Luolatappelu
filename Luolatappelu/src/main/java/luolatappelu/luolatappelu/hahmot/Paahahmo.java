@@ -3,21 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hahmot;
+package luolatappelu.luolatappelu.hahmot;
+
+import luolatappelu.luolatappelu.hahmot.Olio;
+import luolatappelu.luolatappelu.hahmot.Liikkuva;
 
 /**
  *
  * @author tuulio
  */
 public class Paahahmo extends Olio implements Liikkuva {
-    
+
     public Paahahmo(String nimi) {
         super(nimi);
     }
 
     @Override
-    public void liiku() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void liiku(Suunta suunta) {
+        super.setX(0);
+        super.setY(0);
     }
-    
+
 }
