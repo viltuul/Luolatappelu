@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Peli kl = new Peli();
         kl.uusiHuone();
+        System.out.println("asdf");
         kl.getHuoneet();
     }
     
