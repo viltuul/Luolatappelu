@@ -63,13 +63,13 @@ public class Olio {
         this.y = y;
     }
 
-    public boolean Osuu(Olio olio) {
-        if (this.x == olio.getX() && this.y == olio.getY()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public boolean osuu(Olio olio) {
+//        if (this.x == olio.getX() && this.y == olio.getY()) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     @Override
     public String toString() {
