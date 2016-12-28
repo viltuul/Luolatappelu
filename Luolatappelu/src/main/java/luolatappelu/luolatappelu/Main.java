@@ -18,10 +18,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Peli kl = new Peli();
-        kl.uusiHuone();
         System.out.println("asdf");
-        kl.getHuoneet();
+        System.out.println("asdghilkjgda");
     }
     
 }
