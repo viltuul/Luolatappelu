@@ -1,7 +1,7 @@
-package luolatappelu.luolatappelu.peli;
+package luolatappelu.peli;
 
 import java.util.ArrayList;
-import luolatappelu.luolatappelu.hahmot.Olio;
+import luolatappelu.hahmot.Olio;
 
 public class Huone {
 

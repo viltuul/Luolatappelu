@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package luolatappelu.luolatappelu.hahmot;
+package luolatappelu.hahmot;
 
 /**
  *
  * @author tuulio
  */
-public interface Toimiva {
+public enum Suunta {
 
-    void liiku(Suunta suunta);
-
-    void lyo(Olio olio);
-
+    YLOS, OIKEA, ALAS, VASEN;
 }

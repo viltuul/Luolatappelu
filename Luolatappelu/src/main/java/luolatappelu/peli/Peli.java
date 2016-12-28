@@ -1,11 +1,11 @@
-package luolatappelu.luolatappelu.peli;
+package luolatappelu.peli;
 
 import java.util.ArrayList;
 import java.util.Random;
-import luolatappelu.luolatappelu.hahmot.Olio;
-import luolatappelu.luolatappelu.hahmot.Orkki;
-import luolatappelu.luolatappelu.hahmot.Paahahmo;
-import luolatappelu.luolatappelu.hahmot.Suunta;
+import luolatappelu.hahmot.Olio;
+import luolatappelu.hahmot.Orkki;
+import luolatappelu.hahmot.Paahahmo;
+import luolatappelu.hahmot.Suunta;
 
 public class Peli {
 

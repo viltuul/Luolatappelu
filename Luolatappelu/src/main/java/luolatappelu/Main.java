@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package luolatappelu.luolatappelu;
+package luolatappelu;
 
 import java.util.Scanner;
-import luolatappelu.luolatappelu.hahmot.Olio;
-import luolatappelu.luolatappelu.peli.Peli;
+import luolatappelu.hahmot.Olio;
+import luolatappelu.kayttoliittyma.UI;
+import luolatappelu.peli.Peli;
 
 /**
  *

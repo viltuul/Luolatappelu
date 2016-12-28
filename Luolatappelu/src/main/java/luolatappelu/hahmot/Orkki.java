@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package luolatappelu.luolatappelu.hahmot;
+package luolatappelu.hahmot;
 
 import java.util.Random;
 

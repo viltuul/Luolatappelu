@@ -1,4 +1,4 @@
-package luolatappelu.luolatappelu.hahmot;
+package luolatappelu.hahmot;
 
 public class Paahahmo extends Olio implements Toimiva {
 
