@@ -85,10 +85,4 @@ public class OlioTest {
         assertTrue(olio2.isElossa());
     }
 
-    @Test
-    public void olioToStringToimii() {
-        Olio olio = new Olio("testi");
-        assertEquals(olio.toString(), "testi");
-
-    }
 }

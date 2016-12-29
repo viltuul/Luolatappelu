@@ -55,6 +55,11 @@ public class Orkki extends Olio implements Toimiva {
     public String toString() {
         return "Ö";
     }
+    @Override
+    public void lyo(Olio olio){
+        super.lyo(olio);
+        System.out.println("Vihu löi");
+    }
 
 
 }

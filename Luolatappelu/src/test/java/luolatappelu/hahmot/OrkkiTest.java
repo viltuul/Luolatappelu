@@ -36,6 +36,11 @@ public class OrkkiTest {
     @After
     public void tearDown() {
     }
+@Test
+public void orkinLuomisenTestaus(){
+    Orkki orkki = new Orkki();
+    assertEquals(orkki.toString(),"Ö");
+}
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

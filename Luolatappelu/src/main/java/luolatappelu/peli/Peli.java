@@ -4,31 +4,31 @@ import java.util.ArrayList;
 import java.util.Random;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
-import luolatappelu.hahmot.Paahahmo;
+import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Suunta;
 
 public class Peli {
 
     private ArrayList<Orkki> orkit;
     private Huone huone;
-    private Paahahmo pelaaja;
+    private Pelaaja pelaaja;
 
     public Peli() {
         this.huone = new Huone(10, 5);
         this.orkit = new ArrayList();
-        this.pelaaja = new Paahahmo("Pelaaja");
+        this.pelaaja = new Pelaaja("Pelaaja");
     }
 
     public Huone getHuone() {
         return huone;
     }
 
-    public void pelaajanSijoitus() {
+    public void sijoitaPelaaja() {
         pelaaja.setX(huone.getLeveys() / 2);
         pelaaja.setY(huone.getKorkeus() - 1);
     }
 
-    public Paahahmo getPelaaja() {
+    public Pelaaja getPelaaja() {
         return pelaaja;
     }
 
@@ -37,11 +37,11 @@ public class Peli {
         orkit.add(orkki);
     }
 
-    public void sijoitaOliot() {
+    public void sijoitaOrkit() {
         Random random = new Random();
         for (Olio sijoitettava : orkit) {
             sijoitettava.setX(random.nextInt(huone.getLeveys()));
-            sijoitettava.setY(random.nextInt(huone.getKorkeus()) - 1);
+            sijoitettava.setY(random.nextInt(huone.getKorkeus()));
         }
     }
 
@@ -62,7 +62,7 @@ public class Peli {
         }
     }
 
-    public ArrayList<Orkki> getOliot() {
+    public ArrayList<Orkki> getOrkit() {
         return orkit;
     }
 
@@ -123,10 +123,21 @@ public class Peli {
                 orkki.setX(99999999);
             }
         }
-//for (Olio orkki : orkit){
-//    if (!orkki.isElossa()){
-//        orkit.remove(orkki);
-//    }
-//}
+    }
+
+    public void liikutaOlioita() {
+        this.poistaKuolleet();
+
+        for (Orkki orkki : this.getOrkit()) {
+            ArrayList<Olio> lista = this.getNaapurit(orkki);
+            if (lista.contains(pelaaja)) {
+                this.lyoNaapuria(orkki);
+            } else {
+                orkki.liiku(orkki.arvoSuunta());
+            }
+            this.eiMeneReunanYli(orkki);
+
+        }
+        this.tulostaHuone();
     }
 }

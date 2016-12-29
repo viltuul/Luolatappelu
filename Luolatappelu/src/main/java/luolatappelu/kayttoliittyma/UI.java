@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
-import luolatappelu.hahmot.Paahahmo;
+import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Suunta;
 import luolatappelu.peli.Peli;
 
@@ -21,7 +21,7 @@ public class UI {
 
     private Scanner lukija;
     private Peli peli;
-    private Paahahmo pelaaja;
+    private Pelaaja pelaaja;
 
     public UI(Scanner lukija) {
         this.lukija = lukija;
@@ -42,18 +42,21 @@ public class UI {
     }
 
     public void alku() {
-        peli.pelaajanSijoitus();
+        peli.sijoitaPelaaja();
         for (int i = 0; i < 5; i++) {
             peli.uusiOrkki();
         }
-        peli.sijoitaOliot();
+        peli.sijoitaOrkit();
         peli.tulostaHuone();
     }
 
     public void pelaaminen() {
         while (true) {
+            System.out.println("Pelaajan vuoro, toimi");
             toimintoPelaajalla();
-            liikutaOlioita();
+            System.out.println("Vihujen vuoro, paina enter");
+            lukija.nextLine();
+            peli.liikutaOlioita();
             if (!peli.getPelaaja().isElossa()) {
                 System.out.println("hävisit!");
                 break;
@@ -62,6 +65,7 @@ public class UI {
     }
 
     public void toimintoPelaajalla() {
+
         String liiku = lukija.nextLine();
         System.out.println(peli.getPelaaja().getElamat());
         if (liiku.equals("a")) {
@@ -79,22 +83,21 @@ public class UI {
         if (liiku.equals("")) {
             peli.lyoNaapuria(peli.getPelaaja());
         }
-        peli.tulostaHuone();
-        System.out.println(peli.getNaapurit(peli.getPelaaja()));
-    }
 
-    public void liikutaOlioita() {
         peli.poistaKuolleet();
-        for (Orkki orkki : peli.getOliot()) {
-            ArrayList<Olio> lista = peli.getNaapurit(orkki);
-            if (lista.contains(pelaaja)) {
-                peli.lyoNaapuria(orkki);
-            } else {
-                orkki.liiku(orkki.arvoSuunta());
-            }
-            peli.eiMeneReunanYli(orkki);
-        }
+        peli.tulostaHuone();
     }
+
+//    public void liikutaOlioita() {
+//        peli.poistaKuolleet();
+//        for (Orkki orkki : peli.getOrkit()) {
+//            ArrayList<Olio> lista = peli.getNaapurit(orkki);
+//            if (lista.contains(pelaaja)) {
+//                peli.lyoNaapuria(orkki);
+//            } else {
+//                orkki.liiku(orkki.arvoSuunta());
+//            }
+//            peli.eiMeneReunanYli(orkki);
+//        }
+//    }
 }
-
-

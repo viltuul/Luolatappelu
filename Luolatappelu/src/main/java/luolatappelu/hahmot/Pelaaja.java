@@ -1,10 +1,10 @@
 package luolatappelu.hahmot;
 
-public class Paahahmo extends Olio implements Toimiva {
+public class Pelaaja extends Olio implements Toimiva {
 
-    public Paahahmo(String nimi) {
+    public Pelaaja(String nimi) {
         super(nimi);
-        super.setElamat(100);
+        super.setElamat(10);
     }
 
     @Override
@@ -27,9 +27,10 @@ public class Paahahmo extends Olio implements Toimiva {
     public String toString() {
         return "@";
     }
-
     @Override
-    public void lyo(Olio olio) {
-        olio.setElamat(olio.getElamat() - 1);
+    public void lyo(Olio olio){
+        super.lyo(olio);
+        System.out.println("Pelaaja löi");
     }
+
 }

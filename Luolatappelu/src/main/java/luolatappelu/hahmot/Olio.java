@@ -21,6 +21,8 @@ public class Olio {
         this.nimi = nimi;
         this.elamat = 1;
         this.elossa = true;
+        this.x = 0;
+        this.y = 0;
     }
 
     public String getNimi() {
@@ -71,10 +73,10 @@ public class Olio {
 //        }
 //    }
 
-    @Override
-    public String toString() {
-        return this.nimi;
-    }
+//    @Override
+//    public String toString() {
+//        return this.nimi;
+//    }
 
     public void lyo(Olio lyotava) {
         lyotava.setElamat(lyotava.getElamat() - 1);
