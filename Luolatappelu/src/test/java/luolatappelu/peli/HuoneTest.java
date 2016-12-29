@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Testiluokat;
+package luolatappelu.peli;
 
 import luolatappelu.peli.Huone;
 import org.junit.After;

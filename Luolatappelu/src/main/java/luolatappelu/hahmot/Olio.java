@@ -50,10 +50,10 @@ public class Olio {
         return y;
     }
 
-    public int[] getKoordinaatit() {
-        int[] koordinaatit = {x, y};
-        return koordinaatit;
-    }
+//    public int[] getKoordinaatit() {
+//        int[] koordinaatit = {x, y};
+//        return koordinaatit;
+//    }
 
     public void setX(int x) {
         this.x = x;

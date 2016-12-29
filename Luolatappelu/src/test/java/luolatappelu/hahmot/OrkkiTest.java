@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Testiluokat;
+package luolatappelu.hahmot;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author tuulio
  */
-public class PaahahmoTest {
+public class OrkkiTest {
     
-    public PaahahmoTest() {
+    public OrkkiTest() {
     }
     
     @BeforeClass

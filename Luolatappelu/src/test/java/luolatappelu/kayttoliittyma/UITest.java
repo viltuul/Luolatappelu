@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Testiluokat;
+package luolatappelu.kayttoliittyma;
 
-import luolatappelu.hahmot.Olio;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author tuulio
  */
-public class OlioTest {
+public class UITest {
     
-    public OlioTest() {
+    public UITest() {
     }
     
     @BeforeClass
@@ -37,10 +36,10 @@ public class OlioTest {
     @After
     public void tearDown() {
     }
-@Test
-public void kuoleekoOlioKunElamatLoppuvat(){
-    Olio olio = new Olio("testi");
-    olio.setElamat(0);
-    assertFalse(olio.isElossa());
-}
+
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 }
