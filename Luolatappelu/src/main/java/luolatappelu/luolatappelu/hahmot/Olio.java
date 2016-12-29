@@ -13,32 +13,33 @@ public class Olio {
 
     private String nimi;
     private int elamat;
-    private double osumatarkkuus;
-    private int voima;
     private int x;
     private int y;
+    private boolean elossa;
 
     public Olio(String nimi) {
         this.nimi = nimi;
-        this.elamat = 10;
-        this.osumatarkkuus = 0.5;
-        this.voima = 1;
-    }
-
-    public int getElamat() {
-        return elamat;
+        this.elamat = 1;
+        this.elossa = true;
     }
 
     public String getNimi() {
         return nimi;
     }
 
-    public double getOsumatarkkuus() {
-        return osumatarkkuus;
+    public int getElamat() {
+        return elamat;
     }
 
-    public void setElamat(int elamat) {
-        this.elamat = elamat;
+    public boolean isElossa() {
+        return elossa;
+    }
+
+    public void setElamat(int elama) {
+        this.elamat = elama;
+        if (elamat == 0) {
+            elossa = false;
+        }
     }
 
     public int getX() {
@@ -49,6 +50,11 @@ public class Olio {
         return y;
     }
 
+    public int[] getKoordinaatit() {
+        int[] koordinaatit = {x, y};
+        return koordinaatit;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
@@ -57,10 +63,20 @@ public class Olio {
         this.y = y;
     }
 
+    public boolean Osuu(Olio olio) {
+        if (this.x == olio.getX() && this.y == olio.getY()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return this.nimi;
     }
-   
 
+    public void lyo(Olio lyotava) {
+        lyotava.setElamat(lyotava.getElamat() - 1);
+    }
 }

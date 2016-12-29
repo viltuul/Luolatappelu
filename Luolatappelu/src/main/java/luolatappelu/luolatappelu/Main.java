@@ -5,8 +5,9 @@
  */
 package luolatappelu.luolatappelu;
 
+import java.util.Scanner;
 import luolatappelu.luolatappelu.hahmot.Olio;
-import luolatappelu.luolatappelu.kayttoliittyma.Peli;
+import luolatappelu.luolatappelu.peli.Peli;
 
 /**
  *
@@ -18,8 +19,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("asdf");
-        System.out.println("asdghilkjgda");
+        Scanner lukija = new Scanner(System.in);
+        UI peli = new UI(lukija);
+        peli.run();
     }
     
 }

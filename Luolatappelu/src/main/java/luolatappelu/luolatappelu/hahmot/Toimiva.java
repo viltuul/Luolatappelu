@@ -9,8 +9,10 @@ package luolatappelu.luolatappelu.hahmot;
  *
  * @author tuulio
  */
-public interface Liikkuva {
+public interface Toimiva {
 
     void liiku(Suunta suunta);
+
+    void lyo(Olio olio);
 
 }
