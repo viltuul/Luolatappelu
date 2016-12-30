@@ -19,67 +19,48 @@ import static org.junit.Assert.*;
  */
 public class OlioTest {
 
+    private Olio olio1;
+    private Olio olio2;
+
     public OlioTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+        this.olio1 = new Olio("testi1");
+        this.olio2 = new Olio("testi2");
     }
 
     @Test
     public void olionLuonninJalkeenKaikkiOikein() {
-        Olio olio = new Olio("testi");
-        assertEquals(olio.getElamat(), 1);
-        assertEquals(olio.getNimi(), "testi");
-        assertTrue(olio.isElossa());
+        assertEquals(olio1.getElamat(), 1);
+        assertEquals(olio1.getNimi(), "testi1");
+        assertTrue(olio1.isElossa());
     }
 
     @Test
     public void kuoleekoOlioKunElamatLoppuvat() {
-        Olio olio = new Olio("testi");
-        olio.setElamat(0);
-        assertFalse(olio.isElossa());
+        olio1.setElamat(0);
+        assertFalse(olio1.isElossa());
     }
 
     @Test
     public void olioOnElossaKunLuodaan() {
-        Olio olio = new Olio("testi");
-        assertTrue(olio.isElossa());
+        assertTrue(olio1.isElossa());
     }
 
     @Test
     public void olionGetteritJaSetteritToimii() {
-        Olio olio = new Olio("testi");
-        olio.setX(0);
-        olio.setY(0);
-        assertEquals(olio.getX(), 0);
-        assertEquals(olio.getY(), 0);
+        olio1.setX(0);
+        olio1.setY(0);
+        assertEquals(olio1.getX(), 0);
+        assertEquals(olio1.getY(), 0);
     }
 
     @Test
     public void olioLyoToistaNiinElamatVahenee() {
-        Olio olio1 = new Olio("testi1");
-        Olio olio2 = new Olio("testi2");
         olio1.lyo(olio2);
         assertTrue(olio1.getElamat() > olio2.getElamat());
     }
 
     @Test
     public void olioJaaHenkiinJosLyonninJalkeenOnElamia() {
-        Olio olio1 = new Olio("testi1");
-        Olio olio2 = new Olio("testi2");
         olio2.setElamat(2);
         olio1.lyo(olio2);
         assertTrue(olio2.isElossa());

@@ -13,7 +13,7 @@ import luolatappelu.peli.Huone;
  *
  * @author Ville
  */
-public class Piirtoalusta extends JPanel implements Paivitettava {
+public class Piirtoalusta extends JPanel {
 
     private Peli peli;
 
@@ -32,19 +32,15 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
         piirraOrkit(grafiikka);
     }
 
-    @Override
-    public void paivita() {
-        repaint();
-    }
-
     public void piirraSeuraajat(Graphics grafiikka) {
         for (Olio olio : peli.getSeuraajat()) {
             grafiikka.setColor(Color.RED);
             grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
         }
     }
-    public void piirraOrkit(Graphics grafiikka){
-                for (Olio olio : peli.getOrkit()) {
+
+    public void piirraOrkit(Graphics grafiikka) {
+        for (Olio olio : peli.getOrkit()) {
             grafiikka.setColor(Color.GREEN);
             grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
         }

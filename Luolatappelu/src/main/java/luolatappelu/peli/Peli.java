@@ -36,6 +36,10 @@ public class Peli {
         return pelaaja;
     }
 
+    public ArrayList<Olio> getViholliset() {
+        return viholliset;
+    }
+
     public void uusiOrkki() {
         Orkki orkki = new Orkki();
         orkit.add(orkki);
@@ -55,8 +59,12 @@ public class Peli {
     public void sijoitaViholliset() {
         Random random = new Random();
         for (Olio sijoitettava : viholliset) {
+            while (true){
             sijoitettava.setX(random.nextInt(huone.getLeveys()));
             sijoitettava.setY(random.nextInt(huone.getKorkeus()));
+            if (this.tormaysObjektiin(sijoitettava)){
+                break;
+            }}
         }
     }
 
@@ -92,20 +100,20 @@ public class Peli {
         }
         return null;
     }
-
-    public void tulostaHuone() {
-        for (int j = 0; j < huone.getKorkeus(); j++) {
-            for (int i = 0; i < huone.getLeveys(); i++) {
-                if (koordinaatinOlio(i, j) != null) {
-                    System.out.print(koordinaatinOlio(i, j));
-                } else {
-                    System.out.print(".");
-                }
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-    }
+//
+//    public void tulostaHuone() {
+//        for (int j = 0; j < huone.getKorkeus(); j++) {
+//            for (int i = 0; i < huone.getLeveys(); i++) {
+//                if (koordinaatinOlio(i, j) != null) {
+//                    System.out.print(koordinaatinOlio(i, j));
+//                } else {
+//                    System.out.print(".");
+//                }
+//            }
+//            System.out.println("");
+//        }
+//        System.out.println("");
+//    }
 
     public ArrayList<Olio> getNaapurit(Olio olio) {
         ArrayList<Olio> lista = new ArrayList();
@@ -133,11 +141,11 @@ public class Peli {
     }
 
     public void poistaKuolleet() {
-        for (Olio olio : viholliset) {
-            if (!olio.isElossa()) {
-                viholliset.remove(olio);
-            }
-        }
+//        for (Olio olio : viholliset) {
+//            if (!olio.isElossa()) {
+//                viholliset.remove(olio);
+//            } 
+//        } Pitää poistua loopista ennen kuin voi poistaaKuolleet muuten ohjelma kaatuu
     }
 
     public void liikutaOlioita() {
@@ -145,17 +153,24 @@ public class Peli {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
                 this.lyoNaapuria(olio);
+            } else if (olio.toString().equals("Ö")) {
+                Orkki orkki = (Orkki) olio;
+                orkki.liiku();
             } else {
-                if (olio.toString().equals("Ö")) {
-                    Orkki orkki = (Orkki) olio;
-                    orkki.liiku();
-                } else {
-                    Seuraaja seuraaja = (Seuraaja) olio;
-                    seuraaja.liiku(pelaaja);
-                }
+                Seuraaja seuraaja = (Seuraaja) olio;
+                seuraaja.liiku(pelaaja);
             }
             this.eiMeneReunanYli(olio);
             this.poistaKuolleet();
         }
+    }
+
+    public boolean tormaysObjektiin(Olio olio) {
+        if (this.koordinaatinOlio(olio.getX(), olio.getY()) == null) {
+            return false;
+        } else {
+            return true;
+        }
+//        Liiku -> tarkista oliko uudessa kohdassa objektia -> jos oli liiku takaisin
     }
 }

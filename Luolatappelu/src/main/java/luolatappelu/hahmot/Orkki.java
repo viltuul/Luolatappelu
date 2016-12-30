@@ -13,30 +13,33 @@ import java.util.Random;
  */
 public class Orkki extends Olio {
 
+    private Random random;
+
     public Orkki() {
         super("Örkki");
+        this.random = new Random();
     }
 
-    public Suunta arvoSuunta() {
-        Random random = new Random();
-        int nro = random.nextInt(4);
+    public Orkki(Random random) {
+        super("Örkki");
+        this.random = random;
+    }
+
+    public Suunta valitseSuunta(int nro) {
         if (nro == 1) {
             return Suunta.ALAS;
-        }
-        if (nro == 2) {
+        } else if (nro == 2) {
             return Suunta.YLOS;
-        }
-        if (nro == 3) {
+        } else if (nro == 3) {
             return Suunta.VASEN;
-        }
-        if (nro == 0) {
+        } else if (nro == 0) {
             return Suunta.OIKEA;
         }
         return null;
     }
 
     public void liiku() {
-        super.liiku(this.arvoSuunta());
+        super.liiku(valitseSuunta(random.nextInt(4)));
     }
 
     @Override

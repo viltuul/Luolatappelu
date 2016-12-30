@@ -63,7 +63,5 @@ public class UI {
         return frame;
     }
 
-    public Paivitettava getPaivitettava() {
-        return alusta;
-    }
+
 }

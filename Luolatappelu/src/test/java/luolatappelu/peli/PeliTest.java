@@ -5,6 +5,7 @@
  */
 package luolatappelu.peli;
 
+import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,52 +20,54 @@ import static org.junit.Assert.*;
  */
 public class PeliTest {
 
+    private Peli peli;
+
     public PeliTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+        this.peli = new Peli();
     }
 
     @Test
     public void pelinLuominen() {
-        Peli peli = new Peli();
         Huone huone = peli.getHuone();
-        assertEquals(huone.getKorkeus(), 5);
-        assertEquals(huone.getLeveys(), 10);
+        assertEquals(huone.getKorkeus(), 20);
+        assertEquals(huone.getLeveys(), 20);
         assertEquals(peli.getOrkit().toString(), "[]");
         assertEquals(peli.getPelaaja().getNimi(), "Pelaaja");
     }
 
     @Test
     public void pelajanSijoitusToimii() {
-        Peli peli = new Peli();
         peli.sijoitaPelaaja();
-        assertEquals(peli.getPelaaja().getX(), 5);
-        assertEquals(peli.getPelaaja().getY(), 4);
+        assertEquals(peli.getPelaaja().getX(), 10);
+        assertEquals(peli.getPelaaja().getY(), 19);
     }
 
     @Test
     public void orkkienLisaaminenJaSijoitus() {
-        Peli peli = new Peli();
         for (int i = 0; i < 5; i++) {
             peli.uusiOrkki();
         }
         assertEquals(peli.getOrkit().size(), 5);
+        assertEquals(5, peli.getViholliset().size());
+    }
+
+    @Test
+    public void seuraajienLuonti() {
+        for (int i = 0; i < 5; i++) {
+            peli.uusiSeuraaja();
+        }
+        assertEquals(5, peli.getSeuraajat().size());
+        assertEquals(5, peli.getViholliset().size());
+    }
+
+    @Test
+    public void vihollistenSijoitus() {
+        for (int i = 0; i < 5; i++) {
+            peli.uusiSeuraaja();
+            peli.uusiOrkki();
+        }
         peli.sijoitaViholliset();
-        for (int j = 0; j < 1000; j++) {
+        for (int j = 0; j < 100; j++) {
             for (Orkki orkki : peli.getOrkit()) {
                 assertFalse(orkki.getX() > peli.getHuone().getLeveys());
                 assertFalse(orkki.getX() < 0);
@@ -72,12 +75,52 @@ public class PeliTest {
                 assertFalse(orkki.getY() < 0);
             }
         }
-
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void eiMeneReunanYliTestaus() {
+        peli.uusiOrkki();
+        Orkki orkki = peli.getOrkit().get(0);
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 25; j++) {
+                orkki.liiku();
+            }
+            peli.eiMeneReunanYli(orkki);
+            assertFalse(orkki.getX() > peli.getHuone().getLeveys());
+            assertFalse(orkki.getX() < 0);
+            assertFalse(orkki.getY() > peli.getHuone().getKorkeus());
+            assertFalse(orkki.getY() < 0);
+        }
+    }
+
+    @Test
+    public void koordinaatinOlioTesti() {
+        peli.getPelaaja().setX(5);
+        peli.getPelaaja().setY(5);
+        assertEquals(peli.koordinaatinOlio(5, 5), peli.getPelaaja());
+    }
+
+    @Test
+    public void getNaapuritTesti() {
+        peli.uusiOrkki();
+        peli.uusiSeuraaja();
+        peli.getOrkit().get(0).setX(1);
+        peli.getSeuraajat().get(0).setY(1);
+        assertEquals(peli.getNaapurit(peli.getPelaaja()), peli.getViholliset());
+    }
+
+    @Test
+    public void liikutaOlioitaTesti() {
+        peli.uusiOrkki();
+        peli.uusiSeuraaja();
+        int i = 0;
+        for (Olio olio : peli.getViholliset()) {
+            olio.setX(10 + i);
+            olio.setY(10 + i);
+            i++;
+        }
+        peli.liikutaOlioita();
+        assertFalse(peli.getOrkit().get(0).getX() == 10 && peli.getOrkit().get(0).getY() == 10);
+        assertFalse(peli.getSeuraajat().get(0).getX() == 11 && peli.getSeuraajat().get(0).getY() == 11);
+    }
 }

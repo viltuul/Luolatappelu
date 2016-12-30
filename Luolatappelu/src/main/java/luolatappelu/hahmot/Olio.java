@@ -34,14 +34,14 @@ public class Olio {
     }
 
     public boolean isElossa() {
+        if (elamat <= 0) {
+            elossa = false;
+        }
         return elossa;
     }
 
     public void vahennaElamaa() {
         this.elamat--;
-        if (elamat <= 0) {
-            elossa = false;
-        }
     }
 
     public void setElamat(int elama) {
@@ -79,5 +79,30 @@ public class Olio {
     public void lyo(Olio lyotava) {
         lyotava.vahennaElamaa();
         System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.elamat;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Olio other = (Olio) obj;
+        if (this.elamat != other.elamat) {
+            return false;
+        }
+        return true;
     }
 }

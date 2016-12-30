@@ -4,13 +4,20 @@ import java.util.Random;
 
 public class Seuraaja extends Olio {
 
+    private Random arpoja;
+
     public Seuraaja() {
         super("Seuraaja");
+        this.arpoja = new Random();
+    }
+
+    public Seuraaja(Random random) {
+        super("Seuraaja");
+        this.arpoja = random;
     }
 
     public int arvoSuunta() {
-        Random arpoja = new Random();
-        int arpa = arpoja.nextInt(1);
+        int arpa = arpoja.nextInt(2);
         return arpa;
     }
 
@@ -21,12 +28,10 @@ public class Seuraaja extends Olio {
             liikuYAkseli(y);
         } else if (super.getY() == y) {
             liikuXAkseli(x);
+        } else if (arvoSuunta() == 0) {
+            liikuYAkseli(y);
         } else {
-            if (arvoSuunta() == 0) {
-                liikuYAkseli(y);
-            } else {
-                liikuXAkseli(x);
-            }
+            liikuXAkseli(x);
         }
     }
 

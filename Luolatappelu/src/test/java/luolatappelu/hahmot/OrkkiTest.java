@@ -5,6 +5,7 @@
  */
 package luolatappelu.hahmot;
 
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,34 +18,49 @@ import static org.junit.Assert.*;
  * @author tuulio
  */
 public class OrkkiTest {
-    
-    public OrkkiTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-@Test
-public void orkinLuomisenTestaus(){
-    Orkki orkki = new Orkki();
-    assertEquals(orkki.toString(),"Ö");
-}
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    private Orkki orkki;
+
+    public OrkkiTest() {
+        this.orkki = new Orkki();
+    }
+
+    @Test
+    public void orkinLuomisenTestaus() {
+        assertEquals(orkki.toString(), "Ö");
+    }
+
+    @Test
+    public void liikkumisenTestaaminenAlas() {
+        Random randomStub = new RandomStub(1, 1);
+        Orkki stub = new Orkki(randomStub);
+            stub.liiku();
+            stub.liiku();
+            assertEquals(stub.getY(), 2);
+    }
+        @Test
+    public void liikkumisenTestaaminenYlos() {
+        Random randomStub = new RandomStub(2,2);
+        Orkki stub = new Orkki(randomStub);
+            stub.liiku();
+            stub.liiku();
+            assertEquals(stub.getY(), -2);
+    }
+        @Test
+    public void liikkumisenTestaaminenVasen() {
+        Random randomStub = new RandomStub(3,3);
+        Orkki stub = new Orkki(randomStub);
+            stub.liiku();
+            stub.liiku();
+            assertEquals(stub.getX(), -2);
+    }
+        @Test
+    public void liikkumisenTestaaminenOikea() {
+        Random randomStub = new RandomStub(0,0);
+        Orkki stub = new Orkki(randomStub);
+            stub.liiku();
+            stub.liiku();
+            assertEquals(stub.getX(), 2);
+    }
+
 }

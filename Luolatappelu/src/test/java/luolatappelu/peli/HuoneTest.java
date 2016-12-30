@@ -18,29 +18,14 @@ import static org.junit.Assert.*;
  * @author tuulio
  */
 public class HuoneTest {
-
+private Huone huone;
     public HuoneTest() {
+        this.huone = new Huone(20,20);
     }
 
-//    @BeforeClass
-//    public static void setUpClass() {
-//    }
-//    
-//    @AfterClass
-//    public static void tearDownClass() {
-//    }
-//    
-//    @Before
-//    public void setUp() {
-//    }
-//    
-//    @After
-//    public void tearDown() {
-//    }
     @Test
     public void testaaLuodunHuoneenKoko() {
-        Huone huone = new Huone(10, 10);
-        assertEquals(huone.getKorkeus(), 10);
-        assertEquals(huone.getLeveys(), 10);
+        assertEquals(huone.getKorkeus(), 20);
+        assertEquals(huone.getLeveys(), 20);
     }
 }
