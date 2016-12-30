@@ -27,11 +27,11 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
         super.paintComponent(g);
         Pelaaja pelaaja = peli.getPelaaja();
         g.setColor(Color.BLUE);
-        g.fill3DRect(pelaaja.getX() * 10, pelaaja.getY() * 10, 10, 10, true);
+        g.fill3DRect(pelaaja.getX() * 40, pelaaja.getY() * 40, 40, 40, true);
 
         for (Orkki orkki : peli.getOrkit()) {
             g.setColor(Color.GREEN);
-            g.fillOval(orkki.getX() * 10, orkki.getY() * 10, 10, 10);
+            g.fillOval(orkki.getX() * 40, orkki.getY() * 40, 40, 40);
         }
     }
 

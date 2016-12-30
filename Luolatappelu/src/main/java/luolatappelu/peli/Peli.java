@@ -13,7 +13,7 @@ public class Peli {
     private Pelaaja pelaaja;
 
     public Peli() {
-        this.huone = new Huone(30, 20);
+        this.huone = new Huone(20, 20);
         this.orkit = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja");
     }

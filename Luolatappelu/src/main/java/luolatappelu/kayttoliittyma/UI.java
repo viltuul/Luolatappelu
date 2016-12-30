@@ -34,15 +34,14 @@ public class UI {
         this.lukija = lukija;
         this.peli = new Peli();
         this.pelaaja = peli.getPelaaja();
-        this.kuuntelija = new Nappaimistonkuuntelija(pelaaja, peli);
         this.alusta = new Piirtoalusta(peli);
     }
 
     public void run() {
         alku();
         frame = new JFrame("Matopeli");
-        int leveys = (peli.getHuone().getLeveys() + 1) * 50 + 10;
-        int korkeus = (peli.getHuone().getKorkeus() + 2) * 50 + 10;
+        int leveys = (peli.getHuone().getLeveys() * 40+30);
+        int korkeus = (peli.getHuone().getKorkeus()* 40+30);
 
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
@@ -53,18 +52,18 @@ public class UI {
         frame.pack();
         frame.setVisible(true);
 
-        pelaaminen();
+//        pelaaminen();
     }
 
     public void luoKomponentit(Container container) {
         container.add(alusta);
-        Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(pelaaja, peli);
+        Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(frame, peli);
         frame.addKeyListener(nk);
     }
 
     public void alku() {
         peli.sijoitaPelaaja();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 20; i++) {
             peli.uusiOrkki();
         }
         peli.sijoitaOrkit();
@@ -93,9 +92,9 @@ public class UI {
         return alusta;
     }
 
-
-public void toimintoPelaajalla() {
+    public void toimintoPelaajalla() {
         System.out.println(peli.getPelaaja().getElamat());
+        frame.addKeyListener(kuuntelija);
         peli.poistaKuolleet();
 //        peli.tulostaHuone();
     }
