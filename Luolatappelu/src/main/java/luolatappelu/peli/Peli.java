@@ -5,7 +5,6 @@ import java.util.Random;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
 import luolatappelu.hahmot.Pelaaja;
-import luolatappelu.hahmot.Suunta;
 
 public class Peli {
 
@@ -14,7 +13,7 @@ public class Peli {
     private Pelaaja pelaaja;
 
     public Peli() {
-        this.huone = new Huone(10, 5);
+        this.huone = new Huone(30, 20);
         this.orkit = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja");
     }
@@ -133,11 +132,11 @@ public class Peli {
             if (lista.contains(pelaaja)) {
                 this.lyoNaapuria(orkki);
             } else {
-                orkki.liiku(orkki.arvoSuunta());
+                orkki.liiku();
             }
             this.eiMeneReunanYli(orkki);
 
         }
-        this.tulostaHuone();
+//        this.tulostaHuone();
     }
 }

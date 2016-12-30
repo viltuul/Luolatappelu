@@ -5,10 +5,14 @@
  */
 package luolatappelu.kayttoliittyma;
 
-import java.util.ArrayList;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
-import luolatappelu.hahmot.Olio;
-import luolatappelu.hahmot.Orkki;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Suunta;
 import luolatappelu.peli.Peli;
@@ -22,23 +26,40 @@ public class UI {
     private Scanner lukija;
     private Peli peli;
     private Pelaaja pelaaja;
+    private Nappaimistonkuuntelija kuuntelija;
+    private Piirtoalusta alusta;
+    private JFrame frame;
 
     public UI(Scanner lukija) {
         this.lukija = lukija;
         this.peli = new Peli();
         this.pelaaja = peli.getPelaaja();
-
+        this.kuuntelija = new Nappaimistonkuuntelija(pelaaja, peli);
+        this.alusta = new Piirtoalusta(peli);
     }
 
     public void run() {
-        ohje();
         alku();
+        frame = new JFrame("Matopeli");
+        int leveys = (peli.getHuone().getLeveys() + 1) * 50 + 10;
+        int korkeus = (peli.getHuone().getKorkeus() + 2) * 50 + 10;
+
+        frame.setPreferredSize(new Dimension(leveys, korkeus));
+
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        luoKomponentit(frame.getContentPane());
+
+        frame.pack();
+        frame.setVisible(true);
+
         pelaaminen();
     }
 
-    public void ohje() {
-        System.out.println("Liiku komennoilla: a,s,d tai w");
-        System.out.println("Lyö painamalla enter");
+    public void luoKomponentit(Container container) {
+        container.add(alusta);
+        Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(pelaaja, peli);
+        frame.addKeyListener(nk);
     }
 
     public void alku() {
@@ -47,7 +68,7 @@ public class UI {
             peli.uusiOrkki();
         }
         peli.sijoitaOrkit();
-        peli.tulostaHuone();
+//        peli.tulostaHuone();
     }
 
     public void pelaaminen() {
@@ -55,8 +76,8 @@ public class UI {
             System.out.println("Pelaajan vuoro, toimi");
             toimintoPelaajalla();
             System.out.println("Vihujen vuoro, paina enter");
-            lukija.nextLine();
             peli.liikutaOlioita();
+            alusta.paivita();
             if (!peli.getPelaaja().isElossa()) {
                 System.out.println("hävisit!");
                 break;
@@ -64,40 +85,19 @@ public class UI {
         }
     }
 
-    public void toimintoPelaajalla() {
-
-        String liiku = lukija.nextLine();
-        System.out.println(peli.getPelaaja().getElamat());
-        if (liiku.equals("a")) {
-            peli.getPelaaja().liiku(Suunta.VASEN);
-        }
-        if (liiku.equals("s")) {
-            peli.getPelaaja().liiku(Suunta.ALAS);
-        }
-        if (liiku.equals("d")) {
-            peli.getPelaaja().liiku(Suunta.OIKEA);
-        }
-        if (liiku.equals("w")) {
-            peli.getPelaaja().liiku(Suunta.YLOS);
-        }
-        if (liiku.equals("")) {
-            peli.lyoNaapuria(peli.getPelaaja());
-        }
-
-        peli.poistaKuolleet();
-        peli.tulostaHuone();
+    public JFrame getFrame() {
+        return frame;
     }
 
-//    public void liikutaOlioita() {
-//        peli.poistaKuolleet();
-//        for (Orkki orkki : peli.getOrkit()) {
-//            ArrayList<Olio> lista = peli.getNaapurit(orkki);
-//            if (lista.contains(pelaaja)) {
-//                peli.lyoNaapuria(orkki);
-//            } else {
-//                orkki.liiku(orkki.arvoSuunta());
-//            }
-//            peli.eiMeneReunanYli(orkki);
-//        }
-//    }
+    public Paivitettava getPaivitettava() {
+        return alusta;
+    }
+
+
+public void toimintoPelaajalla() {
+        System.out.println(peli.getPelaaja().getElamat());
+        peli.poistaKuolleet();
+//        peli.tulostaHuone();
+    }
+
 }

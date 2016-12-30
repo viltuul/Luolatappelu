@@ -56,7 +56,6 @@ public class Olio {
 //        int[] koordinaatit = {x, y};
 //        return koordinaatit;
 //    }
-
     public void setX(int x) {
         this.x = x;
     }
@@ -65,18 +64,20 @@ public class Olio {
         this.y = y;
     }
 
-//    public boolean osuu(Olio olio) {
-//        if (this.x == olio.getX() && this.y == olio.getY()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-
-//    @Override
-//    public String toString() {
-//        return this.nimi;
-//    }
+    public void liiku(Suunta suunta) {
+        if (suunta.equals(suunta.ALAS)) {
+            y++;
+        }
+        if (suunta.equals(suunta.YLOS)) {
+            y--;
+        }
+        if (suunta.equals(suunta.VASEN)) {
+            x--;
+        }
+        if (suunta.equals(suunta.OIKEA)) {
+            x++;
+        }
+    }
 
     public void lyo(Olio lyotava) {
         lyotava.setElamat(lyotava.getElamat() - 1);
