@@ -1,13 +1,12 @@
 package luolatappelu.hahmot;
 
-public class Pelaaja extends Olio implements Toimiva {
+public class Pelaaja extends Olio {
 
     public Pelaaja(String nimi) {
         super(nimi);
         super.setElamat(10);
     }
 
-    @Override
     public void liiku(Suunta suunta) {
         if (suunta.equals(suunta.ALAS)) {
             super.setY(super.getY() + 1);

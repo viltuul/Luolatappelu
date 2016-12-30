@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author ville
  */
-public class Orkki extends Olio implements Toimiva {
+public class Orkki extends Olio {
 
     public Orkki() {
         super("Örkki");
@@ -35,7 +35,6 @@ public class Orkki extends Olio implements Toimiva {
         return null;
     }
 
-    @Override
     public void liiku(Suunta suunta) {
         if (suunta.equals(suunta.ALAS)) {
             super.setY(super.getY() + 1);
@@ -55,13 +54,11 @@ public class Orkki extends Olio implements Toimiva {
     public String toString() {
         return "Ö";
     }
+
     @Override
-    public void lyo(Olio olio){
+    public void lyo(Olio olio) {
         super.lyo(olio);
         System.out.println("Vihu löi");
     }
 
-
 }
-
-
