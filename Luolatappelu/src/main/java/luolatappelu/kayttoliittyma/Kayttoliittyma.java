@@ -21,7 +21,7 @@ import luolatappelu.peli.Peli;
  *
  * @author ville
  */
-public class UI {
+public class Kayttoliittyma {
 
     private Scanner lukija;
     private Peli peli;
@@ -29,7 +29,7 @@ public class UI {
     private Piirtoalusta alusta;
     private JFrame frame;
 
-    public UI(Scanner lukija, Peli peli) {
+    public Kayttoliittyma(Scanner lukija, Peli peli) {
         this.lukija = lukija;
         this.peli = peli;
         this.pelaaja = peli.getPelaaja();

@@ -3,7 +3,7 @@ package luolatappelu;
 
 import java.util.Scanner;
 import luolatappelu.hahmot.Olio;
-import luolatappelu.kayttoliittyma.UI;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.peli.Peli;
 
 public class Main {
@@ -17,7 +17,7 @@ public class Main {
         for (int j = 0;j<10;j++){
             peli.uusiSeuraaja();
         }
-        UI kayttis = new UI(lukija,peli);
+        Kayttoliittyma kayttis = new Kayttoliittyma(lukija,peli);
         kayttis.run();
     }
     
