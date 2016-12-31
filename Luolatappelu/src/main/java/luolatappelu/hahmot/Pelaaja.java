@@ -11,10 +11,5 @@ public class Pelaaja extends Olio {
     public String toString() {
         return "@";
     }
-    @Override
-    public void lyo(Olio olio){
-        super.lyo(olio);
-        System.out.println("Pelaaja löi");
-    }
 
 }

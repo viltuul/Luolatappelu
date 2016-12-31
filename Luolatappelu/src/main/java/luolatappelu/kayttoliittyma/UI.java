@@ -26,33 +26,26 @@ public class UI {
     private Scanner lukija;
     private Peli peli;
     private Pelaaja pelaaja;
-    private Nappaimistonkuuntelija kuuntelija;
     private Piirtoalusta alusta;
     private JFrame frame;
 
-    public UI(Scanner lukija) {
+    public UI(Scanner lukija, Peli peli) {
         this.lukija = lukija;
-        this.peli = new Peli();
+        this.peli = peli;
         this.pelaaja = peli.getPelaaja();
         this.alusta = new Piirtoalusta(peli);
     }
 
     public void run() {
         alku();
-        frame = new JFrame("Matopeli");
-        int leveys = (peli.getHuone().getLeveys() * 40+30);
-        int korkeus = (peli.getHuone().getKorkeus()* 40+30);
-
+        frame = new JFrame("Luolatappelu");
+        int leveys = (peli.getHuone().getLeveys() * 40 + 30);
+        int korkeus = (peli.getHuone().getKorkeus() * 40 + 30);
         frame.setPreferredSize(new Dimension(leveys, korkeus));
-
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         luoKomponentit(frame.getContentPane());
-
         frame.pack();
         frame.setVisible(true);
-
-//        pelaaminen();
     }
 
     public void luoKomponentit(Container container) {
@@ -63,25 +56,7 @@ public class UI {
 
     public void alku() {
         peli.sijoitaPelaaja();
-        for (int i = 0; i < 20; i++) {
-            peli.uusiOrkki();
-        }
-        peli.sijoitaOrkit();
-//        peli.tulostaHuone();
-    }
-
-    public void pelaaminen() {
-        while (true) {
-            System.out.println("Pelaajan vuoro, toimi");
-            toimintoPelaajalla();
-            System.out.println("Vihujen vuoro, paina enter");
-            peli.liikutaOlioita();
-            alusta.paivita();
-            if (!peli.getPelaaja().isElossa()) {
-                System.out.println("hävisit!");
-                break;
-            }
-        }
+        peli.sijoitaViholliset();
     }
 
     public JFrame getFrame() {
@@ -91,12 +66,4 @@ public class UI {
     public Paivitettava getPaivitettava() {
         return alusta;
     }
-
-    public void toimintoPelaajalla() {
-        System.out.println(peli.getPelaaja().getElamat());
-        frame.addKeyListener(kuuntelija);
-        peli.poistaKuolleet();
-//        peli.tulostaHuone();
-    }
-
 }

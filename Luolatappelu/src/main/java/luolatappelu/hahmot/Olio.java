@@ -37,11 +37,15 @@ public class Olio {
         return elossa;
     }
 
-    public void setElamat(int elama) {
-        this.elamat = elama;
-        if (elamat == 0) {
+    public void vahennaElamaa() {
+        this.elamat--;
+        if (elamat <= 0) {
             elossa = false;
         }
+    }
+
+    public void setElamat(int elama) {
+        this.elamat = elama;
     }
 
     public int getX() {
@@ -52,10 +56,6 @@ public class Olio {
         return y;
     }
 
-//    public int[] getKoordinaatit() {
-//        int[] koordinaatit = {x, y};
-//        return koordinaatit;
-//    }
     public void setX(int x) {
         this.x = x;
     }
@@ -67,19 +67,17 @@ public class Olio {
     public void liiku(Suunta suunta) {
         if (suunta.equals(suunta.ALAS)) {
             y++;
-        }
-        if (suunta.equals(suunta.YLOS)) {
+        } else if (suunta.equals(suunta.YLOS)) {
             y--;
-        }
-        if (suunta.equals(suunta.VASEN)) {
+        } else if (suunta.equals(suunta.VASEN)) {
             x--;
-        }
-        if (suunta.equals(suunta.OIKEA)) {
+        } else if (suunta.equals(suunta.OIKEA)) {
             x++;
         }
     }
 
     public void lyo(Olio lyotava) {
-        lyotava.setElamat(lyotava.getElamat() - 1);
+        lyotava.vahennaElamaa();
+        System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
     }
 }

@@ -23,20 +23,30 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    protected void paintComponent(Graphics grafiikka) {
+        super.paintComponent(grafiikka);
         Pelaaja pelaaja = peli.getPelaaja();
-        g.setColor(Color.BLUE);
-        g.fill3DRect(pelaaja.getX() * 40, pelaaja.getY() * 40, 40, 40, true);
-
-        for (Orkki orkki : peli.getOrkit()) {
-            g.setColor(Color.GREEN);
-            g.fillOval(orkki.getX() * 40, orkki.getY() * 40, 40, 40);
-        }
+        grafiikka.setColor(Color.BLUE);
+        grafiikka.fill3DRect(pelaaja.getX() * 40, pelaaja.getY() * 40, 40, 40, true);
+        piirraSeuraajat(grafiikka);
+        piirraOrkit(grafiikka);
     }
 
     @Override
     public void paivita() {
         repaint();
+    }
+
+    public void piirraSeuraajat(Graphics grafiikka) {
+        for (Olio olio : peli.getSeuraajat()) {
+            grafiikka.setColor(Color.RED);
+            grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
+        }
+    }
+    public void piirraOrkit(Graphics grafiikka){
+                for (Olio olio : peli.getOrkit()) {
+            grafiikka.setColor(Color.GREEN);
+            grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
+        }
     }
 }

@@ -63,7 +63,7 @@ public class PeliTest {
             peli.uusiOrkki();
         }
         assertEquals(peli.getOrkit().size(), 5);
-        peli.sijoitaOrkit();
+        peli.sijoitaViholliset();
         for (int j = 0; j < 1000; j++) {
             for (Orkki orkki : peli.getOrkit()) {
                 assertFalse(orkki.getX() > peli.getHuone().getLeveys());

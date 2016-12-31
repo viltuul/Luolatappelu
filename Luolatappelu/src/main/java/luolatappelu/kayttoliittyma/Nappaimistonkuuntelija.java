@@ -40,7 +40,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
             peli.lyoNaapuria(peli.getPelaaja());
         }
         peli.liikutaOlioita();
-
+        peli.poistaKuolleet();
         komponentti.repaint();
 
     }
