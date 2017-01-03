@@ -25,11 +25,12 @@ public class Peli {
         this.arpoja = new Random();
         this.leveli = 0;
     }
-    public void uusiTaso(){
+
+    public void uusiTaso() {
         this.taso = new Taso(this);
         leveli++;
         taso.uusiTaso(leveli);
-        
+
     }
 
     public Taso getTaso() {
@@ -100,10 +101,11 @@ public class Peli {
             }
         }
     }
-    public void paivita(){
+
+    public void paivita() {
         liikutaOlioita();
         taso.getOliokanta().poistaKuolleet();
-        if (taso.getOliokanta().getElossaOlevat().size()==0){
+        if (taso.getOliokanta().getElossaOlevat().size() == 0) {
             this.uusiTaso();
         }
     }
