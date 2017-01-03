@@ -91,7 +91,7 @@ public class Olio {
             return false;
         } else {
             Random osuuko = new Random();
-            if (osuuko.nextDouble()>osumatarkkuus){
+            if (osuuko.nextDouble() > osumatarkkuus) {
                 System.out.println(this.getNimi() + " ei osunut olioon " + lyotava.getNimi());
                 return true;
             }
