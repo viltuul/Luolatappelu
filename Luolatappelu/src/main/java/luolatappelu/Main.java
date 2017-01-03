@@ -1,6 +1,7 @@
 package luolatappelu;
 
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.peli.Peli;
 
@@ -19,7 +20,7 @@ public class Main {
             peli.getOliokanta().uusiTankki();
         }
         Kayttoliittyma kayttis = new Kayttoliittyma(lukija, peli);
-        kayttis.run();
+        SwingUtilities.invokeLater(kayttis);
     }
 
 }

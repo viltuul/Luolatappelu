@@ -69,6 +69,15 @@ public class Oliokanta {
             }
         }
     }
+    public ArrayList<Olio> getElossaOlevat(){
+        ArrayList<Olio> lista = new ArrayList();
+        for (Olio olio : viholliset){
+            if (olio.isElossa()){
+                lista.add(olio);
+            }
+        }
+        return lista;
+    }
 
     public Ovi uusiOvi() {
         Ovi ovi = new Ovi();

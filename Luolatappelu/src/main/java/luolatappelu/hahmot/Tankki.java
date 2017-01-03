@@ -13,7 +13,7 @@ public class Tankki extends Olio {
         this.random = new Random();
         this.lepo = true;
         super.setElamat(3);
-        super.setOsumatarkkuus(1.0);
+        super.setOsumatarkkuus(0.8);
     }
 
     public Suunta valitseSuunta(int nro) {

@@ -17,14 +17,14 @@ public class Nappaimistonkuuntelija implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
+    public void keyPressed(KeyEvent painallus) {
+        if (painallus.getKeyCode() == KeyEvent.VK_UP) {
             peli.getPelaaja().toimi(Suunta.YLOS);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (painallus.getKeyCode() == KeyEvent.VK_DOWN) {
             peli.getPelaaja().toimi(Suunta.ALAS);
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        } else if (painallus.getKeyCode() == KeyEvent.VK_RIGHT) {
             peli.getPelaaja().toimi(Suunta.OIKEA);
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        } else if (painallus.getKeyCode() == KeyEvent.VK_LEFT) {
             peli.getPelaaja().toimi(Suunta.VASEN);
         }
         peli.getOliokanta().poistaKuolleet();
@@ -34,6 +34,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+
     }
 
     @Override

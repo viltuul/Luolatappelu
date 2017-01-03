@@ -8,7 +8,7 @@ import javax.swing.WindowConstants;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.peli.Peli;
 
-public class Kayttoliittyma {
+public class Kayttoliittyma implements Runnable {
 
     private Scanner lukija;
     private Peli peli;
@@ -25,20 +25,22 @@ public class Kayttoliittyma {
         this.ruudukko = new Ruudukko(peli);
     }
 
+    @Override
     public void run() {
         alku();
         frame = new JFrame("Luolatappelu");
         frame.setLayout(null);
         frame.setPreferredSize(new Dimension(1300, 870));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        luoKomponentit(frame.getContentPane());
+        luoKomponentit();
         frame.pack();
         frame.setVisible(true);
+
     }
 
-    public void luoKomponentit(Container container) {
-        container.add(alusta);
+    public void luoKomponentit() {
 //        container.add(ruudukko);
+        frame.add(alusta);
         Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(frame, peli);
         frame.addKeyListener(nk);
     }

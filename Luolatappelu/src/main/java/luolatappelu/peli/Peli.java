@@ -7,6 +7,7 @@ import luolatappelu.hahmot.Orkki;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
+
 import luolatappelu.hahmot.Tankki;
 
 public class Peli {
