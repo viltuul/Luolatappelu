@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package luolatappelu.peli;
 
 import java.util.ArrayList;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
+import luolatappelu.hahmot.Ovi;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
 import luolatappelu.hahmot.Tankki;
 
-/**
- *
- * @author ville
- */
 public class Oliokanta {
 
     private ArrayList<Orkki> orkit;
@@ -34,6 +26,9 @@ public class Oliokanta {
     }
 
     public ArrayList<Olio> getViholliset() {
+        if (viholliset.size() == 0) {
+            this.uusiOvi();
+        }
         return viholliset;
     }
 
@@ -62,7 +57,21 @@ public class Oliokanta {
         tankit.add(tankki);
         viholliset.add(tankki);
     }
-    public ArrayList<Tankki> getTankit(){
+
+    public ArrayList<Tankki> getTankit() {
         return tankit;
+    }
+
+    public void poistaKuolleet() {
+        for (Olio olio : viholliset) {
+            if (!olio.isElossa()) {
+                olio.setX(99999999);
+            }
+        }
+    }
+
+    public Ovi uusiOvi() {
+        Ovi ovi = new Ovi();
+        return ovi;
     }
 }

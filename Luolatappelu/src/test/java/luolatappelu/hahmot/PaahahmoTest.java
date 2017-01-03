@@ -5,6 +5,7 @@
  */
 package luolatappelu.hahmot;
 
+import luolatappelu.Suunta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

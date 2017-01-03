@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package luolatappelu.hahmot;
 
-/**
- *
- * @author tuulio
- */
+import java.util.Random;
+import luolatappelu.Suunta;
+
 public class Olio {
 
     private String nimi;
@@ -17,6 +11,7 @@ public class Olio {
     private int y;
     private boolean elossa;
     private Suunta viimeinenSuunta;
+    private double osumatarkkuus;
 
     public Olio(String nimi) {
         this.nimi = nimi;
@@ -24,6 +19,7 @@ public class Olio {
         this.elossa = true;
         this.x = 0;
         this.y = 0;
+        this.osumatarkkuus = 0.5;
     }
 
     public String getNimi() {
@@ -64,7 +60,7 @@ public class Olio {
     public void setY(int y) {
         this.y = y;
     }
-    
+
     public void liiku(Suunta suunta) {
         this.viimeinenSuunta = suunta;
         if (suunta.equals(suunta.ALAS)) {
@@ -94,6 +90,11 @@ public class Olio {
         if (lyotava == null) {
             return false;
         } else {
+            Random osuuko = new Random();
+            if (osuuko.nextDouble()>osumatarkkuus){
+                System.out.println(this.getNimi() + " ei osunut olioon " + lyotava.getNimi());
+                return true;
+            }
             lyotava.vahennaElamaa();
             System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
             return true;
@@ -124,4 +125,13 @@ public class Olio {
         }
         return true;
     }
+
+    public double getOsumatarkkuus() {
+        return osumatarkkuus;
+    }
+
+    public void setOsumatarkkuus(double osumatarkkuus) {
+        this.osumatarkkuus = osumatarkkuus;
+    }
+
 }

@@ -15,20 +15,22 @@ public class Peli {
     private Huone huone;
     private Pelaaja pelaaja;
     private Oliokanta oliot;
+    private Random arpoja;
 
     public Peli() {
         this.oliot = new Oliokanta();
-        this.huone = new Huone(20, 20);
+        this.huone = new Huone();
         this.seinat = new ArrayList();
-        this.pelaaja = new Pelaaja("Pelaaja");
-    }
-
-    public Oliokanta getOliokanta() {
-        return oliot;
+        this.pelaaja = new Pelaaja("Pelaaja", this);
+        this.arpoja = new Random();
     }
 
     public Huone getHuone() {
         return huone;
+    }
+
+    public Pelaaja getPelaaja() {
+        return pelaaja;
     }
 
     public void sijoitaPelaaja() {
@@ -36,32 +38,33 @@ public class Peli {
         pelaaja.setY(huone.getKorkeus() - 1);
     }
 
-    public Pelaaja getPelaaja() {
-        return pelaaja;
-    }
-
     public ArrayList<Seina> getSeina() {
         return seinat;
     }
 
     public void rakennaSeinat() {
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < huone.getLeveys() + 1; i++) {
             Seina seinaYla = new Seina(i, 0);
             seinat.add(seinaYla);
             Seina seinaAla = new Seina(i, huone.getKorkeus());
             seinat.add(seinaAla);
-            Seina seinaVas = new Seina(0, i);
+        }
+        for (int j = 0; j < huone.getKorkeus(); j++) {
+            Seina seinaVas = new Seina(0, j);
             seinat.add(seinaVas);
-            Seina seinaOik = new Seina(huone.getLeveys(), i);
+            Seina seinaOik = new Seina(huone.getLeveys(), j);
             seinat.add(seinaOik);
         }
     }
 
+    public Oliokanta getOliokanta() {
+        return oliot;
+    }
+
     public void sijoitaViholliset() {
-        Random random = new Random();
         for (Olio sijoitettava : oliot.getViholliset()) {
-            sijoitettava.setX(random.nextInt(huone.getLeveys() - 2)+1);
-            sijoitettava.setY(random.nextInt(huone.getKorkeus() - 2)+1);
+            sijoitettava.setX(arpoja.nextInt(huone.getLeveys() - 2) + 1);
+            sijoitettava.setY(arpoja.nextInt(huone.getKorkeus() - 2) + 1);
         }
     }
 
@@ -103,16 +106,7 @@ public class Peli {
     public void lyoNaapuria(Olio lyoja) {
         ArrayList<Olio> lista = getNaapurit(lyoja);
         if (!lista.isEmpty()) {
-            Random r = new Random();
-            lyoja.lyo(lista.get(r.nextInt(lista.size())));
-        }
-    }
-
-    public void poistaKuolleet() {
-        for (Olio olio : oliot.getViholliset()) {
-            if (!olio.isElossa()) {
-                olio.setX(99999999);
-            }
+            lyoja.lyo(lista.get(arpoja.nextInt(lista.size())));
         }
     }
 
@@ -161,7 +155,6 @@ public class Peli {
         } else {
             return false;
         }
-//        Liiku -> tarkista oliko uudessa kohdassa objektia -> jos oli liiku takaisin
     }
 
 }

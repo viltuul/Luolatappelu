@@ -1,21 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package luolatappelu.kayttoliittyma;
 
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import luolatappelu.hahmot.Pelaaja;
-import luolatappelu.hahmot.Suunta;
+import luolatappelu.Suunta;
 import luolatappelu.peli.Peli;
 
-/**
- *
- * @author Ville
- */
 public class Nappaimistonkuuntelija implements KeyListener {
 
     private Component komponentti;
@@ -29,17 +19,15 @@ public class Nappaimistonkuuntelija implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            peli.getPelaaja().liiku(Suunta.YLOS);
+            peli.getPelaaja().toimi(Suunta.YLOS);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            peli.getPelaaja().liiku(Suunta.ALAS);
+            peli.getPelaaja().toimi(Suunta.ALAS);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            peli.getPelaaja().liiku(Suunta.OIKEA);
+            peli.getPelaaja().toimi(Suunta.OIKEA);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            peli.getPelaaja().liiku(Suunta.VASEN);
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            peli.lyoNaapuria(peli.getPelaaja());
+            peli.getPelaaja().toimi(Suunta.VASEN);
         }
-        peli.poistaKuolleet();
+        peli.getOliokanta().poistaKuolleet();
         peli.liikutaOlioita();
         komponentti.repaint();
     }

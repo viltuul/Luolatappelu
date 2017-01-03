@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import luolatappelu.hahmot.Olio;
+import luolatappelu.hahmot.Ovi;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.peli.Peli;
 
@@ -132,4 +133,10 @@ public class Piirtoalusta extends JPanel {
             }
         }
     }
+
+    public void piirraOvi(Graphics grafiikka) {
+        Ovi ovi = peli.getOliokanta().uusiOvi();
+        grafiikka.fillOval(ovi.getX() * 40, ovi.getY() * 40, 40, 40);
+    }
+
 }

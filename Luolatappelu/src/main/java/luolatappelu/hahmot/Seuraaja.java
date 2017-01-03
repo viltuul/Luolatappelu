@@ -1,7 +1,7 @@
 package luolatappelu.hahmot;
 
+import luolatappelu.Suunta;
 import java.util.Random;
-import luolatappelu.peli.Peli;
 
 public class Seuraaja extends Olio {
 
