@@ -27,8 +27,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
         } else if (painallus.getKeyCode() == KeyEvent.VK_LEFT) {
             peli.getPelaaja().toimi(Suunta.VASEN);
         }
-        peli.getOliokanta().poistaKuolleet();
-        peli.liikutaOlioita();
+        peli.paivita();
         komponentti.repaint();
     }
 
@@ -39,6 +38,5 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 }

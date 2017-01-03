@@ -46,8 +46,9 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void alku() {
-        peli.sijoitaPelaaja();
-        peli.sijoitaViholliset();
-        peli.rakennaSeinat();
+//        peli.getTaso().sijoitaPelaaja();
+//        peli.getTaso().sijoitaViholliset();
+//        peli.getTaso().rakennaSeinat();
+        peli.uusiTaso();
     }
 }

@@ -5,7 +5,7 @@
  */
 package luolatappelu.peli;
 
-import luolatappelu.peli.Huone;
+import luolatappelu.peli.Taso;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
  * @author tuulio
  */
 public class HuoneTest {
-private Huone huone;
+private Taso huone;
     public HuoneTest() {
-        this.huone = new Huone(20,20);
+        this.huone = new Taso(20,20);
     }
 
     @Test

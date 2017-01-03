@@ -13,60 +13,35 @@ import luolatappelu.hahmot.Tankki;
 public class Peli {
 
     private ArrayList<Seina> seinat;
-    private Huone huone;
+    private Taso taso;
     private Pelaaja pelaaja;
-    private Oliokanta oliot;
     private Random arpoja;
+    private int leveli;
 
     public Peli() {
-        this.oliot = new Oliokanta();
-        this.huone = new Huone();
+        this.taso = new Taso(this);
         this.seinat = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja", this);
         this.arpoja = new Random();
+        this.leveli = 0;
+    }
+    public void uusiTaso(){
+        this.taso = new Taso(this);
+        leveli++;
+        taso.uusiTaso(leveli);
+        
     }
 
-    public Huone getHuone() {
-        return huone;
+    public Taso getTaso() {
+        return taso;
     }
 
     public Pelaaja getPelaaja() {
         return pelaaja;
     }
 
-    public void sijoitaPelaaja() {
-        pelaaja.setX(huone.getLeveys() / 2);
-        pelaaja.setY(huone.getKorkeus() - 1);
-    }
-
-    public ArrayList<Seina> getSeina() {
-        return seinat;
-    }
-
-    public void rakennaSeinat() {
-        for (int i = 0; i < huone.getLeveys() + 1; i++) {
-            Seina seinaYla = new Seina(i, 0);
-            seinat.add(seinaYla);
-            Seina seinaAla = new Seina(i, huone.getKorkeus());
-            seinat.add(seinaAla);
-        }
-        for (int j = 0; j < huone.getKorkeus(); j++) {
-            Seina seinaVas = new Seina(0, j);
-            seinat.add(seinaVas);
-            Seina seinaOik = new Seina(huone.getLeveys(), j);
-            seinat.add(seinaOik);
-        }
-    }
-
     public Oliokanta getOliokanta() {
-        return oliot;
-    }
-
-    public void sijoitaViholliset() {
-        for (Olio sijoitettava : oliot.getViholliset()) {
-            sijoitettava.setX(arpoja.nextInt(huone.getLeveys() - 2) + 1);
-            sijoitettava.setY(arpoja.nextInt(huone.getKorkeus() - 2) + 1);
-        }
+        return taso.getOliokanta();
     }
 
     public ArrayList<Olio> koordinaatinOliot(int x, int y) {
@@ -74,12 +49,12 @@ public class Peli {
         if (pelaaja.getX() == x && pelaaja.getY() == y) {
             lista.add(pelaaja);
         }
-        for (Olio olio : oliot.getViholliset()) {
+        for (Olio olio : taso.getOliokanta().getViholliset()) {
             if (olio.getX() == x && olio.getY() == y) {
                 lista.add(olio);
             }
         }
-        for (Seina seina : seinat) {
+        for (Seina seina : taso.getSeina()) {
             if (seina.getX() == x && seina.getY() == y) {
                 lista.add(seina);
             }
@@ -112,7 +87,7 @@ public class Peli {
     }
 
     public void liikutaOlioita() {
-        for (Olio olio : oliot.getViholliset()) {
+        for (Olio olio : taso.getOliokanta().getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
                 olio.lyo(pelaaja);
@@ -123,6 +98,13 @@ public class Peli {
             } else if (olio.toString().equals("T")) {
                 liikutaTankkia(olio);
             }
+        }
+    }
+    public void paivita(){
+        liikutaOlioita();
+        taso.getOliokanta().poistaKuolleet();
+        if (taso.getOliokanta().getElossaOlevat().size()==0){
+            this.uusiTaso();
         }
     }
 
