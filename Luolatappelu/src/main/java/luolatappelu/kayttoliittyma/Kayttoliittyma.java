@@ -40,16 +40,13 @@ public class Kayttoliittyma {
 
     public void run() {
         alku();
-//        frame.setLayout(new MigLayout("Luolatappelu","",""));
         frame = new JFrame("Luolatappelu");
         frame.setLayout(null);
         frame.setPreferredSize(new Dimension(1300, 870));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
         luoKomponentit(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
-        frame.repaint();
     }
 
     public void luoKomponentit(Container container) {

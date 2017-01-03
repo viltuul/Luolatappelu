@@ -6,6 +6,7 @@
 package luolatappelu.kayttoliittyma;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
@@ -26,13 +27,13 @@ public class Ruudukko extends JPanel {
         this.peli = peli;
     }
 
-    public JPanel toPanel() {
+    @Override
+    protected void paintComponent(Graphics grafiikka) {
         GridLayout asettelu = new GridLayout(1, 2);
         JPanel paneeli = new JPanel(asettelu);
         JTextField ylin = new JTextField("asd");
-        JTextField alin = new JTextField("dsa");
+        JTextField alin = new JTextField();
         ylin.setEnabled(false);
         alin.setEnabled(false);
-        return paneeli;
     }
 }

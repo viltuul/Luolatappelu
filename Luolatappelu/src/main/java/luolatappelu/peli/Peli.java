@@ -60,8 +60,8 @@ public class Peli {
     public void sijoitaViholliset() {
         Random random = new Random();
         for (Olio sijoitettava : oliot.getViholliset()) {
-            sijoitettava.setX(random.nextInt(huone.getLeveys() - 2));
-            sijoitettava.setY(random.nextInt(huone.getKorkeus() - 2));
+            sijoitettava.setX(random.nextInt(huone.getLeveys() - 2)+1);
+            sijoitettava.setY(random.nextInt(huone.getKorkeus() - 2)+1);
         }
     }
 
