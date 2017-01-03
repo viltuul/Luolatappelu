@@ -5,9 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Pelaaja;
-import luolatappelu.hahmot.Orkki;
 import luolatappelu.peli.Peli;
-import luolatappelu.peli.Huone;
 
 /**
  *
@@ -18,7 +16,7 @@ public class Piirtoalusta extends JPanel {
     private Peli peli;
 
     public Piirtoalusta(Peli peli) {
-        super.setBackground(Color.gray);
+        super.setBackground(Color.GRAY);
         this.peli = peli;
     }
 
@@ -30,19 +28,27 @@ public class Piirtoalusta extends JPanel {
         grafiikka.fill3DRect(pelaaja.getX() * 40, pelaaja.getY() * 40, 40, 40, true);
         piirraSeuraajat(grafiikka);
         piirraOrkit(grafiikka);
+        piirraSeinat(grafiikka);
     }
 
     public void piirraSeuraajat(Graphics grafiikka) {
-        for (Olio olio : peli.getSeuraajat()) {
+        for (Olio olio : peli.getOliokanta().getSeuraajat()) {
             grafiikka.setColor(Color.RED);
             grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
         }
     }
 
     public void piirraOrkit(Graphics grafiikka) {
-        for (Olio olio : peli.getOrkit()) {
+        for (Olio olio : peli.getOliokanta().getOrkit()) {
             grafiikka.setColor(Color.GREEN);
             grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
+        }
+    }
+
+    public void piirraSeinat(Graphics grafiikka) {
+        for (Olio seina : peli.getSeina()) {
+            grafiikka.setColor(Color.BLACK);
+            grafiikka.fill3DRect(seina.getX() * 40, seina.getY() * 40, 40, 40, true);
         }
     }
 }

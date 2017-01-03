@@ -16,6 +16,7 @@ public class Olio {
     private int x;
     private int y;
     private boolean elossa;
+    private Suunta viimeinenSuunta;
 
     public Olio(String nimi) {
         this.nimi = nimi;
@@ -63,8 +64,9 @@ public class Olio {
     public void setY(int y) {
         this.y = y;
     }
-
+    
     public void liiku(Suunta suunta) {
+        this.viimeinenSuunta = suunta;
         if (suunta.equals(suunta.ALAS)) {
             y++;
         } else if (suunta.equals(suunta.YLOS)) {
@@ -76,9 +78,26 @@ public class Olio {
         }
     }
 
-    public void lyo(Olio lyotava) {
-        lyotava.vahennaElamaa();
-        System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
+    public void liikuTakaisin() {
+        if (viimeinenSuunta.equals(Suunta.ALAS)) {
+            y--;
+        } else if (viimeinenSuunta.equals(Suunta.YLOS)) {
+            y++;
+        } else if (viimeinenSuunta.equals(Suunta.VASEN)) {
+            x++;
+        } else if (viimeinenSuunta.equals(Suunta.OIKEA)) {
+            x--;
+        }
+    }
+
+    public boolean lyo(Olio lyotava) {
+        if (lyotava == null) {
+            return false;
+        } else {
+            lyotava.vahennaElamaa();
+            System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
+            return true;
+        }
     }
 
     @Override

@@ -46,6 +46,7 @@ public class Kayttoliittyma {
         luoKomponentit(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
+        frame.repaint();
     }
 
     public void luoKomponentit(Container container) {
@@ -57,6 +58,7 @@ public class Kayttoliittyma {
     public void alku() {
         peli.sijoitaPelaaja();
         peli.sijoitaViholliset();
+        peli.rakennaSeinat();
     }
 
     public JFrame getFrame() {

@@ -42,7 +42,6 @@ public class Nappaimistonkuuntelija implements KeyListener {
         peli.liikutaOlioita();
         peli.poistaKuolleet();
         komponentti.repaint();
-
     }
 
     @Override
@@ -51,5 +50,6 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+
     }
 }
