@@ -99,7 +99,7 @@ public class Piirtoalusta extends JPanel {
         grafiikka.setColor(new Color(139, 69, 0));
         grafiikka.fill3DRect(x - 10, y + 8, 10, 6, true);
         grafiikka.setColor(Color.darkGray);
-        grafiikka.fillOval(x-8, y-5, 5, 15);
+        grafiikka.fillOval(x - 8, y - 5, 5, 15);
     }
 
     public void piirraKilpi(Graphics grafiikka, int x, int y) {
