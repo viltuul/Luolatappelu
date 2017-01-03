@@ -18,6 +18,7 @@ public class Piirtoalusta extends JPanel {
     public Piirtoalusta(Peli peli) {
         super.setBackground(Color.GRAY);
         this.peli = peli;
+        super.setBounds(0, 0, 840, 870);
     }
 
     @Override
@@ -28,6 +29,7 @@ public class Piirtoalusta extends JPanel {
         grafiikka.fill3DRect(pelaaja.getX() * 40, pelaaja.getY() * 40, 40, 40, true);
         piirraSeuraajat(grafiikka);
         piirraOrkit(grafiikka);
+        piirraTankit(grafiikka);
         piirraSeinat(grafiikka);
     }
 
@@ -41,6 +43,13 @@ public class Piirtoalusta extends JPanel {
     public void piirraOrkit(Graphics grafiikka) {
         for (Olio olio : peli.getOliokanta().getOrkit()) {
             grafiikka.setColor(Color.GREEN);
+            grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
+        }
+    }
+
+    public void piirraTankit(Graphics grafiikka) {
+        for (Olio olio : peli.getOliokanta().getTankit()) {
+            grafiikka.setColor(Color.YELLOW);
             grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40, 40, 40);
         }
     }

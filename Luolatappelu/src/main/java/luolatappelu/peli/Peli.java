@@ -7,6 +7,7 @@ import luolatappelu.hahmot.Orkki;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
+import luolatappelu.hahmot.Tankki;
 
 public class Peli {
 
@@ -47,11 +48,11 @@ public class Peli {
         for (int i = 0; i < 21; i++) {
             Seina seinaYla = new Seina(i, 0);
             seinat.add(seinaYla);
-            Seina seinaAla = new Seina(i, 20);
+            Seina seinaAla = new Seina(i, huone.getKorkeus());
             seinat.add(seinaAla);
             Seina seinaVas = new Seina(0, i);
             seinat.add(seinaVas);
-            Seina seinaOik = new Seina(20, i);
+            Seina seinaOik = new Seina(huone.getLeveys(), i);
             seinat.add(seinaOik);
         }
     }
@@ -59,30 +60,8 @@ public class Peli {
     public void sijoitaViholliset() {
         Random random = new Random();
         for (Olio sijoitettava : oliot.getViholliset()) {
-//            while (true) {
-            sijoitettava.setX(random.nextInt(huone.getLeveys() - 1));
-            sijoitettava.setY(random.nextInt(huone.getKorkeus() - 1));
-//                if (this.tormaysObjektiin(sijoitettava)) {
-//                    break;
-//                }
-//            }
-        }
-    }
-
-    public void eiMeneReunanYli(Olio olio) {
-        if (olio.isElossa()) {
-            if (olio.getX() > huone.getLeveys() - 1) {
-                olio.setX(huone.getLeveys() - 2);
-            }
-            if (olio.getY() > huone.getKorkeus() - 1) {
-                olio.setY(huone.getKorkeus() - 2);
-            }
-            if (olio.getX() < 0) {
-                olio.setX(0);
-            }
-            if (olio.getY() < 0) {
-                olio.setY(0);
-            }
+            sijoitettava.setX(random.nextInt(huone.getLeveys() - 2));
+            sijoitettava.setY(random.nextInt(huone.getKorkeus() - 2));
         }
     }
 
@@ -94,6 +73,11 @@ public class Peli {
         for (Olio olio : oliot.getViholliset()) {
             if (olio.getX() == x && olio.getY() == y) {
                 lista.add(olio);
+            }
+        }
+        for (Seina seina : seinat) {
+            if (seina.getX() == x && seina.getY() == y) {
+                lista.add(seina);
             }
         }
         return lista;
@@ -136,29 +120,48 @@ public class Peli {
         for (Olio olio : oliot.getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
-                this.lyoNaapuria(olio);
+                olio.lyo(pelaaja);
             } else if (olio.toString().equals("Ö")) {
-                Orkki orkki = (Orkki) olio;
-                orkki.liiku();
-                if (tormaysObjektiin(orkki)) {
-                    orkki.liikuTakaisin();
-                }
-            } else {
-                Seuraaja seuraaja = (Seuraaja) olio;
-                seuraaja.liiku(pelaaja);
-                if (tormaysObjektiin(seuraaja)) {
-                    seuraaja.liikuTakaisin();
-                }
+                liikutaOrkkia(olio);
+            } else if (olio.toString().equals("S")) {
+                liikutaSeuraajaa(olio);
+            } else if (olio.toString().equals("T")) {
+                liikutaTankkia(olio);
             }
         }
     }
 
+    public void liikutaOrkkia(Olio olio) {
+        Orkki orkki = (Orkki) olio;
+        orkki.liiku();
+        if (tormaysObjektiin(orkki)) {
+            orkki.liikuTakaisin();
+        }
+    }
+
+    public void liikutaSeuraajaa(Olio olio) {
+        Seuraaja seuraaja = (Seuraaja) olio;
+        seuraaja.liiku();
+        if (tormaysObjektiin(seuraaja)) {
+            seuraaja.liikuTakaisin();
+        }
+    }
+
+    private void liikutaTankkia(Olio olio) {
+        Tankki tankki = (Tankki) olio;
+        tankki.liiku();
+        if (tormaysObjektiin(tankki)) {
+            tankki.liikuTakaisin();
+        }
+    }
+
     public boolean tormaysObjektiin(Olio olio) {
-        if (this.koordinaatinOliot(olio.getX(), olio.getY()).size() <= 1) {
-            return false;
-        } else {
+        if (this.koordinaatinOliot(olio.getX(), olio.getY()).size() > 1) {
             return true;
+        } else {
+            return false;
         }
 //        Liiku -> tarkista oliko uudessa kohdassa objektia -> jos oli liiku takaisin
     }
+
 }

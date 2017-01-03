@@ -14,7 +14,10 @@ public class Main {
             peli.getOliokanta().uusiOrkki();
         }
         for (int j = 0;j<10;j++){
-            peli.getOliokanta().uusiSeuraaja();
+            peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
+        }
+        for (int j = 0;j<5;j++){
+            peli.getOliokanta().uusiTankki();
         }
         Kayttoliittyma kayttis = new Kayttoliittyma(lukija,peli);
         kayttis.run();

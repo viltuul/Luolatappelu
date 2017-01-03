@@ -27,6 +27,7 @@ public class Kayttoliittyma {
     private Peli peli;
     private Pelaaja pelaaja;
     private Piirtoalusta alusta;
+    private Ruudukko ruudukko;
     private JFrame frame;
 
     public Kayttoliittyma(Scanner lukija, Peli peli) {
@@ -34,15 +35,17 @@ public class Kayttoliittyma {
         this.peli = peli;
         this.pelaaja = peli.getPelaaja();
         this.alusta = new Piirtoalusta(peli);
+        this.ruudukko = new Ruudukko(peli);
     }
 
     public void run() {
         alku();
+//        frame.setLayout(new MigLayout("Luolatappelu","",""));
         frame = new JFrame("Luolatappelu");
-        int leveys = (peli.getHuone().getLeveys() * 40 + 30);
-        int korkeus = (peli.getHuone().getKorkeus() * 40 + 30);
-        frame.setPreferredSize(new Dimension(leveys, korkeus));
+        frame.setLayout(null);
+        frame.setPreferredSize(new Dimension(1300, 870));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
         luoKomponentit(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
@@ -51,6 +54,7 @@ public class Kayttoliittyma {
 
     public void luoKomponentit(Container container) {
         container.add(alusta);
+        container.add(ruudukko);
         Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(frame, peli);
         frame.addKeyListener(nk);
     }
@@ -64,6 +68,5 @@ public class Kayttoliittyma {
     public JFrame getFrame() {
         return frame;
     }
-
 
 }

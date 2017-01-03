@@ -11,6 +11,7 @@ import luolatappelu.hahmot.Orkki;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
+import luolatappelu.hahmot.Tankki;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Oliokanta {
 
     private ArrayList<Orkki> orkit;
     private ArrayList<Seuraaja> seuraajat;
+    private ArrayList<Tankki> tankit;
     private ArrayList<Olio> viholliset;
     private ArrayList<Seina> seinat;
 
@@ -28,8 +30,9 @@ public class Oliokanta {
         this.seinat = new ArrayList();
         this.viholliset = new ArrayList();
         this.seuraajat = new ArrayList();
+        this.tankit = new ArrayList();
     }
-    
+
     public ArrayList<Olio> getViholliset() {
         return viholliset;
     }
@@ -39,17 +42,27 @@ public class Oliokanta {
         orkit.add(orkki);
         viholliset.add(orkki);
     }
-    public ArrayList<Orkki> getOrkit(){
+
+    public ArrayList<Orkki> getOrkit() {
         return orkit;
     }
 
-    public void uusiSeuraaja() {
-        Seuraaja seuraaja = new Seuraaja();
+    public void uusiSeuraaja(Pelaaja pelaaja) {
+        Seuraaja seuraaja = new Seuraaja(pelaaja);
         seuraajat.add(seuraaja);
         viholliset.add(seuraaja);
     }
 
     public ArrayList<Seuraaja> getSeuraajat() {
         return seuraajat;
+    }
+
+    public void uusiTankki() {
+        Tankki tankki = new Tankki();
+        tankit.add(tankki);
+        viholliset.add(tankki);
+    }
+    public ArrayList<Tankki> getTankit(){
+        return tankit;
     }
 }
