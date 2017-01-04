@@ -13,6 +13,7 @@ public class Taso {
     private Random arpoja;
     private Oliokanta oliot;
     private Peli peli;
+    private boolean tasoLapi;
 
     public Taso(Peli peli) {
         this.peli = peli;
@@ -21,6 +22,7 @@ public class Taso {
         this.korkeus = 20;
         this.seinat = new ArrayList();
         this.oliot = new Oliokanta();
+        this.tasoLapi = false;
     }
 
     public int getKorkeus() {
@@ -67,9 +69,9 @@ public class Taso {
     }
 
     public void uudetOliot(int taso) {
-        System.out.println("tämä taso on jo" + taso);
+        System.out.println("tämä taso on" + taso + ". taso!");
         this.oliot = new Oliokanta();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4 + taso; i++) {
             double arpa = arpoja.nextDouble();
             if (arpa < 0.4) {
                 oliot.uusiOrkki();
@@ -88,4 +90,10 @@ public class Taso {
         sijoitaViholliset();
     }
 
+    public boolean isTasoLapi() {
+        if (oliot.getElossaOlevat().isEmpty()){
+            tasoLapi = true;
+        }
+        return tasoLapi;
+    }    
 }

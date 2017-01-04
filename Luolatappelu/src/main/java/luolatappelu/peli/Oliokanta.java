@@ -3,7 +3,6 @@ package luolatappelu.peli;
 import java.util.ArrayList;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
-import luolatappelu.hahmot.Ovi;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
@@ -27,7 +26,7 @@ public class Oliokanta {
 
     public ArrayList<Olio> getViholliset() {
         if (viholliset.size() == 0) {
-            this.uusiOvi();
+
         }
         return viholliset;
     }
@@ -77,10 +76,5 @@ public class Oliokanta {
             }
         }
         return lista;
-    }
-
-    public Ovi uusiOvi() {
-        Ovi ovi = new Ovi();
-        return ovi;
     }
 }

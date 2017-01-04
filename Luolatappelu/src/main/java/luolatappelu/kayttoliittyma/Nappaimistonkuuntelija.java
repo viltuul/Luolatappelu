@@ -26,6 +26,10 @@ public class Nappaimistonkuuntelija implements KeyListener {
             peli.getPelaaja().toimi(Suunta.OIKEA);
         } else if (painallus.getKeyCode() == KeyEvent.VK_LEFT) {
             peli.getPelaaja().toimi(Suunta.VASEN);
+        } else if (peli.getTaso().isTasoLapi()){
+            if (painallus.getKeyCode() == KeyEvent.VK_SPACE){
+                peli.uusiTaso();
+            }
         }
         peli.paivita();
         komponentti.repaint();

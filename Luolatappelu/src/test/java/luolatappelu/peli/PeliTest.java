@@ -7,10 +7,6 @@ package luolatappelu.peli;
 
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,7 +33,7 @@ public class PeliTest {
 
     @Test
     public void pelajanSijoitusToimii() {
-        peli.sijoitaPelaaja();
+        peli.getTaso().sijoitaPelaaja();
         assertEquals(peli.getPelaaja().getX(), 10);
         assertEquals(peli.getPelaaja().getY(), 19);
     }
@@ -54,7 +50,7 @@ public class PeliTest {
     @Test
     public void seuraajienLuonti() {
         for (int i = 0; i < 5; i++) {
-            peli.getOliokanta().uusiSeuraaja();
+            peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
         }
         assertEquals(5, peli.getOliokanta().getSeuraajat().size());
         assertEquals(5, peli.getOliokanta().getViholliset().size());
@@ -63,10 +59,10 @@ public class PeliTest {
     @Test
     public void vihollistenSijoitus() {
         for (int i = 0; i < 5; i++) {
-            peli.getOliokanta().uusiSeuraaja();
+            peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
             peli.getOliokanta().uusiOrkki();
         }
-        peli.sijoitaViholliset();
+        peli.getTaso().sijoitaViholliset();
         for (int j = 0; j < 100; j++) {
             for (Orkki orkki : peli.getOliokanta().getOrkit()) {
                 assertFalse(orkki.getX() > peli.getTaso().getLeveys());
@@ -74,22 +70,6 @@ public class PeliTest {
                 assertFalse(orkki.getY() > peli.getTaso().getKorkeus());
                 assertFalse(orkki.getY() < 0);
             }
-        }
-    }
-
-    @Test
-    public void eiMeneReunanYliTestaus() {
-        peli.getOliokanta().uusiOrkki();
-        Orkki orkki = peli.getOliokanta().getOrkit().get(0);
-        for (int i = 0; i < 100; i++) {
-            for (int j = 0; j < 25; j++) {
-                orkki.liiku();
-            }
-            peli.eiMeneReunanYli(orkki);
-            assertFalse(orkki.getX() > peli.getTaso().getLeveys());
-            assertFalse(orkki.getX() < 0);
-            assertFalse(orkki.getY() > peli.getTaso().getKorkeus());
-            assertFalse(orkki.getY() < 0);
         }
     }
 
@@ -103,7 +83,7 @@ public class PeliTest {
     @Test
     public void getNaapuritTesti() {
         peli.getOliokanta().uusiOrkki();
-        peli.getOliokanta().uusiSeuraaja();
+        peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
         peli.getOliokanta().getOrkit().get(0).setX(1);
         peli.getOliokanta().getSeuraajat().get(0).setY(1);
         assertEquals(peli.getNaapurit(peli.getPelaaja()), peli.getOliokanta().getViholliset());
@@ -112,7 +92,7 @@ public class PeliTest {
     @Test
     public void liikutaOlioitaTesti() {
         peli.getOliokanta().uusiOrkki();
-        peli.getOliokanta().uusiSeuraaja();
+        peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
         int i = 0;
         for (Olio olio : peli.getOliokanta().getViholliset()) {
             olio.setX(10 + i);

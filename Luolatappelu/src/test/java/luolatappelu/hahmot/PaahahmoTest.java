@@ -6,10 +6,7 @@
 package luolatappelu.hahmot;
 
 import luolatappelu.Suunta;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import luolatappelu.peli.Peli;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,36 +15,21 @@ import static org.junit.Assert.*;
  * @author tuulio
  */
 public class PaahahmoTest {
-
+private Pelaaja pelaaja;
+private Peli peli;
     public PaahahmoTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+        this.peli = new Peli();
+        this.pelaaja = new Pelaaja("testi", peli);
     }
 
     @Test
     public void luodaanPaahahmo() {
-        Pelaaja pelaaja = new Pelaaja("testi");
         assertEquals(pelaaja.getNimi(), "testi");
         assertEquals(pelaaja.getElamat(), 10);
     }
 
     @Test
     public void liikuMetodiToimiiEka() {
-        Pelaaja pelaaja = new Pelaaja("testi");
         pelaaja.liiku(Suunta.OIKEA);
         assertEquals(pelaaja.getX(), 1);
         pelaaja.liiku(Suunta.VASEN);
@@ -57,7 +39,6 @@ public class PaahahmoTest {
 
     @Test
     public void liikuMetodiToimiiToka() {
-        Pelaaja pelaaja = new Pelaaja("testi");
         pelaaja.liiku(Suunta.ALAS);
         pelaaja.liiku(Suunta.ALAS);
         pelaaja.liiku(Suunta.ALAS);
@@ -74,8 +55,7 @@ public class PaahahmoTest {
 
     @Test
     public void toStringToimii() {
-        Pelaaja pelaaja = new Pelaaja("testi");
-        assertEquals(pelaaja.toString(),"@");
+        assertEquals(pelaaja.toString(), "@");
     }
 
     // TODO add test methods here.

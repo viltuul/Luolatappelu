@@ -9,6 +9,7 @@ import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
 
 import luolatappelu.hahmot.Tankki;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 
 public class Peli {
 
@@ -17,8 +18,10 @@ public class Peli {
     private Pelaaja pelaaja;
     private Random arpoja;
     private int leveli;
+    private Kayttoliittyma kayttoliittyma;
 
     public Peli() {
+        this.kayttoliittyma = new Kayttoliittyma(this);
         this.taso = new Taso(this);
         this.seinat = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja", this);
@@ -30,7 +33,6 @@ public class Peli {
         this.taso = new Taso(this);
         leveli++;
         taso.uusiTaso(leveli);
-
     }
 
     public Taso getTaso() {
@@ -105,8 +107,8 @@ public class Peli {
     public void paivita() {
         liikutaOlioita();
         taso.getOliokanta().poistaKuolleet();
-        if (taso.getOliokanta().getElossaOlevat().size() == 0) {
-            this.uusiTaso();
+        if (taso.isTasoLapi()) {
+            System.out.println("Paina space niin pääset seuraavalle tasolle");
         }
     }
 
@@ -140,6 +142,10 @@ public class Peli {
         } else {
             return false;
         }
+    }
+
+    public Runnable getKayttoliittyma() {
+        return kayttoliittyma;
     }
 
 }

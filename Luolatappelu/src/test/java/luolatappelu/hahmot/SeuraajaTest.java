@@ -6,10 +6,7 @@
 package luolatappelu.hahmot;
 
 import java.util.Random;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import luolatappelu.peli.Peli;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,10 +18,11 @@ public class SeuraajaTest {
 
     private Seuraaja seuraaja;
     private Pelaaja pelaaja;
-
+    private Peli peli;
     public SeuraajaTest() {
-        this.seuraaja = new Seuraaja();
-        this.pelaaja = new Pelaaja("testaaja");
+        this.peli = new Peli();
+        this.seuraaja = new Seuraaja(pelaaja);
+        this.pelaaja = new Pelaaja("testaaja", peli);
         pelaaja.setX(10);
         pelaaja.setY(10);
     }
@@ -33,9 +31,9 @@ public class SeuraajaTest {
     public void suunnanArpominenYAkseli() {
         Random stubi = new RandomStub(0, 0, 0, 0, 0, 0);
         Seuraaja ylosTaiAlas = new Seuraaja(stubi);
-        ylosTaiAlas.liiku(pelaaja);
-        ylosTaiAlas.liiku(pelaaja);
-        ylosTaiAlas.liiku(pelaaja);
+        ylosTaiAlas.liiku();
+        ylosTaiAlas.liiku();
+        ylosTaiAlas.liiku();
         assertEquals(ylosTaiAlas.getY(), 3);
     }
 
@@ -43,9 +41,9 @@ public class SeuraajaTest {
     public void suunnanArpominenXAkseli() {
         Random stubi = new RandomStub(1, 1, 1, 1, 1, 1);
         Seuraaja vasenTaiOikea = new Seuraaja(stubi);
-        vasenTaiOikea.liiku(pelaaja);
-        vasenTaiOikea.liiku(pelaaja);
-        vasenTaiOikea.liiku(pelaaja);
+        vasenTaiOikea.liiku();
+        vasenTaiOikea.liiku();
+        vasenTaiOikea.liiku();
         assertEquals(vasenTaiOikea.getX(), 3);
     }
 
@@ -54,8 +52,8 @@ public class SeuraajaTest {
         seuraaja.setX(10);
         for (int i = 0; i < 100; i++) {
             seuraaja.setY(0);
-            seuraaja.liiku(pelaaja);
-            seuraaja.liiku(pelaaja);
+            seuraaja.liiku();
+            seuraaja.liiku();
             assertEquals(seuraaja.getY(), 2);
         }
     }
@@ -65,8 +63,8 @@ public class SeuraajaTest {
         seuraaja.setY(10);
         for (int i = 0; i < 100; i++) {
             seuraaja.setX(0);
-            seuraaja.liiku(pelaaja);
-            seuraaja.liiku(pelaaja);
+            seuraaja.liiku();
+            seuraaja.liiku();
             assertEquals(seuraaja.getX(), 2);
         }
     }

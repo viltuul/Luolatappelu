@@ -1,6 +1,5 @@
 package luolatappelu.kayttoliittyma;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.util.Scanner;
 import javax.swing.JFrame;
@@ -17,8 +16,7 @@ public class Kayttoliittyma implements Runnable {
     private Ruudukko ruudukko;
     private JFrame frame;
 
-    public Kayttoliittyma(Scanner lukija, Peli peli) {
-        this.lukija = lukija;
+    public Kayttoliittyma(Peli peli) {
         this.peli = peli;
         this.pelaaja = peli.getPelaaja();
         this.alusta = new Piirtoalusta(peli);
@@ -27,7 +25,7 @@ public class Kayttoliittyma implements Runnable {
 
     @Override
     public void run() {
-        alku();
+        peli.uusiTaso();
         frame = new JFrame("Luolatappelu");
         frame.setLayout(null);
         frame.setPreferredSize(new Dimension(1300, 870));
@@ -43,12 +41,5 @@ public class Kayttoliittyma implements Runnable {
         frame.add(alusta);
         Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(frame, peli);
         frame.addKeyListener(nk);
-    }
-
-    public void alku() {
-//        peli.getTaso().sijoitaPelaaja();
-//        peli.getTaso().sijoitaViholliset();
-//        peli.getTaso().rakennaSeinat();
-        peli.uusiTaso();
     }
 }
