@@ -1,5 +1,9 @@
 package luolatappelu.hahmot;
 
+/**
+ * Seina on luokan olio aliluokka. Seina sisaltaa vain konstruktorin jossa
+ * määritellään seinan sijainti.
+ */
 public class Seina extends Olio {
 
     public Seina(int x, int y) {

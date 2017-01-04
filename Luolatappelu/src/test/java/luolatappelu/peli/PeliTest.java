@@ -26,7 +26,6 @@ public class PeliTest {
     public void pelinLuominen() {
         Taso huone = peli.getTaso();
         assertEquals(huone.getKorkeus(), 20);
-        assertEquals(huone.getLeveys(), 20);
         assertEquals(peli.getOliokanta().getOrkit().toString(), "[]");
         assertEquals(peli.getPelaaja().getNimi(), "Pelaaja");
     }
@@ -34,7 +33,6 @@ public class PeliTest {
     @Test
     public void pelajanSijoitusToimii() {
         peli.getTaso().sijoitaPelaaja();
-        assertEquals(peli.getPelaaja().getX(), 10);
         assertEquals(peli.getPelaaja().getY(), 19);
     }
 
@@ -77,7 +75,7 @@ public class PeliTest {
     public void koordinaatinOlioTesti() {
         peli.getPelaaja().setX(5);
         peli.getPelaaja().setY(5);
-        assertEquals(peli.koordinaatinOliot(5, 5), peli.getPelaaja());
+        assertEquals(peli.koordinaatinOliot(5, 5).toString(), "[" + peli.getPelaaja() + "]");
     }
 
     @Test

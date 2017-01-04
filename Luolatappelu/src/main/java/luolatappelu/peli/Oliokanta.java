@@ -8,6 +8,9 @@ import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
 import luolatappelu.hahmot.Tankki;
 
+/**
+ * Oliokanta sisältää kaikki tasoon luodut oliot.
+ */
 public class Oliokanta {
 
     private ArrayList<Orkki> orkit;
@@ -25,9 +28,6 @@ public class Oliokanta {
     }
 
     public ArrayList<Olio> getViholliset() {
-        if (viholliset.size() == 0) {
-
-        }
         return viholliset;
     }
 
@@ -68,10 +68,11 @@ public class Oliokanta {
             }
         }
     }
-    public ArrayList<Olio> getElossaOlevat(){
+
+    public ArrayList<Olio> getElossaOlevat() {
         ArrayList<Olio> lista = new ArrayList();
-        for (Olio olio : viholliset){
-            if (olio.isElossa()){
+        for (Olio olio : viholliset) {
+            if (olio.isElossa()) {
                 lista.add(olio);
             }
         }

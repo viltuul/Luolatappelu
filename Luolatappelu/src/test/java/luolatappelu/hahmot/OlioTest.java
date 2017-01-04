@@ -49,12 +49,6 @@ public class OlioTest {
     }
 
     @Test
-    public void olioLyoToistaNiinElamatVahenee() {
-        olio1.lyo(olio2);
-        assertTrue(olio1.getElamat() > olio2.getElamat());
-    }
-
-    @Test
     public void olioJaaHenkiinJosLyonninJalkeenOnElamia() {
         olio2.setElamat(2);
         olio1.lyo(olio2);

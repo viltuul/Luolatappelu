@@ -3,6 +3,10 @@ package luolatappelu.hahmot;
 import luolatappelu.Suunta;
 import java.util.Random;
 
+/**
+ * Seuraaja on luokan Olio aliluokka. Seuraaja sisältää seuraajalle ominaiset
+ * liikkumismetodit.
+ */
 public class Seuraaja extends Olio {
 
     private Random arpoja;
@@ -14,9 +18,10 @@ public class Seuraaja extends Olio {
         this.pelaaja = pelaaja;
     }
 
-    public Seuraaja(Random random) {
+    public Seuraaja(Pelaaja pelaaja, Random random) {
         super("Seuraaja");
         this.arpoja = random;
+        this.pelaaja = pelaaja;
     }
 
     public int arvoSuunta() {

@@ -1,5 +1,9 @@
 package luolatappelu.hahmot;
 
+/**
+ * Orkki on luokan olio aliluokka. Luokka Orkki sisältää orkeille ominaisen
+ * liikkumistyylin.
+ */
 import luolatappelu.Suunta;
 import java.util.Random;
 

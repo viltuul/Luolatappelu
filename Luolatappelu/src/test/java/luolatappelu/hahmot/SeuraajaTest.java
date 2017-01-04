@@ -19,10 +19,11 @@ public class SeuraajaTest {
     private Seuraaja seuraaja;
     private Pelaaja pelaaja;
     private Peli peli;
+
     public SeuraajaTest() {
         this.peli = new Peli();
-        this.seuraaja = new Seuraaja(pelaaja);
         this.pelaaja = new Pelaaja("testaaja", peli);
+        this.seuraaja = new Seuraaja(pelaaja);
         pelaaja.setX(10);
         pelaaja.setY(10);
     }
@@ -30,7 +31,7 @@ public class SeuraajaTest {
     @Test
     public void suunnanArpominenYAkseli() {
         Random stubi = new RandomStub(0, 0, 0, 0, 0, 0);
-        Seuraaja ylosTaiAlas = new Seuraaja(stubi);
+        Seuraaja ylosTaiAlas = new Seuraaja(pelaaja, stubi);
         ylosTaiAlas.liiku();
         ylosTaiAlas.liiku();
         ylosTaiAlas.liiku();
@@ -40,7 +41,7 @@ public class SeuraajaTest {
     @Test
     public void suunnanArpominenXAkseli() {
         Random stubi = new RandomStub(1, 1, 1, 1, 1, 1);
-        Seuraaja vasenTaiOikea = new Seuraaja(stubi);
+        Seuraaja vasenTaiOikea = new Seuraaja(pelaaja, stubi);
         vasenTaiOikea.liiku();
         vasenTaiOikea.liiku();
         vasenTaiOikea.liiku();

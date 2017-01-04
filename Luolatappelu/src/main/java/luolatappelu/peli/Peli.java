@@ -7,9 +7,12 @@ import luolatappelu.hahmot.Orkki;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.hahmot.Seina;
 import luolatappelu.hahmot.Seuraaja;
-
 import luolatappelu.hahmot.Tankki;
 import luolatappelu.kayttoliittyma.Kayttoliittyma;
+
+/**
+ * Peli luokka sisältää pelin toimintalogiikan.
+ */
 
 public class Peli {
 

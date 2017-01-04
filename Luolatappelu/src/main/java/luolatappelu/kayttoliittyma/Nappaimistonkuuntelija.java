@@ -6,6 +6,11 @@ import java.awt.event.KeyListener;
 import luolatappelu.Suunta;
 import luolatappelu.peli.Peli;
 
+/**
+ * Nappaimistonkuuntelija on luokka joka tunnistaa pelaajan painamat komennot,
+ * kutsuu Peli luokkaa paivittamaan pelin tilanteen sekä päivittää myös
+ * grafiikat.
+ */
 public class Nappaimistonkuuntelija implements KeyListener {
 
     private Component komponentti;
@@ -26,8 +31,8 @@ public class Nappaimistonkuuntelija implements KeyListener {
             peli.getPelaaja().toimi(Suunta.OIKEA);
         } else if (painallus.getKeyCode() == KeyEvent.VK_LEFT) {
             peli.getPelaaja().toimi(Suunta.VASEN);
-        } else if (peli.getTaso().isTasoLapi()){
-            if (painallus.getKeyCode() == KeyEvent.VK_SPACE){
+        } else if (peli.getTaso().isTasoLapi()) {
+            if (painallus.getKeyCode() == KeyEvent.VK_SPACE) {
                 peli.uusiTaso();
             }
         }

@@ -10,6 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import luolatappelu.peli.Peli;
 
+/**
+ * Ruudukko luokassa luodaan tekstiruudukko grafiikoiden viereen.
+ */
+
 public class Ruudukko extends JTextArea {
 
     private Peli peli;

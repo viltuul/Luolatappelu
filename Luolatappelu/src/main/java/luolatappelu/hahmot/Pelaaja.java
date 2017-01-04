@@ -3,6 +3,10 @@ package luolatappelu.hahmot;
 import luolatappelu.Suunta;
 import luolatappelu.peli.Peli;
 
+/**
+ * Pelaaja on luokan olio aliluokka. Pelaaja luokassa on pelaajan liikkumiseen
+ * vaadittavat metodit.
+ */
 public class Pelaaja extends Olio {
 
     private Peli peli;

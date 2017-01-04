@@ -5,6 +5,9 @@ import java.util.Random;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Seina;
 
+/**
+ * Taso luokka sisältää tason luomiseen tarvittavat metodit.
+ */
 public class Taso {
 
     private int leveys;
@@ -91,9 +94,9 @@ public class Taso {
     }
 
     public boolean isTasoLapi() {
-        if (oliot.getElossaOlevat().isEmpty()){
+        if (oliot.getElossaOlevat().isEmpty()) {
             tasoLapi = true;
         }
         return tasoLapi;
-    }    
+    }
 }

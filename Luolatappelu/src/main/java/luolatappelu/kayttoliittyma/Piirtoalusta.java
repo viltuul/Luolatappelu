@@ -8,8 +8,7 @@ import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.peli.Peli;
 
 /**
- *
- * @author Ville
+ * Piirtoalustassa luodaan kaikki pelin graafiset ominaisuudet.
  */
 public class Piirtoalusta extends JPanel {
 
@@ -56,7 +55,7 @@ public class Piirtoalusta extends JPanel {
         }
     }
 
-    public void piirraTankit () {
+    public void piirraTankit() {
         for (Olio olio : peli.getOliokanta().getTankit()) {
             piirraVartalo(olio, Color.YELLOW);
             this.piirraNaama(olio.getX(), olio.getY(), true);

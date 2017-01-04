@@ -3,6 +3,10 @@ package luolatappelu.hahmot;
 import java.util.Random;
 import luolatappelu.Suunta;
 
+/**
+ * Luokka on kaikkien olioluokkien yliluokka. 
+ */
+
 public class Olio {
 
     private String nimi;

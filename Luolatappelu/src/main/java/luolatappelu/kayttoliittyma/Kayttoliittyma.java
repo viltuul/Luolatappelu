@@ -7,6 +7,11 @@ import javax.swing.WindowConstants;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.peli.Peli;
 
+/**
+ * Kayttoliittyma on luokka, joka yhdistää graafisen ilmentymän pelille sekä
+ * pelin kontrollit
+ */
+
 public class Kayttoliittyma implements Runnable {
 
     private Scanner lukija;

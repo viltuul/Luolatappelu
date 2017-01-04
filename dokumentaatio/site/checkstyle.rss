@@ -23,9 +23,9 @@ under the License.
     <link>${project.url}</link>
     <description>Luolatappelu - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016</copyright>
+    <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 11,
+      <title>File: 15,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -60,6 +60,132 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.kayttoliittyma.Kayttoliittyma.java">luolatappelu/kayttoliittyma/Kayttoliittyma.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.Suunta.java">luolatappelu/Suunta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Orkki.java">luolatappelu/hahmot/Orkki.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.kayttoliittyma.Nappaimistonkuuntelija.java">luolatappelu/kayttoliittyma/Nappaimistonkuuntelija.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Seuraaja.java">luolatappelu/hahmot/Seuraaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Seina.java">luolatappelu/hahmot/Seina.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Tankki.java">luolatappelu/hahmot/Tankki.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.kayttoliittyma.Ruudukko.java">luolatappelu/kayttoliittyma/Ruudukko.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.peli.Taso.java">luolatappelu/peli/Taso.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Olio.java">luolatappelu/hahmot/Olio.java</a>
                 </td>
                 <td>
@@ -74,21 +200,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Suunta.java">luolatappelu/hahmot/Suunta.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#luolatappelu.peli.Huone.java">luolatappelu/peli/Huone.java</a>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.peli.Oliokanta.java">luolatappelu/peli/Oliokanta.java</a>
                 </td>
                 <td>
                   0
@@ -130,63 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Orkki.java">luolatappelu/hahmot/Orkki.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#luolatappelu.kayttoliittyma.UI.java">luolatappelu/kayttoliittyma/UI.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#luolatappelu.peli.Peli.java">luolatappelu/peli/Peli.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#luolatappelu.kayttoliittyma.Nappaimistonkuuntelija.java">luolatappelu/kayttoliittyma/Nappaimistonkuuntelija.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#luolatappelu.hahmot.Seuraaja.java">luolatappelu/hahmot/Seuraaja.java</a>
                 </td>
                 <td>
                   0
