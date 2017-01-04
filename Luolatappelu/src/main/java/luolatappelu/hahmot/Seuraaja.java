@@ -18,17 +18,24 @@ public class Seuraaja extends Olio {
         this.pelaaja = pelaaja;
     }
 
+    /**
+     * Toinen konstruktori luotu testejä varten
+     *
+     * @param pelaaja
+     * @param random Tässä voidaan luoda halutunmukainen Random luokka
+     */
     public Seuraaja(Pelaaja pelaaja, Random random) {
         super("Seuraaja");
         this.arpoja = random;
         this.pelaaja = pelaaja;
     }
 
-    public int arvoSuunta() {
-        int arpa = arpoja.nextInt(2);
-        return arpa;
-    }
-
+    /**
+     * Liiku metodi liikuttaa oliota pelaajan suuntaan. Jos pelaaja on samalla
+     * koordinaattiakselilla, kutsutaan metodia liikuXAkseli tai liikuYAkseli.
+     * Jos taas pelaaja on eri akselilla kuin seuraaja, niin metodi arpoo
+     * seuraajan seuraavan liikkumissuunnan.
+     */
     public void liiku() {
         int x = pelaaja.getX();
         int y = pelaaja.getY();
@@ -36,14 +43,20 @@ public class Seuraaja extends Olio {
             liikuYAkseli(y);
         } else if (super.getY() == y) {
             liikuXAkseli(x);
-        } else if (arvoSuunta() == 0) {
+        } else if (arpoja.nextBoolean()) {
             liikuYAkseli(y);
         } else {
             liikuXAkseli(x);
         }
     }
 
-    public void liikuXAkseli(int x) {
+    /**
+     * Kun pelaaja ja seuraaja ovat y-akselilla niin tämä metodi liikuttaa
+     * seuraajaa x akselia pitkin pelaajan suuntaan.
+     *
+     * @param x pelaajan x koordinaatti
+     */
+    private void liikuXAkseli(int x) {
         if (super.getX() < x) {
             super.liiku(Suunta.OIKEA);
         } else if (super.getX() > x) {
@@ -51,7 +64,13 @@ public class Seuraaja extends Olio {
         }
     }
 
-    public void liikuYAkseli(int y) {
+    /**
+     * Kun pelaaja ja seuraaja ovat x-akselilla niin tämä metodi liikuttaa
+     * seuraajaa y akselia pitkin pelaajan suuntaan.
+     *
+     * @param y pelaajan y koordinaatti
+     */
+    private void liikuYAkseli(int y) {
         if (super.getY() < y) {
             super.liiku(Suunta.ALAS);
         } else if (super.getY() > y) {

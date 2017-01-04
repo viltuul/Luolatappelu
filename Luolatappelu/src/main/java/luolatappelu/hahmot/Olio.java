@@ -4,9 +4,8 @@ import java.util.Random;
 import luolatappelu.Suunta;
 
 /**
- * Luokka on kaikkien olioluokkien yliluokka. 
+ * Luokka on kaikkien olioluokkien yliluokka.
  */
-
 public class Olio {
 
     private String nimi;
@@ -34,6 +33,11 @@ public class Olio {
         return elamat;
     }
 
+    /**
+     * Tarkistaa olion elämät ja palauttaa totuusarvon sen mukaisesti.
+     *
+     * @return true jos olio on elossa
+     */
     public boolean isElossa() {
         if (elamat <= 0) {
             elossa = false;
@@ -65,6 +69,12 @@ public class Olio {
         this.y = y;
     }
 
+    /**
+     * Metodi liikuttaa oliota muuttamalla sen x tai y koordinaattia. Metodi
+     * myös tallentaa viimeisen liikkumissuunnan.
+     *
+     * @param suunta Suunta johon olio liikkuu
+     */
     public void liiku(Suunta suunta) {
         this.viimeinenSuunta = suunta;
         if (suunta.equals(suunta.ALAS)) {
@@ -78,6 +88,10 @@ public class Olio {
         }
     }
 
+    /**
+     * Jos olio törmääkin toiseen olioon niin liikutetaan Olio takaisin siihen
+     * kohtaan mistä se lähti alunperin.
+     */
     public void liikuTakaisin() {
         if (viimeinenSuunta.equals(Suunta.ALAS)) {
             y--;
@@ -90,18 +104,22 @@ public class Olio {
         }
     }
 
-    public boolean lyo(Olio lyotava) {
-        if (lyotava == null) {
-            return false;
-        } else {
+    /**
+     * Metodi käskee oliota lyömään toista oliota jolloin lyötävän elämät
+     * vähenee. Lyönti osuu, jos satunnaismuuttuja on pienempi, kuin olion
+     * osumatarkkuus.
+     *
+     * @param lyotava kertoo Oliolle mitä oliota tulee lyödä.
+     */
+    public void lyo(Olio lyotava) {
+        if (lyotava != null) {
             Random osuuko = new Random();
             if (osuuko.nextDouble() > osumatarkkuus) {
                 System.out.println(this.getNimi() + " ei osunut olioon " + lyotava.getNimi());
-                return true;
+            } else {
+                lyotava.vahennaElamaa();
+                System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
             }
-            lyotava.vahennaElamaa();
-            System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
-            return true;
         }
     }
 

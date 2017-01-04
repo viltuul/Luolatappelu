@@ -21,7 +21,38 @@ public class Tankki extends Olio {
         super.setOsumatarkkuus(0.8);
     }
 
-    public Suunta valitseSuunta(int nro) {
+    /**
+     * Metodi käskee tankin liikkua jos se ei ole liikkunut tai lyönyt
+     * viimevuorolla.
+     */
+    public void liiku() {
+        if (lepo) {
+            lepo = false;
+            super.liiku(valitseSuunta(random.nextInt(4)));
+        } else {
+            lepo = true;
+        }
+    }
+
+    /**
+     * Metodi käskee tankin lyoda jos se ei ole lyönyt tai liikkunut
+     * viimevuorolla.
+     */
+    public void lyo(Olio lyotava) {
+        if (lepo) {
+            lepo = false;
+            super.lyo(lyotava);
+        } else {
+            lepo = true;
+        }
+    }
+
+    /**
+     *
+     * @param nro
+     * @return
+     */
+    private Suunta valitseSuunta(int nro) {
         if (nro == 1) {
             return Suunta.ALAS;
         } else if (nro == 2) {
@@ -32,15 +63,6 @@ public class Tankki extends Olio {
             return Suunta.OIKEA;
         }
         return null;
-    }
-
-    public void liiku() {
-        if (lepo) {
-            lepo = false;
-            super.liiku(valitseSuunta(random.nextInt(4)));
-        } else {
-            lepo = true;
-        }
     }
 
     @Override

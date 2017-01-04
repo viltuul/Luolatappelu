@@ -22,6 +22,12 @@ public class Pelaaja extends Olio {
         return "@";
     }
 
+    /**
+     * Pelaaja toteuttaa metodin lyoTaiLiiku koordinaateilla jotka ovat yhden
+     * askeleen päästä pelaajasta.
+     *
+     * @param suunta Toiminnan suunta pelaajasta katsottuna.
+     */
     public void toimi(Suunta suunta) {
         if (suunta.equals(suunta.ALAS)) {
             lyoTaiLiiku(super.getX(), super.getY() + 1);
@@ -34,8 +40,15 @@ public class Pelaaja extends Olio {
         }
     }
 
+    /**
+     * Metodi tarkistaa onko annetussa koordinaatissa toista oliota. Jos siinä
+     * on jokin toinen olio, niin pelaaja lyö, jos ei niin pelaaja liikkuu.
+     *
+     * @param x koordinaatti
+     * @param y koordinaatti
+     */
     public void lyoTaiLiiku(int x, int y) {
-        if (peli.koordinaatinOliot(x, y).size() == 0) {
+        if (peli.koordinaatinOliot(x, y).isEmpty()) {
             super.setX(x);
             super.setY(y);
         } else {

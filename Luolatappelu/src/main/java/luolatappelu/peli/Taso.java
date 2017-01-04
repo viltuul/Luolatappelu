@@ -46,6 +46,8 @@ public class Taso {
             seinat.add(seinaYla);
             Seina seinaAla = new Seina(i, this.getKorkeus());
             seinat.add(seinaAla);
+            Seina kok = new Seina(5, i);
+            seinat.add(kok);
         }
         for (int j = 0; j < this.getKorkeus(); j++) {
             Seina seinaVas = new Seina(0, j);
@@ -53,10 +55,11 @@ public class Taso {
             Seina seinaOik = new Seina(this.getLeveys(), j);
             seinat.add(seinaOik);
         }
+
     }
 
     public void sijoitaPelaaja() {
-        peli.getPelaaja().setX(this.getLeveys() / 2);
+        peli.getPelaaja().setX(1);
         peli.getPelaaja().setY(this.getKorkeus() - 1);
     }
 

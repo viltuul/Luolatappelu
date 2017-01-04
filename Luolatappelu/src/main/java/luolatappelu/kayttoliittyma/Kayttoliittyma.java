@@ -11,7 +11,6 @@ import luolatappelu.peli.Peli;
  * Kayttoliittyma on luokka, joka yhdistää graafisen ilmentymän pelille sekä
  * pelin kontrollit
  */
-
 public class Kayttoliittyma implements Runnable {
 
     private Scanner lukija;
@@ -28,6 +27,9 @@ public class Kayttoliittyma implements Runnable {
         this.ruudukko = new Ruudukko(peli);
     }
 
+    /**
+     * Metodi käynnistää pelin ja kokoaa ikkunan jossa pelaaminen tapahtuu.
+     */
     @Override
     public void run() {
         peli.uusiTaso();
@@ -41,6 +43,10 @@ public class Kayttoliittyma implements Runnable {
 
     }
 
+    /**
+     * Metodissa luodaan ikkunan komponentit ja kiinnitetään siihen
+     * Nappaimistonkuuntelija.
+     */
     public void luoKomponentit() {
 //        container.add(ruudukko);
         frame.add(alusta);

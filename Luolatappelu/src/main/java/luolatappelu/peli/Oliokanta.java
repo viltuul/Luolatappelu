@@ -60,7 +60,9 @@ public class Oliokanta {
     public ArrayList<Tankki> getTankit() {
         return tankit;
     }
-
+/**
+ * Metodi siirtää kaikki kuolleet oliot pois peliruudulta.
+ */
     public void poistaKuolleet() {
         for (Olio olio : viholliset) {
             if (!olio.isElossa()) {

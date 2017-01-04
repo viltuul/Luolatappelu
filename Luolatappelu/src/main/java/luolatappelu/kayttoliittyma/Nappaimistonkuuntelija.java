@@ -21,6 +21,12 @@ public class Nappaimistonkuuntelija implements KeyListener {
         this.peli = peli;
     }
 
+    /**
+     * Käyttäjä painaa nappulaa jonka jälkeen Pelaajaolio ja kaikki muut
+     * liikkuvat oliot liikkuu ja kuvaruutu piirretään uusiksi.
+     *
+     * @param painallus Käyttämän tekemä toiminto
+     */
     @Override
     public void keyPressed(KeyEvent painallus) {
         if (painallus.getKeyCode() == KeyEvent.VK_UP) {
@@ -31,11 +37,11 @@ public class Nappaimistonkuuntelija implements KeyListener {
             peli.getPelaaja().toimi(Suunta.OIKEA);
         } else if (painallus.getKeyCode() == KeyEvent.VK_LEFT) {
             peli.getPelaaja().toimi(Suunta.VASEN);
-        } else if (peli.getTaso().isTasoLapi()) {
+        } else /*if (peli.getTaso().isTasoLapi()) { LTÄMÄ METODI LISÄTÄÄN KUN PELI ON VALMIS*/
             if (painallus.getKeyCode() == KeyEvent.VK_SPACE) {
                 peli.uusiTaso();
             }
-        }
+        
         peli.paivita();
         komponentti.repaint();
     }
