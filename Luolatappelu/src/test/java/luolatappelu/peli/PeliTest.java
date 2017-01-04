@@ -25,7 +25,7 @@ public class PeliTest {
     @Test
     public void pelinLuominen() {
         Taso huone = peli.getTaso();
-        assertEquals(huone.getKorkeus(), 20);
+        assertEquals(huone.getLuolasto().getKorkeus(), 20);
         assertEquals(peli.getOliokanta().getOrkit().toString(), "[]");
         assertEquals(peli.getPelaaja().getNimi(), "Pelaaja");
     }
@@ -63,9 +63,9 @@ public class PeliTest {
         peli.getTaso().sijoitaViholliset();
         for (int j = 0; j < 100; j++) {
             for (Orkki orkki : peli.getOliokanta().getOrkit()) {
-                assertFalse(orkki.getX() > peli.getTaso().getLeveys());
+                assertFalse(orkki.getX() > peli.getTaso().getLuolasto().getLeveys());
                 assertFalse(orkki.getX() < 0);
-                assertFalse(orkki.getY() > peli.getTaso().getKorkeus());
+                assertFalse(orkki.getY() > peli.getTaso().getLuolasto().getKorkeus());
                 assertFalse(orkki.getY() < 0);
             }
         }
