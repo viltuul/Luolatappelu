@@ -60,7 +60,7 @@ public class Peli {
                 lista.add(olio);
             }
         }
-        for (Seina seina : taso.getSeina()) {
+        for (Seina seina : taso.getLuolasto().getSeinat()) {
             if (seina.getX() == x && seina.getY() == y) {
                 lista.add(seina);
             }

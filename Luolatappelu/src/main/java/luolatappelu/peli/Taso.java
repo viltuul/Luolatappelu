@@ -17,6 +17,7 @@ public class Taso {
     private Oliokanta oliot;
     private Peli peli;
     private boolean tasoLapi;
+    private Luolasto luolasto;
 
     public Taso(Peli peli) {
         this.peli = peli;
@@ -26,47 +27,23 @@ public class Taso {
         this.seinat = new ArrayList();
         this.oliot = new Oliokanta();
         this.tasoLapi = false;
+        this.luolasto = new Luolasto();
     }
 
-    public int getKorkeus() {
-        return korkeus;
-    }
 
-    public int getLeveys() {
-        return leveys;
-    }
-
-    public ArrayList<Seina> getSeina() {
-        return seinat;
-    }
-
-    public void rakennaSeinat() {
-        for (int i = 0; i < this.getLeveys() + 1; i++) {
-            Seina seinaYla = new Seina(i, 0);
-            seinat.add(seinaYla);
-            Seina seinaAla = new Seina(i, this.getKorkeus());
-            seinat.add(seinaAla);
-            Seina kok = new Seina(5, i);
-            seinat.add(kok);
-        }
-        for (int j = 0; j < this.getKorkeus(); j++) {
-            Seina seinaVas = new Seina(0, j);
-            seinat.add(seinaVas);
-            Seina seinaOik = new Seina(this.getLeveys(), j);
-            seinat.add(seinaOik);
-        }
-
+    public Luolasto getLuolasto() {
+        return luolasto;
     }
 
     public void sijoitaPelaaja() {
         peli.getPelaaja().setX(1);
-        peli.getPelaaja().setY(this.getKorkeus() - 1);
+        peli.getPelaaja().setY(luolasto.getKorkeus() - 1);
     }
 
     public void sijoitaViholliset() {
         for (Olio sijoitettava : oliot.getViholliset()) {
-            sijoitettava.setX(arpoja.nextInt(this.getLeveys() - 2) + 1);
-            sijoitettava.setY(arpoja.nextInt(this.getKorkeus() - 2) + 1);
+            sijoitettava.setX(arpoja.nextInt(luolasto.getLeveys() - 2) + 1);
+            sijoitettava.setY(arpoja.nextInt(luolasto.getKorkeus() - 2) + 1);
         }
     }
 
@@ -91,7 +68,7 @@ public class Taso {
 
     public void uusiTaso(int monesko) {
         uudetOliot(monesko);
-        rakennaSeinat();
+        luolasto.uusiLuola();
         sijoitaPelaaja();
         sijoitaViholliset();
     }

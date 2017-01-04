@@ -121,7 +121,7 @@ public class Piirtoalusta extends JPanel {
     }
 
     public void piirraSeinat() {
-        for (Olio seina : peli.getTaso().getSeina()) {
+        for (Olio seina : peli.getTaso().getLuolasto().getSeinat()) {
             grafiikka.setColor(Color.DARK_GRAY);
             grafiikka.fillRect(seina.getX() * 40, seina.getY() * 40, 40, 40);
             grafiikka.setColor(Color.BLACK);
