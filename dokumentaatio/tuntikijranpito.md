@@ -8,3 +8,4 @@ Päivä | Tunnit | Kuvaus
 29.12.16 | 5.5h | Koodausta ja testien kirjoittamista
 02.01.17 | 4.0h | Objektien törmäyskoodausta
 03.01.17 | 5.0h | Koodausta ja grafiikoiden piirtämistä
+04.01.17 | 4.0h | Javadoc:in kirjoittamista ja uutta koodia
