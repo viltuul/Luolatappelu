@@ -20,12 +20,12 @@ public class Ruudukko extends JTextArea {
     private JTextArea tuloste;
 
     public Ruudukko(Peli peli) {
-        super();
-        super.setBackground(Color.white);
-        super.setBounds(840, 0, 460, 870);
-        this.peli = peli;
-        this.tuloste = new JTextArea();
-        tuloste.setEnabled(false);
+//        super();
+//        super.setBackground(Color.white);
+//        super.setBounds(840, 0, 460, 870);
+//        this.peli = peli;
+//        this.tuloste = new JTextArea();
+//        tuloste.setEnabled(false);
     }
 
 }

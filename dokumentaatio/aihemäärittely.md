@@ -25,3 +25,6 @@ eteenpäin kun kaikki viholliset on tuhottu.
 Käyttäjät: Pelaaja
 
 Käyttäjän toiminnot: Pelin aloitus, nimen kirjoittaminen ja pelaaminen.
+
+![kaavio](sekvenssikaavio.png)
+![kaavio2](sekvenssikaavio2.png)
