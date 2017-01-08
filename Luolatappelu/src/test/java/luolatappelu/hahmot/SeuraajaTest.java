@@ -29,26 +29,6 @@ public class SeuraajaTest {
     }
 
     @Test
-    public void suunnanArpominenYAkseli() {
-        Random stubi = new RandomStub(0, 0, 0, 0, 0, 0);
-        Seuraaja ylosTaiAlas = new Seuraaja(pelaaja, stubi);
-        ylosTaiAlas.liiku();
-        ylosTaiAlas.liiku();
-        ylosTaiAlas.liiku();
-        assertEquals(ylosTaiAlas.getY(), 3);
-    }
-
-    @Test
-    public void suunnanArpominenXAkseli() {
-        Random stubi = new RandomStub(1, 1, 1, 1, 1, 1);
-        Seuraaja vasenTaiOikea = new Seuraaja(pelaaja, stubi);
-        vasenTaiOikea.liiku();
-        vasenTaiOikea.liiku();
-        vasenTaiOikea.liiku();
-        assertEquals(vasenTaiOikea.getX(), 3);
-    }
-
-    @Test
     public void seuraajaJaPelaajaXAkselilla() {
         seuraaja.setX(10);
         for (int i = 0; i < 100; i++) {

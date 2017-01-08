@@ -2,6 +2,7 @@ package luolatappelu.peli;
 
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
 import luolatappelu.hahmot.Pelaaja;
@@ -13,7 +14,6 @@ import luolatappelu.kayttoliittyma.Kayttoliittyma;
 /**
  * Peli luokka sisältää pelin toimintalogiikan.
  */
-
 public class Peli {
 
     private ArrayList<Seina> seinat;
@@ -110,6 +110,9 @@ public class Peli {
     public void paivita() {
         liikutaOlioita();
         taso.getOliokanta().poistaKuolleet();
+        if (pelaaja.getElamat() == 0) {
+            JOptionPane.showMessageDialog(null, "Kuolit, käynnistä peli uudestaan aloittaaksesi");
+        }
         if (taso.isTasoLapi()) {
             System.out.println("Paina space niin pääset seuraavalle tasolle");
         }

@@ -30,7 +30,6 @@ public class Taso {
         this.luolasto = new Luolasto();
     }
 
-
     public Luolasto getLuolasto() {
         return luolasto;
     }
@@ -42,8 +41,15 @@ public class Taso {
 
     public void sijoitaViholliset() {
         for (Olio sijoitettava : oliot.getViholliset()) {
-            sijoitettava.setX(arpoja.nextInt(luolasto.getLeveys() - 2) + 1);
-            sijoitettava.setY(arpoja.nextInt(luolasto.getKorkeus() - 2) + 1);
+            while (true) {
+                int x = arpoja.nextInt(luolasto.getLeveys() - 2) + 1;
+                int y = arpoja.nextInt(luolasto.getKorkeus() - 2) + 1;
+                sijoitettava.setX(x);
+                sijoitettava.setY(y);
+                if (peli.koordinaatinOliot(x,y).size()<2) {
+                    break;
+                }
+            }
         }
     }
 

@@ -86,19 +86,4 @@ public class PeliTest {
         peli.getOliokanta().getSeuraajat().get(0).setY(1);
         assertEquals(peli.getNaapurit(peli.getPelaaja()), peli.getOliokanta().getViholliset());
     }
-
-    @Test
-    public void liikutaOlioitaTesti() {
-        peli.getOliokanta().uusiOrkki();
-        peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
-        int i = 0;
-        for (Olio olio : peli.getOliokanta().getViholliset()) {
-            olio.setX(10 + i);
-            olio.setY(10 + i);
-            i++;
-        }
-        peli.liikutaOlioita();
-        assertFalse(peli.getOliokanta().getOrkit().get(0).getX() == 10 && peli.getOliokanta().getOrkit().get(0).getY() == 10);
-        assertFalse(peli.getOliokanta().getSeuraajat().get(0).getX() == 11 && peli.getOliokanta().getSeuraajat().get(0).getY() == 11);
-    }
 }
