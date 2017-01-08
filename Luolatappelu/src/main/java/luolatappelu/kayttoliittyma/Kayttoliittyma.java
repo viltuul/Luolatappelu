@@ -16,14 +16,12 @@ public class Kayttoliittyma implements Runnable {
 
     private Scanner lukija;
     private Peli peli;
-    private Pelaaja pelaaja;
     private Piirtoalusta alusta;
     private Ruudukko ruudukko;
     private JFrame frame;
 
     public Kayttoliittyma(Peli peli) {
         this.peli = peli;
-        this.pelaaja = peli.getPelaaja();
         this.alusta = new Piirtoalusta(peli);
         this.ruudukko = new Ruudukko(peli);
     }
