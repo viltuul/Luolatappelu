@@ -27,4 +27,4 @@ Käyttäjät: Pelaaja
 Käyttäjän toiminnot: Pelin aloitus, nimen kirjoittaminen ja pelaaminen.
 
 ![kaavio](sekvenssikaavio.png)
-![kaavio2](sekvenssikaavio2.png)
+![kaavio2](sekvenssikaavi2.png)
