@@ -47,11 +47,6 @@ public class Tankki extends Olio {
         }
     }
 
-    /**
-     *
-     * @param nro
-     * @return
-     */
     private Suunta valitseSuunta(int nro) {
         if (nro == 1) {
             return Suunta.ALAS;

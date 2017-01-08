@@ -5,8 +5,10 @@
  */
 package luolatappelu.peli;
 
+import java.util.ArrayList;
 import luolatappelu.hahmot.Olio;
 import luolatappelu.hahmot.Orkki;
+import luolatappelu.hahmot.Seina;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -55,23 +57,6 @@ public class PeliTest {
     }
 
     @Test
-    public void vihollistenSijoitus() {
-        for (int i = 0; i < 5; i++) {
-            peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
-            peli.getOliokanta().uusiOrkki();
-        }
-        peli.getTaso().sijoitaViholliset();
-        for (int j = 0; j < 100; j++) {
-            for (Orkki orkki : peli.getOliokanta().getOrkit()) {
-                assertFalse(orkki.getX() > peli.getTaso().getLuolasto().getLeveys());
-                assertFalse(orkki.getX() < 0);
-                assertFalse(orkki.getY() > peli.getTaso().getLuolasto().getKorkeus());
-                assertFalse(orkki.getY() < 0);
-            }
-        }
-    }
-
-    @Test
     public void koordinaatinOlioTesti() {
         peli.getPelaaja().setX(5);
         peli.getPelaaja().setY(5);
@@ -85,5 +70,70 @@ public class PeliTest {
         peli.getOliokanta().getOrkit().get(0).setX(1);
         peli.getOliokanta().getSeuraajat().get(0).setY(1);
         assertEquals(peli.getNaapurit(peli.getPelaaja()), peli.getOliokanta().getViholliset());
+    }
+
+    @Test
+    public void uudenTasonTestaaminen1() {
+        peli.uusiTaso();
+        assertEquals(peli.getLeveli(), 1);
+        assertEquals(peli.getPelaaja().getX(), 1);
+        assertEquals(peli.getPelaaja().getY(), 19);
+        assertEquals(peli.getOliokanta().getElossaOlevat().size(), 5);
+        peli.uusiTaso();
+        assertEquals(peli.getLeveli(), 2);
+    }
+
+    @Test
+    public void olioLyoJosPelaajaOnVieressa() {
+        peli.getTaso().sijoitaPelaaja();
+        int elamat = peli.getPelaaja().getElamat();
+        peli.getOliokanta().uusiOrkki();
+        peli.getOliokanta().getViholliset().get(0).setX(2);
+        peli.getOliokanta().getViholliset().get(0).setY(19);
+        peli.getOliokanta().getViholliset().get(0).setOsumatarkkuus(1.0);
+        peli.paivita();
+        assertEquals(elamat - 1, peli.getPelaaja().getElamat());
+    }
+
+    @Test
+    public void seuraajatHyokkaavatPelaajanKimppuun() {
+        peli.uusiTaso();
+        int elamatAlussa = peli.getPelaaja().getElamat();
+        peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
+        for (int i = 0; i < 1000; i++) {
+            peli.paivita();
+            if (peli.getPelaaja().getElamat() < elamatAlussa) {
+                break;
+            }
+        }
+        assertTrue(peli.getPelaaja().getElamat() < elamatAlussa);
+    }
+
+    @Test
+    public void naapurienTestaus() {
+        peli.getOliokanta().uusiOrkki();
+        assertEquals(new ArrayList<Olio>(), peli.getNaapurit(peli.getOliokanta().getViholliset().get(0)));
+    }
+
+    @Test
+    public void olioEiLiikuJosYmparoituOlioilla() {
+        peli.getOliokanta().uusiTankki();
+        Olio tankki = peli.getOliokanta().getViholliset().get(0);
+        Seina seina1 = new Seina(1, 0);
+        peli.getTaso().getLuolasto().getSeinat().add(seina1);
+        Seina seina2 = new Seina(1, 2);
+        peli.getTaso().getLuolasto().getSeinat().add(seina2);
+        Seina seina3 = new Seina(0, 1);
+        peli.getTaso().getLuolasto().getSeinat().add(seina3);
+        Seina seina4 = new Seina(2, 1);
+        peli.getTaso().getLuolasto().getSeinat().add(seina4);
+        tankki.setX(1);
+        tankki.setY(1);
+        for (int i = 0; i < 10; i++) {
+            peli.paivita();
+        }
+        assertEquals(tankki.getX(), 1);
+        assertEquals(tankki.getY(), 1);
+
     }
 }

@@ -35,13 +35,13 @@
                     <configuration>
                         <targetClasses>
                             <param>luolatappelu.hahmot.*</param>
-                            <param>luolatappelu.kayttoliittyma.*</param>
-                            <param>luolatappelu.peli.*</param>
+                            <param>luolatappelu.peli.Peli</param>
+                            <param>luolatappelu.peli.Taso</param>
                         </targetClasses>
                         <targetTests>
                             <param>luolatappelu.hahmot.*</param>
-                            <param>luolatappelu.kayttoliittyma.*</param>
-                            <param>luolatappelu.peli.*</param>
+                            <param>luolatappelu.peli.PeliTest</param>
+                            <param>luolatappelu.peli.TasoTest</param>
                         </targetTests>
                     </configuration>
                 </plugin>

@@ -1,32 +1,27 @@
 package luolatappelu.peli;
 
-import java.util.ArrayList;
 import java.util.Random;
 import luolatappelu.hahmot.Olio;
-import luolatappelu.hahmot.Seina;
 
 /**
  * Taso luokka sisältää tason luomiseen tarvittavat metodit.
  */
 public class Taso {
 
-    private int leveys;
-    private int korkeus;
-    private ArrayList<Seina> seinat;
     private Random arpoja;
     private Oliokanta oliot;
     private Peli peli;
-    private boolean tasoLapi;
     private Luolasto luolasto;
 
+    /**
+     * Taso konstruktori luo uuden Luolaston sekä uuden oliokannan.
+     *
+     * @param peli Peli jolle luodaan uusi taso.
+     */
     public Taso(Peli peli) {
         this.peli = peli;
         this.arpoja = new Random();
-        this.leveys = arpoja.nextInt(9) + 12;
-        this.korkeus = 20;
-        this.seinat = new ArrayList();
         this.oliot = new Oliokanta();
-        this.tasoLapi = false;
         this.luolasto = new Luolasto();
     }
 
@@ -34,11 +29,19 @@ public class Taso {
         return luolasto;
     }
 
+    /**
+     * Metodi sijoittaa pelaajan luolaston vasempaan alalaitaan.
+     */
     public void sijoitaPelaaja() {
         peli.getPelaaja().setX(1);
         peli.getPelaaja().setY(luolasto.getKorkeus() - 1);
     }
 
+    /**
+     * Metodi sijoittaa viholliset satunnaisesti arvottuihin paikkoihin
+     * luolastossa. Metodi myös tarkistaa, ettei viholliset sijoitu toistensa
+     * tai seinien päälle.
+     */
     public void sijoitaViholliset() {
         for (Olio sijoitettava : oliot.getViholliset()) {
             while (true) {
@@ -46,7 +49,7 @@ public class Taso {
                 int y = arpoja.nextInt(luolasto.getKorkeus() - 2) + 1;
                 sijoitettava.setX(x);
                 sijoitettava.setY(y);
-                if (peli.koordinaatinOliot(x,y).size()<2) {
+                if (peli.koordinaatinOliot(x, y).size() < 2) {
                     break;
                 }
             }
@@ -57,10 +60,14 @@ public class Taso {
         return oliot;
     }
 
-    public void uudetOliot(int taso) {
-        System.out.println("tämä taso on" + taso + ". taso!");
+    /**
+     * Metodi luo uuden oliokannan uudelle tasolle.
+     *
+     * @param moneskoTaso kertoo metodille monesko taso on menossa.
+     */
+    private void uudetOliot(int moneskoTaso) {
         this.oliot = new Oliokanta();
-        for (int i = 0; i < 4 + taso; i++) {
+        for (int i = 0; i < 4 + moneskoTaso; i++) {
             double arpa = arpoja.nextDouble();
             if (arpa < 0.4) {
                 oliot.uusiOrkki();
@@ -72,14 +79,21 @@ public class Taso {
         }
     }
 
-    public void uusiTaso(int monesko) {
-        uudetOliot(monesko);
+    public void uusiTaso(int moneskoTaso) {
+        System.out.println("Tämä taso on " + moneskoTaso + ". taso!");
+        uudetOliot(moneskoTaso);
         luolasto.uusiLuola();
         sijoitaPelaaja();
         sijoitaViholliset();
     }
 
+    /**
+     * Metodi tarkistaa onko enää elossa olevia olioita.
+     *
+     * @return palauttaa true jos kaikki oliot ovat kuolleet.
+     */
     public boolean isTasoLapi() {
+        boolean tasoLapi = false;
         if (oliot.getElossaOlevat().isEmpty()) {
             tasoLapi = true;
         }

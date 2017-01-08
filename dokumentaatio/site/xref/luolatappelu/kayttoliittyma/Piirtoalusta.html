@@ -30,7 +30,7 @@
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>      }
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>      @Override
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> paintComponent(Graphics grafiikka) {
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> paintComponent(Graphics grafiikka) {
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>          <strong class="jxr_keyword">this</strong>.grafiikka = grafiikka;
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>          <strong class="jxr_keyword">super</strong>.paintComponent(grafiikka);
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>          piirraPelaaja();
@@ -129,7 +129,7 @@
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>     }
 <a class="jxr_linenumber" name="L122" href="#L122">122</a> 
 <a class="jxr_linenumber" name="L123" href="#L123">123</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> piirraSeinat() {
-<a class="jxr_linenumber" name="L124" href="#L124">124</a>         <strong class="jxr_keyword">for</strong> (Olio seina : peli.getTaso().getSeina()) {
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>         <strong class="jxr_keyword">for</strong> (Olio seina : peli.getTaso().getLuolasto().getSeinat()) {
 <a class="jxr_linenumber" name="L125" href="#L125">125</a>             grafiikka.setColor(Color.DARK_GRAY);
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>             grafiikka.fillRect(seina.getX() * 40, seina.getY() * 40, 40, 40);
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>             grafiikka.setColor(Color.BLACK);

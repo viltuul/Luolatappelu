@@ -21,7 +21,15 @@ public class Orkki extends Olio {
         this.random = random;
     }
 
-    public Suunta valitseSuunta(int nro) {
+    /**
+     * Liiku metodi liikuttaa oliota yhden askeleen verran satunnaisesti
+     * arvottuun suuntaan
+     */
+    public void liiku() {
+        super.liiku(valitseSuunta(random.nextInt(4)));
+    }
+
+    private Suunta valitseSuunta(int nro) {
         if (nro == 1) {
             return Suunta.ALAS;
         } else if (nro == 2) {
@@ -32,10 +40,6 @@ public class Orkki extends Olio {
             return Suunta.OIKEA;
         }
         return null;
-    }
-
-    public void liiku() {
-        super.liiku(valitseSuunta(random.nextInt(4)));
     }
 
     @Override

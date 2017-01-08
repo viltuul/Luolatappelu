@@ -3,6 +3,7 @@ package luolatappelu.kayttoliittyma;
 import java.awt.Dimension;
 import java.util.Scanner;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.peli.Peli;
@@ -40,7 +41,6 @@ public class Kayttoliittyma implements Runnable {
         luoKomponentit();
         frame.pack();
         frame.setVisible(true);
-
     }
 
     /**
@@ -52,5 +52,12 @@ public class Kayttoliittyma implements Runnable {
         frame.add(alusta);
         Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(frame, peli);
         frame.addKeyListener(nk);
+    }
+
+    /**
+     * peliOhi metodi lopettaa pelin ja sulkee ikkunan.
+     */
+    public void peliOhi() {
+        JOptionPane.showMessageDialog(null, "Kuolit, käynnistä peli uudestaan aloittaaksesi");
     }
 }

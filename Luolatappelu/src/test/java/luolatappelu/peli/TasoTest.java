@@ -5,6 +5,7 @@
  */
 package luolatappelu.peli;
 
+import luolatappelu.hahmot.Olio;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,11 +15,30 @@ import static org.junit.Assert.*;
  */
 public class TasoTest {
 
-    private Taso huone;
+    private Taso taso;
     private Peli peli;
 
     public TasoTest() {
         this.peli = new Peli();
-        this.huone = new Taso(peli);
+        this.taso = new Taso(peli);
+    }
+
+    public void tasoLapiKunVihollisetKuolleet() {
+        taso.uusiTaso(1);
+        for (Olio olio : taso.getOliokanta().getViholliset()) {
+            olio.setElamat(0);
+        }
+        assertTrue(taso.isTasoLapi());
+    }
+
+    public void sijoittaaVihollisetTasonRajojenSisapuolelle() {
+        taso.uusiTaso(1);
+        for (int i = 0; i < 100; i++) {
+            taso.sijoitaViholliset();
+            for (int j = 0; j<peli.getOliokanta().getViholliset().size();j++){
+                assertTrue(peli.getOliokanta().getViholliset().get(j).getX()<20);
+                assertTrue(peli.getOliokanta().getViholliset().get(j).getY()<20);
+            }
+        }
     }
 }

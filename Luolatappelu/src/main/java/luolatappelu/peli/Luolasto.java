@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package luolatappelu.peli;
 
 import java.util.ArrayList;
@@ -10,8 +5,7 @@ import java.util.Random;
 import luolatappelu.hahmot.Seina;
 
 /**
- *
- * @author ville
+ * Luolasto on luokka jossa generoidaan Tasojen seinien sijainnit ja tason koon.
  */
 public class Luolasto {
 
@@ -22,6 +16,13 @@ public class Luolasto {
 
     public Luolasto() {
         this.arpoja = new Random();
+        this.seinat = new ArrayList();
+        this.leveys = 20;
+        this.korkeus = 20;
+    }
+
+    public Luolasto(Random arpoja) {
+        this.arpoja = arpoja;
         this.seinat = new ArrayList();
         this.leveys = 20;
         this.korkeus = 20;
@@ -39,6 +40,10 @@ public class Luolasto {
         return seinat;
     }
 
+    /**
+     * uusiLuola metodi arpoo tiettyjen luolatyyppien väliltä, minkä luola
+     * luodaan.
+     */
     public void uusiLuola() {
         seinat.clear();
         rakennaReunat();
@@ -65,7 +70,7 @@ public class Luolasto {
         rakennaSeinamaPoikittain(4, 15, 14);
         rakennaSeinamaPitkittain(4, 6, 8);
         rakennaSeinamaPitkittain(17, 6, 9);
-        
+
     }
 
     private void luola2() {
@@ -78,7 +83,7 @@ public class Luolasto {
     private void luola3() {
         rakennaSeinamaPitkittain(10, 1, 6);
         rakennaSeinamaPoikittain(1, 10, 16);
-        rakennaSeinamaPitkittain(16,11,6);
+        rakennaSeinamaPitkittain(16, 11, 6);
         rakennaSeinamaPoikittain(1, 14, 5);
         rakennaSeinamaPitkittain(6, 14, 5);
     }

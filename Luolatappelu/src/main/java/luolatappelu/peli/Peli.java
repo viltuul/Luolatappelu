@@ -32,10 +32,17 @@ public class Peli {
         this.leveli = 0;
     }
 
+    /**
+     * uusiTaso metodi luo uuden tason ja lisää yhdellä attribuuttia leveli.
+     */
     public void uusiTaso() {
         this.taso = new Taso(this);
         leveli++;
         taso.uusiTaso(leveli);
+    }
+
+    public int getLeveli() {
+        return leveli;
     }
 
     public Taso getTaso() {
@@ -50,6 +57,13 @@ public class Peli {
         return taso.getOliokanta();
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien koordinaatissa olevat oliot.
+     *
+     * @param x koordinaatin x arvo
+     * @param y koordinaatin y arvo
+     * @return lista olioista jotka ovat annetussa koordinaatissa.
+     */
     public ArrayList<Olio> koordinaatinOliot(int x, int y) {
         ArrayList<Olio> lista = new ArrayList();
         if (pelaaja.getX() == x && pelaaja.getY() == y) {
@@ -85,14 +99,13 @@ public class Peli {
         return lista;
     }
 
-    public void lyoNaapuria(Olio lyoja) {
-        ArrayList<Olio> lista = getNaapurit(lyoja);
-        if (!lista.isEmpty()) {
-            lyoja.lyo(lista.get(arpoja.nextInt(lista.size())));
-        }
-    }
-
-    public void liikutaOlioita() {
+//    public void lyoNaapuria(Olio lyoja) {
+//        ArrayList<Olio> lista = getNaapurit(lyoja);
+//        if (!lista.isEmpty()) {
+//            lyoja.lyo(lista.get(arpoja.nextInt(lista.size())));
+//        }
+//    }
+    private void liikutaOlioita() {
         for (Olio olio : taso.getOliokanta().getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
@@ -107,18 +120,23 @@ public class Peli {
         }
     }
 
+    /**
+     * paivita metodi liikuttaa olioita, poistaa kuolleet oliot kentältä,
+     * tarkistaa onko pelaajalla vielä elämiä jäljellä sekä ilmoittaa jos taso
+     * on läpi.
+     */
     public void paivita() {
         liikutaOlioita();
         taso.getOliokanta().poistaKuolleet();
         if (pelaaja.getElamat() == 0) {
-            JOptionPane.showMessageDialog(null, "Kuolit, käynnistä peli uudestaan aloittaaksesi");
+            kayttoliittyma.peliOhi();
         }
         if (taso.isTasoLapi()) {
             System.out.println("Paina space niin pääset seuraavalle tasolle");
         }
     }
 
-    public void liikutaOrkkia(Olio olio) {
+    private void liikutaOrkkia(Olio olio) {
         Orkki orkki = (Orkki) olio;
         orkki.liiku();
         if (tormaysObjektiin(orkki)) {
@@ -126,7 +144,7 @@ public class Peli {
         }
     }
 
-    public void liikutaSeuraajaa(Olio olio) {
+    private void liikutaSeuraajaa(Olio olio) {
         Seuraaja seuraaja = (Seuraaja) olio;
         seuraaja.liiku();
         if (tormaysObjektiin(seuraaja)) {
@@ -142,6 +160,13 @@ public class Peli {
         }
     }
 
+    /**
+     * Metodi kysyy oliolta koordinaatit ja tarkistaa onko koordinaatissa
+     * useampi kuin yksi olio.
+     *
+     * @param olio Tarkistettavan olion koordinaatit
+     * @return true jos samassa koordinaatissa on useampi olio kuin yksi.
+     */
     public boolean tormaysObjektiin(Olio olio) {
         if (this.koordinaatinOliot(olio.getX(), olio.getY()).size() > 1) {
             return true;
