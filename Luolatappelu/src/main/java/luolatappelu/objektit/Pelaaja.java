@@ -19,6 +19,15 @@ public class Pelaaja extends Olio {
         super.setElamat(maksimiElamat);
     }
 
+    @Override
+    public void setElamat(int elama) {
+        if (elama > maksimiElamat) {
+            super.setElamat(maksimiElamat);
+        } else {
+            super.setElamat(elama);
+        }
+    }
+
     public int getMaksimiElamat() {
         return maksimiElamat;
     }

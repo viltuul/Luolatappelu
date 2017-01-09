@@ -66,11 +66,19 @@ public class Taso {
     /**
      * Metodi luo uuden oliokannan uudelle tasolle.
      *
-     * @param moneskoTaso kertoo metodille monesko taso on menossa.
+     * @param vaikeusTaso kertoo metodille monesko taso on menossa.
      */
-    private void uudetOliot(int moneskoTaso) {
+    private void uudetOliot(int vaikeusTaso) {
+        if (vaikeusTaso % 5 == 0) {
+            bonustasonOliot(vaikeusTaso);
+        } else {
+            normaalinTasonOliot(vaikeusTaso);
+        }
+    }
+
+    private void normaalinTasonOliot(int vaikeusTaso) {
         this.oliot = new Oliokanta();
-        for (int i = 0; i < 4 + moneskoTaso; i++) {
+        for (int i = 0; i < 4 + vaikeusTaso; i++) {
             double arpa = arpoja.nextDouble();
             if (arpa < 0.4) {
                 oliot.uusiOrkki();
@@ -82,14 +90,20 @@ public class Taso {
         }
     }
 
-    public void uusiTaso(int moneskoTaso) {
-        System.out.println("Tämä taso on " + moneskoTaso + ". taso!");
-        uudetOliot(moneskoTaso);
+    private void bonustasonOliot(int vaikeusTaso) {
+        this.oliot = new Oliokanta();
+        for (int i = 0; i < 4 + vaikeusTaso; i++) {
+            oliot.uusiSeuraaja(peli.getPelaaja());
+        }
+    }
+
+    public void uusiTaso(int vaikeusTaso) {
+        System.out.println("Tämä taso on " + vaikeusTaso + ". taso!");
+        uudetOliot(vaikeusTaso);
         luolasto.uusiLuola();
-        sijoitaOviaukko();
         sijoitaPelaaja();
         sijoitaViholliset();
-        peli.getPelaaja().setElamat(peli.getPelaaja().getMaksimiElamat());
+        sijoitaOviaukko();
     }
 
     /**

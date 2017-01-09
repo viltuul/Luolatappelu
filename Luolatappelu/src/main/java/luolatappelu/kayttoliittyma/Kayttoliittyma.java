@@ -29,7 +29,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Metodi käynnistää     pelin ja kokoaa ikkunan jossa pelaaminen tapahtuu.
+     * Metodi käynnistää pelin ja kokoaa ikkunan jossa pelaaminen tapahtuu.
      */
     @Override
     public void run() {
@@ -61,5 +61,6 @@ public class Kayttoliittyma implements Runnable {
      */
     public void peliOhi() {
         JOptionPane.showMessageDialog(null, "Kuolit, käynnistä peli uudestaan aloittaaksesi");
+        peliIkkuna.dispose();
     }
 }

@@ -3,6 +3,7 @@ package luolatappelu.kayttoliittyma;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import static java.lang.System.out;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,13 +20,20 @@ public class Ruudukko extends JLabel {
     private JTextArea tuloste;
 
     public Ruudukko(Peli peli) {
-        super.setBackground(Color.black);
+        super.setBackground(Color.white);
         super.setBounds(840, 0, 460, 870);
+        super.setLayout(new GridLayout(1,3));
         this.peli = peli;
         this.tuloste = new JTextArea();
         tuloste.setEnabled(false);
+        kirjoitin();
+}
+    public void kirjoitin(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("asdfga");
+        super.setText(sb.toString());
+        
     }
-    
 }
 //import java.awt.BorderLayout;
 //import java.awt.event.ActionEvent;

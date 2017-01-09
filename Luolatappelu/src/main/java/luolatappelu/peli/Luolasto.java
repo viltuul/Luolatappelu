@@ -47,7 +47,7 @@ public class Luolasto {
     public void uusiLuola() {
         seinat.clear();
         rakennaReunat();
-        int arpa = arpoja.nextInt(4);
+        int arpa = arpoja.nextInt(5);
         if (arpa == 0) {
             luola0();
         } else if (arpa == 1) {
@@ -56,6 +56,8 @@ public class Luolasto {
             luola2();
         } else if (arpa == 3) {
             luola3();
+        } else if (arpa == 4)  {
+            luola4();
         }
     }
 
@@ -86,6 +88,12 @@ public class Luolasto {
         rakennaSeinamaPitkittain(16, 11, 6);
         rakennaSeinamaPoikittain(1, 14, 5);
         rakennaSeinamaPitkittain(6, 14, 5);
+    }
+
+    private void luola4() {
+        for (int i = 0; i < 6; i++) {
+            rakennaSeinamaPitkittain(3 * i + 2, 3, 15);
+        }
     }
 
     private void rakennaSeinamaPoikittain(int x, int y, int pituus) {

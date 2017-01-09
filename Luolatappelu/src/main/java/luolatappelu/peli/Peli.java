@@ -2,7 +2,6 @@ package luolatappelu.peli;
 
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JOptionPane;
 import luolatappelu.objektit.Olio;
 import luolatappelu.objektit.Orkki;
 import luolatappelu.objektit.Pelaaja;
@@ -20,7 +19,7 @@ public class Peli {
     private Taso taso;
     private Pelaaja pelaaja;
     private Random arpoja;
-    private int leveli;
+    private int vaikeusTaso;
     private Kayttoliittyma kayttoliittyma;
 
     public Peli() {
@@ -29,7 +28,7 @@ public class Peli {
         this.seinat = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja", this);
         this.arpoja = new Random();
-        this.leveli = 0;
+        this.vaikeusTaso = 0;
     }
 
     /**
@@ -37,17 +36,14 @@ public class Peli {
      */
     public void uusiTaso() {
         this.taso = new Taso(this);
-        kehity();
-        taso.uusiTaso(leveli);
-    }
-
-    public void kehity() {
-        leveli++;
+        vaikeusTaso++;
         pelaaja.kasvataMaksimia();
+        pelaaja.setElamat(pelaaja.getElamat()+5);
+        taso.uusiTaso(vaikeusTaso);
     }
 
-    public int getLeveli() {
-        return leveli;
+    public int vaikeusTaso() {
+        return vaikeusTaso;
     }
 
     public Taso getTaso() {
@@ -131,8 +127,8 @@ public class Peli {
      * on läpi.
      */
     public void paivita() {
-        liikutaOlioita();
         taso.getOliokanta().poistaKuolleet();
+        liikutaOlioita();
         if (pelaaja.getElamat() == 0) {
             kayttoliittyma.peliOhi();
         }
