@@ -1,4 +1,4 @@
-package luolatappelu.hahmot;
+package luolatappelu.objektit;
 
 /**
  * Seina on luokan olio aliluokka. Seina sisaltaa vain konstruktorin jossa

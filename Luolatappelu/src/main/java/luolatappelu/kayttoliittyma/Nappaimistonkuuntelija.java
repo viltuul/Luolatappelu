@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import luolatappelu.Suunta;
+import luolatappelu.objektit.Pelaaja;
 import luolatappelu.peli.Peli;
 
 /**
@@ -15,10 +16,12 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     private Component komponentti;
     private Peli peli;
+    private Pelaaja pelaaja;
 
     public Nappaimistonkuuntelija(Component komponentti, Peli peli) {
         this.komponentti = komponentti;
         this.peli = peli;
+        this.pelaaja = peli.getPelaaja();
     }
 
     /**
@@ -30,18 +33,19 @@ public class Nappaimistonkuuntelija implements KeyListener {
     @Override
     public void keyPressed(KeyEvent painallus) {
         if (painallus.getKeyCode() == KeyEvent.VK_UP) {
-            peli.getPelaaja().toimi(Suunta.YLOS);
+            pelaaja.toimi(Suunta.YLOS);
         } else if (painallus.getKeyCode() == KeyEvent.VK_DOWN) {
-            peli.getPelaaja().toimi(Suunta.ALAS);
+            pelaaja.toimi(Suunta.ALAS);
         } else if (painallus.getKeyCode() == KeyEvent.VK_RIGHT) {
-            peli.getPelaaja().toimi(Suunta.OIKEA);
+            pelaaja.toimi(Suunta.OIKEA);
         } else if (painallus.getKeyCode() == KeyEvent.VK_LEFT) {
-            peli.getPelaaja().toimi(Suunta.VASEN);
-        } else /*if (peli.getTaso().isTasoLapi()) { LTÄMÄ METODI LISÄTÄÄN KUN PELI ON VALMIS*/
+            pelaaja.toimi(Suunta.VASEN);
+        } else if (peli.getTaso().getOvi().getX() == pelaaja.getX()
+                && peli.getTaso().getOvi().getY() == pelaaja.getY()) {
             if (painallus.getKeyCode() == KeyEvent.VK_SPACE) {
                 peli.uusiTaso();
             }
-        
+        }
         peli.paivita();
         komponentti.repaint();
     }

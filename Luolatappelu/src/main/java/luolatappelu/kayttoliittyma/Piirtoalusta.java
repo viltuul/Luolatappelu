@@ -3,8 +3,9 @@ package luolatappelu.kayttoliittyma;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import luolatappelu.hahmot.Olio;
-import luolatappelu.hahmot.Pelaaja;
+import luolatappelu.objektit.Olio;
+import luolatappelu.objektit.Oviaukko;
+import luolatappelu.objektit.Pelaaja;
 import luolatappelu.peli.Peli;
 
 /**
@@ -30,6 +31,7 @@ public class Piirtoalusta extends JPanel {
         piirraOrkit();
         piirraTankit();
         piirraSeinat();
+        piirraOviaukko();
     }
 
     public void piirraPelaaja() {
@@ -132,5 +134,16 @@ public class Piirtoalusta extends JPanel {
                 grafiikka.fillOval(seina.getX() * 40 + 30, seina.getY() * 40 + (i * 10 + 5), 10, 5);
             }
         }
+    }
+
+    public void piirraOviaukko() {
+        Oviaukko ovi = peli.getTaso().getOvi();
+        if (peli.getTaso().isTasoLapi()) {
+            grafiikka.setColor(Color.black);
+        } else {
+            grafiikka.setColor(Color.gray);
+        }
+        grafiikka.fillOval(ovi.getX() * 40, ovi.getY() * 40, 40, 40);
+
     }
 }

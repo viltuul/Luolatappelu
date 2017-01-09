@@ -1,5 +1,6 @@
 package luolatappelu.hahmot;
 
+import luolatappelu.objektit.Pelaaja;
 import luolatappelu.Suunta;
 import luolatappelu.peli.Peli;
 import org.junit.After;

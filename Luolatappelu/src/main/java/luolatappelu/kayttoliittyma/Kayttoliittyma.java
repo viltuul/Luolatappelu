@@ -4,8 +4,8 @@ import java.awt.Dimension;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-import luolatappelu.hahmot.Pelaaja;
 import luolatappelu.peli.Peli;
 
 /**
@@ -18,27 +18,29 @@ public class Kayttoliittyma implements Runnable {
     private Peli peli;
     private Piirtoalusta alusta;
     private Ruudukko ruudukko;
-    private JFrame frame;
+    private JFrame peliIkkuna;
+    private final JTextArea tuloste;
 
     public Kayttoliittyma(Peli peli) {
         this.peli = peli;
         this.alusta = new Piirtoalusta(peli);
+        this.tuloste = new JTextArea();
         this.ruudukko = new Ruudukko(peli);
     }
 
     /**
-     * Metodi käynnistää pelin ja kokoaa ikkunan jossa pelaaminen tapahtuu.
+     * Metodi käynnistää     pelin ja kokoaa ikkunan jossa pelaaminen tapahtuu.
      */
     @Override
     public void run() {
         peli.uusiTaso();
-        frame = new JFrame("Luolatappelu");
-        frame.setLayout(null);
-        frame.setPreferredSize(new Dimension(1300, 870));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        peliIkkuna = new JFrame("Luolatappelu");
+        peliIkkuna.setPreferredSize(new Dimension(1300, 870));
+        peliIkkuna.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit();
-        frame.pack();
-        frame.setVisible(true);
+        peliIkkuna.pack();
+        peliIkkuna.setVisible(true);
+
     }
 
     /**
@@ -46,10 +48,12 @@ public class Kayttoliittyma implements Runnable {
      * Nappaimistonkuuntelija.
      */
     public void luoKomponentit() {
-//        container.add(ruudukko);
-        frame.add(alusta);
-        Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(frame, peli);
-        frame.addKeyListener(nk);
+        peliIkkuna.add(ruudukko);
+        ruudukko.setFocusable(false);
+        peliIkkuna.add(alusta);
+        Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(peliIkkuna, peli);
+        peliIkkuna.addKeyListener(nk);
+
     }
 
     /**

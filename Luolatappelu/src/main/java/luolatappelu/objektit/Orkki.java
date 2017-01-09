@@ -1,4 +1,4 @@
-package luolatappelu.hahmot;
+package luolatappelu.objektit;
 
 /**
  * Orkki on luokan olio aliluokka. Luokka Orkki sisältää orkeille ominaisen

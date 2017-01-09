@@ -1,12 +1,12 @@
 package luolatappelu.peli;
 
 import java.util.ArrayList;
-import luolatappelu.hahmot.Olio;
-import luolatappelu.hahmot.Orkki;
-import luolatappelu.hahmot.Pelaaja;
-import luolatappelu.hahmot.Seina;
-import luolatappelu.hahmot.Seuraaja;
-import luolatappelu.hahmot.Tankki;
+import luolatappelu.objektit.Olio;
+import luolatappelu.objektit.Orkki;
+import luolatappelu.objektit.Pelaaja;
+import luolatappelu.objektit.Seina;
+import luolatappelu.objektit.Seuraaja;
+import luolatappelu.objektit.Tankki;
 
 /**
  * Oliokanta sisältää kaikki tasoon luodut oliot.
@@ -17,11 +17,9 @@ public class Oliokanta {
     private ArrayList<Seuraaja> seuraajat;
     private ArrayList<Tankki> tankit;
     private ArrayList<Olio> viholliset;
-    private ArrayList<Seina> seinat;
 
     public Oliokanta() {
         this.orkit = new ArrayList();
-        this.seinat = new ArrayList();
         this.viholliset = new ArrayList();
         this.seuraajat = new ArrayList();
         this.tankit = new ArrayList();

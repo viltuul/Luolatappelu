@@ -2,7 +2,7 @@ package luolatappelu.peli;
 
 import java.util.ArrayList;
 import java.util.Random;
-import luolatappelu.hahmot.Seina;
+import luolatappelu.objektit.Seina;
 
 /**
  * Luolasto on luokka jossa generoidaan Tasojen seinien sijainnit ja tason koon.

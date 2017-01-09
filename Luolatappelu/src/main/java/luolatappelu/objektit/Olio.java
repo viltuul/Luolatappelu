@@ -1,4 +1,4 @@
-package luolatappelu.hahmot;
+package luolatappelu.objektit;
 
 import java.util.Random;
 import luolatappelu.Suunta;

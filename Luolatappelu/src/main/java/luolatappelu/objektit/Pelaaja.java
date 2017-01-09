@@ -1,4 +1,4 @@
-package luolatappelu.hahmot;
+package luolatappelu.objektit;
 
 import luolatappelu.Suunta;
 import luolatappelu.peli.Peli;
@@ -10,11 +10,25 @@ import luolatappelu.peli.Peli;
 public class Pelaaja extends Olio {
 
     private Peli peli;
+    private int maksimiElamat;
 
     public Pelaaja(String nimi, Peli peli) {
         super(nimi);
-        super.setElamat(10);
         this.peli = peli;
+        this.maksimiElamat = 9;
+        super.setElamat(maksimiElamat);
+    }
+
+    public int getMaksimiElamat() {
+        return maksimiElamat;
+    }
+
+    public void kasvataMaksimia() {
+        maksimiElamat++;
+    }
+
+    public void setMaksimiElamat(int maksimiElamat) {
+        this.maksimiElamat = maksimiElamat;
     }
 
     @Override

@@ -6,9 +6,9 @@
 package luolatappelu.peli;
 
 import java.util.ArrayList;
-import luolatappelu.hahmot.Olio;
-import luolatappelu.hahmot.Orkki;
-import luolatappelu.hahmot.Seina;
+import luolatappelu.objektit.Olio;
+import luolatappelu.objektit.Orkki;
+import luolatappelu.objektit.Seina;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

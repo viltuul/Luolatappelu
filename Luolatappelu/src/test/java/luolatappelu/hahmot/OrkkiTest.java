@@ -5,6 +5,7 @@
  */
 package luolatappelu.hahmot;
 
+import luolatappelu.objektit.Orkki;
 import java.util.Random;
 import org.junit.Test;
 import static org.junit.Assert.*;

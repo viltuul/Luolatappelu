@@ -5,6 +5,8 @@
  */
 package luolatappelu.hahmot;
 
+import luolatappelu.objektit.Seuraaja;
+import luolatappelu.objektit.Pelaaja;
 import java.util.Random;
 import luolatappelu.peli.Peli;
 import org.junit.Test;

@@ -3,12 +3,12 @@ package luolatappelu.peli;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
-import luolatappelu.hahmot.Olio;
-import luolatappelu.hahmot.Orkki;
-import luolatappelu.hahmot.Pelaaja;
-import luolatappelu.hahmot.Seina;
-import luolatappelu.hahmot.Seuraaja;
-import luolatappelu.hahmot.Tankki;
+import luolatappelu.objektit.Olio;
+import luolatappelu.objektit.Orkki;
+import luolatappelu.objektit.Pelaaja;
+import luolatappelu.objektit.Seina;
+import luolatappelu.objektit.Seuraaja;
+import luolatappelu.objektit.Tankki;
 import luolatappelu.kayttoliittyma.Kayttoliittyma;
 
 /**
@@ -37,8 +37,13 @@ public class Peli {
      */
     public void uusiTaso() {
         this.taso = new Taso(this);
-        leveli++;
+        kehity();
         taso.uusiTaso(leveli);
+    }
+
+    public void kehity() {
+        leveli++;
+        pelaaja.kasvataMaksimia();
     }
 
     public int getLeveli() {
@@ -131,9 +136,7 @@ public class Peli {
         if (pelaaja.getElamat() == 0) {
             kayttoliittyma.peliOhi();
         }
-        if (taso.isTasoLapi()) {
-            System.out.println("Paina space niin pääset seuraavalle tasolle");
-        }
+        System.out.println(pelaaja.getElamat());
     }
 
     private void liikutaOrkkia(Olio olio) {

@@ -5,7 +5,7 @@
  */
 package luolatappelu.peli;
 
-import luolatappelu.hahmot.Olio;
+import luolatappelu.objektit.Olio;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

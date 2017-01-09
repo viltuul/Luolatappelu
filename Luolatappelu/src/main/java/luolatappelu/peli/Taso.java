@@ -1,7 +1,9 @@
 package luolatappelu.peli;
 
 import java.util.Random;
-import luolatappelu.hahmot.Olio;
+import luolatappelu.objektit.Olio;
+import luolatappelu.objektit.Oviaukko;
+import luolatappelu.objektit.Seina;
 
 /**
  * Taso luokka sisältää tason luomiseen tarvittavat metodit.
@@ -12,6 +14,7 @@ public class Taso {
     private Oliokanta oliot;
     private Peli peli;
     private Luolasto luolasto;
+    private Oviaukko ovi;
 
     /**
      * Taso konstruktori luo uuden Luolaston sekä uuden oliokannan.
@@ -83,8 +86,10 @@ public class Taso {
         System.out.println("Tämä taso on " + moneskoTaso + ". taso!");
         uudetOliot(moneskoTaso);
         luolasto.uusiLuola();
+        sijoitaOviaukko();
         sijoitaPelaaja();
         sijoitaViholliset();
+        peli.getPelaaja().setElamat(peli.getPelaaja().getMaksimiElamat());
     }
 
     /**
@@ -93,10 +98,25 @@ public class Taso {
      * @return palauttaa true jos kaikki oliot ovat kuolleet.
      */
     public boolean isTasoLapi() {
-        boolean tasoLapi = false;
         if (oliot.getElossaOlevat().isEmpty()) {
-            tasoLapi = true;
+            System.out.println("Paina space aukon päällä niin pääset seuraavalle tasolle");
+            return true;
         }
-        return tasoLapi;
+        return false;
+    }
+
+    public Oviaukko getOvi() {
+        return ovi;
+    }
+
+    public void sijoitaOviaukko() {
+        while (true) {
+            int x = arpoja.nextInt(18) + 1;
+            int y = arpoja.nextInt(18) + 1;
+            if (peli.koordinaatinOliot(x, y).size() == 0) {
+                this.ovi = new Oviaukko(x, y);
+                break;
+            }
+        }
     }
 }
