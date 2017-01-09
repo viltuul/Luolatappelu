@@ -22,9 +22,9 @@ public class Piirtoalusta extends JPanel {
         super.setBounds(0, 0, 840, 870);
     }
 
-    @Override
-    public void paintComponent(Graphics grafiikka) {
-        this.grafiikka = grafiikka;
+@Override
+public void paintComponent(Graphics grafiikka) {
+    this.grafiikka = grafiikka;
         super.paintComponent(grafiikka);
         piirraPelaaja();
         piirraSeuraajat();

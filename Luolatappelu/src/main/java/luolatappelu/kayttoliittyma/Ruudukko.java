@@ -2,6 +2,9 @@ package luolatappelu.kayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
+import static java.lang.System.out;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -10,21 +13,19 @@ import luolatappelu.peli.Peli;
 /**
  * Ruudukko luokassa luodaan tekstiruudukko grafiikoiden viereen.
  */
-public class Ruudukko extends JPanel {
+public class Ruudukko extends JLabel {
 
     private Peli peli;
     private JTextArea tuloste;
 
     public Ruudukko(Peli peli) {
-        setLayout(new BorderLayout());
         super.setBackground(Color.black);
         super.setBounds(840, 0, 460, 870);
         this.peli = peli;
-        this.tuloste = new JTextArea(15,30);
+        this.tuloste = new JTextArea();
         tuloste.setEnabled(false);
-        
     }
-
+    
 }
 //import java.awt.BorderLayout;
 //import java.awt.event.ActionEvent;
