@@ -75,12 +75,12 @@ public class PeliTest {
     @Test
     public void uudenTasonTestaaminen1() {
         peli.uusiTaso();
-        assertEquals(peli.vaikeusTaso(), 1);
+        assertEquals(peli.vaikeustaso(), 1);
         assertEquals(peli.getPelaaja().getX(), 1);
         assertEquals(peli.getPelaaja().getY(), 19);
         assertEquals(peli.getOliokanta().getElossaOlevat().size(), 5);
         peli.uusiTaso();
-        assertEquals(peli.vaikeusTaso(), 2);
+        assertEquals(peli.vaikeustaso(), 2);
     }
 
     @Test

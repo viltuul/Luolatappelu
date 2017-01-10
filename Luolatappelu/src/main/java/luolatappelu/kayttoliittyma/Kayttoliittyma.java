@@ -25,7 +25,7 @@ public class Kayttoliittyma implements Runnable {
         this.peli = peli;
         this.alusta = new Piirtoalusta(peli);
         this.tuloste = new JTextArea();
-        this.ruudukko = new Ruudukko(peli);
+        this.ruudukko = new Ruudukko();
     }
 
     /**
@@ -40,7 +40,6 @@ public class Kayttoliittyma implements Runnable {
         luoKomponentit();
         peliIkkuna.pack();
         peliIkkuna.setVisible(true);
-
     }
 
     /**
@@ -53,7 +52,6 @@ public class Kayttoliittyma implements Runnable {
         peliIkkuna.add(alusta);
         Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(peliIkkuna, peli);
         peliIkkuna.addKeyListener(nk);
-
     }
 
     /**
@@ -63,4 +61,9 @@ public class Kayttoliittyma implements Runnable {
         JOptionPane.showMessageDialog(null, "Kuolit, käynnistä peli uudestaan aloittaaksesi");
         peliIkkuna.dispose();
     }
+
+    public Ruudukko getRuudukko() {
+        return ruudukko;
+    }
+    
 }

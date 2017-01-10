@@ -111,16 +111,17 @@ public class Olio {
      *
      * @param lyotava kertoo Oliolle mitä oliota tulee lyödä.
      */
-    public void lyo(Olio lyotava) {
+    public boolean lyo(Olio lyotava) {
         if (lyotava != null) {
             Random osuuko = new Random();
             if (osuuko.nextDouble() > osumatarkkuus) {
-                System.out.println(this.getNimi() + " ei osunut olioon " + lyotava.getNimi());
+                return false;
             } else {
                 lyotava.vahennaElamaa();
-                System.out.println(this.getNimi() + " osui olioon " + lyotava.getNimi());
+                return true;
             }
         }
+        return false;
     }
 
     public double getOsumatarkkuus() {

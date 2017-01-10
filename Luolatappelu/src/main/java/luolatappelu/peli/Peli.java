@@ -19,8 +19,9 @@ public class Peli {
     private Taso taso;
     private Pelaaja pelaaja;
     private Random arpoja;
-    private int vaikeusTaso;
+    private int vaikeustaso;
     private Kayttoliittyma kayttoliittyma;
+    private StringBuilder tapahtuma;
 
     public Peli() {
         this.kayttoliittyma = new Kayttoliittyma(this);
@@ -28,7 +29,7 @@ public class Peli {
         this.seinat = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja", this);
         this.arpoja = new Random();
-        this.vaikeusTaso = 0;
+        this.vaikeustaso = 0;
     }
 
     /**
@@ -36,14 +37,14 @@ public class Peli {
      */
     public void uusiTaso() {
         this.taso = new Taso(this);
-        vaikeusTaso++;
+        vaikeustaso++;
         pelaaja.kasvataMaksimia();
-        pelaaja.setElamat(pelaaja.getElamat()+5);
-        taso.uusiTaso(vaikeusTaso);
+        pelaaja.setElamat(pelaaja.getElamat() + 5);
+        taso.uusiTaso(vaikeustaso);
     }
 
-    public int vaikeusTaso() {
-        return vaikeusTaso;
+    public int vaikeustaso() {
+        return vaikeustaso;
     }
 
     public Taso getTaso() {
@@ -110,7 +111,7 @@ public class Peli {
         for (Olio olio : taso.getOliokanta().getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
-                olio.lyo(pelaaja);
+                tapahtumaTekstiksi(olio.lyo(pelaaja));
             } else if (olio.toString().equals("Ö")) {
                 liikutaOrkkia(olio);
             } else if (olio.toString().equals("S")) {
@@ -127,12 +128,35 @@ public class Peli {
      * on läpi.
      */
     public void paivita() {
+        kayttoliittyma.getRuudukko().kirjoitin(tapahtumienKirjoitin());
+        kayttoliittyma.getRuudukko().pelaajanTiedot(tietojenKirjoitin());
         taso.getOliokanta().poistaKuolleet();
         liikutaOlioita();
         if (pelaaja.getElamat() == 0) {
             kayttoliittyma.peliOhi();
         }
         System.out.println(pelaaja.getElamat());
+    }
+
+    public String tapahtumienKirjoitin() {
+        this.tapahtuma = new StringBuilder();
+        for (Olio olio : taso.getOliokanta().getViholliset()) {
+                tapahtuma.append("\n" + tapahtumaTekstiksi(true) + " ");
+        }
+        return tapahtuma.toString();
+    }
+    public String tapahtumaTekstiksi(boolean osuiko){
+        if (osuiko){
+            return "osuma";
+        } else {
+            return "ohi";
+        }
+    }
+
+    public String tietojenKirjoitin() {
+        StringBuilder tietojenTulostin = new StringBuilder();
+        tietojenTulostin.append("Pelaajan elämät: " + pelaaja.getElamat() + "/" + pelaaja.getMaksimiElamat());
+        return tietojenTulostin.toString();
     }
 
     private void liikutaOrkkia(Olio olio) {

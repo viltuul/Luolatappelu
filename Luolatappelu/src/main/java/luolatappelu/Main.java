@@ -2,7 +2,6 @@ package luolatappelu;
 
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
-import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.peli.Peli;
 
 public class Main {
