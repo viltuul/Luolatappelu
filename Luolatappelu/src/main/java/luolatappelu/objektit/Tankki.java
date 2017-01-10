@@ -38,13 +38,15 @@ public class Tankki extends Olio {
      * Metodi käskee tankin lyoda jos se ei ole lyönyt tai liikkunut
      * viimevuorolla.
      */
-    public void lyo(Olio lyotava) {
+    @Override
+    public boolean lyo(Olio lyotava) {
         if (lepo) {
             lepo = false;
             super.lyo(lyotava);
         } else {
             lepo = true;
         }
+        return false;
     }
 
     private Suunta valitseSuunta(int nro) {
