@@ -19,6 +19,9 @@ riippumatta onko vihollisia jäljellä vai ei.
 Kun pelaaja pääsee seuraavalle tasolle niin pelihahmo kehittyy.
 
 Näppäimet:
+
 Pelaaja liikkuu nuolinäppäimillä
+
 Pelaaja lyö jos se liikkuu vihollista päin
+
 Välilyönnillä pääsee seuraavalle tasolle
