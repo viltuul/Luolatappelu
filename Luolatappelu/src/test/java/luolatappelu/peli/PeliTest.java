@@ -75,7 +75,9 @@ public class PeliTest {
 
     @Test
     public void uudenTasonTestaaminen1() {
+        peli.getPelaaja().setElamat(5);
         peli.uusiTaso();
+        assertEquals(8, peli.getPelaaja().getElamat());
         assertEquals(peli.getVaikeustaso(), 1);
         assertEquals(peli.getPelaaja().getX(), 1);
         assertEquals(peli.getPelaaja().getY(), 19);
@@ -98,9 +100,10 @@ public class PeliTest {
 
     @Test
     public void seuraajatHyokkaavatPelaajanKimppuun() {
-        peli.uusiTaso();
+        for (int i = 0; i < 5; i++) {
+            peli.uusiTaso();
+        }
         int elamatAlussa = peli.getPelaaja().getElamat();
-        peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
         for (int i = 0; i < 1000; i++) {
             peli.paivita();
             if (peli.getPelaaja().getElamat() < elamatAlussa) {
@@ -135,6 +138,14 @@ public class PeliTest {
         }
         assertEquals(tankki.getX(), 1);
         assertEquals(tankki.getY(), 1);
+    }
 
+    @Test
+    public void paivitaMetodinTest() {
+        peli.uusiTaso();
+        Olio ekaOlio = peli.getOliokanta().getViholliset().get(0);
+        ekaOlio.setElamat(0);
+        peli.paivita();
+        assertTrue(ekaOlio.getX() > 20);
     }
 }

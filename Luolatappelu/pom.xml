@@ -34,12 +34,12 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>luolatappelu.hahmot.*</param>
+                        <param>luolatappelu.objektit.*</param>
                         <param>luolatappelu.peli.Peli</param>
                         <param>luolatappelu.peli.Taso</param>
                     </targetClasses>
                     <targetTests>
-                        <param>luolatappelu.hahmot.*</param>
+                        <param>luolatappelu.objektit.*</param>
                         <param>luolatappelu.peli.PeliTest</param>
                         <param>luolatappelu.peli.TasoTest</param>
                     </targetTests>
@@ -71,8 +71,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>luolatappelu</mainClass>
-                                    <!-- mainClass on muotoa "fi.omanimi.superprojekti.Main" -->
+                                    <mainClass>luolatappelu.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

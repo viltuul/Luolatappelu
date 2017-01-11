@@ -65,11 +65,12 @@ public class Taso {
     }
 
     /**
-     * Metodi luo uuden oliokannan uudelle tasolle.
+     * Metodi luo uuden oliokannan uudelle tasolle. Jos taso on jaollinen
+     * viidellä niin luodaan vain Seuraajaolioita.
      *
      * @param vaikeusTaso kertoo metodille monesko taso on menossa.
      */
-    private void uudetOliot(int vaikeusTaso) {
+    public void uudetOliot(int vaikeusTaso) {
         if (vaikeusTaso % 5 == 0) {
             bonustasonOliot(vaikeusTaso);
         } else {
@@ -133,8 +134,8 @@ public class Taso {
      */
     public void sijoitaOviaukko() {
         while (true) {
-            int x = arpoja.nextInt(18) + 1;
-            int y = arpoja.nextInt(18) + 1;
+            int x = arpoja.nextInt(19) + 1;
+            int y = arpoja.nextInt(19) + 1;
             if (peli.koordinaatinOliot(x, y).isEmpty()) {
                 this.ovi = new Oviaukko(x, y);
                 break;

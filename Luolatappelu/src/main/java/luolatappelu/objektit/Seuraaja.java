@@ -25,18 +25,6 @@ public class Seuraaja extends Olio {
     }
 
     /**
-     * Toinen konstruktori luotu testejä varten.
-     *
-     * @param pelaaja parametrin avulla Seuraaja tietää pelaajan sijainnin.
-     * @param random Tässä voidaan luoda halutunmukainen Random luokka
-     */
-    public Seuraaja(Pelaaja pelaaja, Random random) {
-        super("Seuraaja");
-        this.arpoja = random;
-        this.pelaaja = pelaaja;
-    }
-
-    /**
      * Liiku metodi liikuttaa oliota pelaajan suuntaan. Jos pelaaja on samalla
      * koordinaattiakselilla, kutsutaan metodia liikuXAkseli tai liikuYAkseli.
      * Jos taas pelaaja on eri akselilla kuin seuraaja, niin metodi arpoo

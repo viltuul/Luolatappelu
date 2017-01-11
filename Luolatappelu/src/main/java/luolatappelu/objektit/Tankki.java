@@ -43,13 +43,15 @@ public class Tankki extends Olio {
      */
     @Override
     public boolean lyo(Olio lyotava) {
-        if (lepo) {
+        if (lepo == true) {
             lepo = false;
             super.lyo(lyotava);
+            return true;
         } else {
             lepo = true;
+            return false;
         }
-        return false;
+
     }
 
     private Suunta valitseSuunta(int nro) {

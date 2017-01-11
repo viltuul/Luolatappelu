@@ -24,6 +24,7 @@ public class TasoTest {
         this.taso = new Taso(peli);
     }
 
+    @Test
     public void tasoLapiKunVihollisetKuolleet() {
         taso.uusiTaso(1);
         for (Olio olio : taso.getOliokanta().getViholliset()) {
@@ -32,6 +33,7 @@ public class TasoTest {
         assertTrue(taso.isTasoLapi());
     }
 
+    @Test
     public void sijoittaaVihollisetTasonRajojenSisapuolelle() {
         taso.uusiTaso(1);
         for (int i = 0; i < 100; i++) {
@@ -39,7 +41,27 @@ public class TasoTest {
             for (int j = 0; j < peli.getOliokanta().getViholliset().size(); j++) {
                 assertTrue(peli.getOliokanta().getViholliset().get(j).getX() < 20);
                 assertTrue(peli.getOliokanta().getViholliset().get(j).getY() < 20);
+                assertTrue(peli.getOliokanta().getViholliset().get(j).getX() > 0);
+                assertTrue(peli.getOliokanta().getViholliset().get(j).getY() > 0);
             }
+        }
+    }
+
+    @Test
+    public void bonustasonVihollisetTest() {
+        taso.uudetOliot(5);
+        assertEquals(0, taso.getOliokanta().getOrkit().size());
+        assertEquals(0, taso.getOliokanta().getTankit().size());
+        assertEquals(9, taso.getOliokanta().getViholliset().size());
+        assertFalse(taso.isTasoLapi());
+    }
+
+    @Test
+    public void oviaukonSijoitus() {
+        for (int i = 0; i < 100; i++) {
+            taso.sijoitaOviaukko();
+            assertTrue(taso.getOvi().getX() > 0 && taso.getOvi().getX() < 20);
+            assertTrue(taso.getOvi().getY() > 0 && taso.getOvi().getY() < 20);
         }
     }
 }
