@@ -10,7 +10,7 @@ import luolatappelu.peli.Peli;
 
 /**
  * Kayttoliittyma on luokka, joka yhdistää graafisen ilmentymän pelille sekä
- * pelin kontrollit
+ * pelin kontrollit.
  */
 public class Kayttoliittyma implements Runnable {
 
@@ -19,12 +19,14 @@ public class Kayttoliittyma implements Runnable {
     private Piirtoalusta alusta;
     private Ruudukko ruudukko;
     private JFrame peliIkkuna;
-    private final JTextArea tuloste;
 
-    public Kayttoliittyma(Peli peli) {
-        this.peli = peli;
+    /**
+     * Konstruktorissa luodaan Peli, Piirtoalusta sekä Ruudukko luokat.
+     *
+     */
+    public Kayttoliittyma() {
+        this.peli = new Peli(this);
         this.alusta = new Piirtoalusta(peli);
-        this.tuloste = new JTextArea();
         this.ruudukko = new Ruudukko();
     }
 
@@ -65,5 +67,5 @@ public class Kayttoliittyma implements Runnable {
     public Ruudukko getRuudukko() {
         return ruudukko;
     }
-    
+
 }

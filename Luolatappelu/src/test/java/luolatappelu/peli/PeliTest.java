@@ -6,6 +6,7 @@
 package luolatappelu.peli;
 
 import java.util.ArrayList;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.objektit.Olio;
 import luolatappelu.objektit.Orkki;
 import luolatappelu.objektit.Seina;
@@ -21,7 +22,7 @@ public class PeliTest {
     private Peli peli;
 
     public PeliTest() {
-        this.peli = new Peli();
+        this.peli = new Peli(new Kayttoliittyma());
     }
 
     @Test
@@ -75,12 +76,12 @@ public class PeliTest {
     @Test
     public void uudenTasonTestaaminen1() {
         peli.uusiTaso();
-        assertEquals(peli.vaikeustaso(), 1);
+        assertEquals(peli.getVaikeustaso(), 1);
         assertEquals(peli.getPelaaja().getX(), 1);
         assertEquals(peli.getPelaaja().getY(), 19);
         assertEquals(peli.getOliokanta().getElossaOlevat().size(), 5);
         peli.uusiTaso();
-        assertEquals(peli.vaikeustaso(), 2);
+        assertEquals(peli.getVaikeustaso(), 2);
     }
 
     @Test

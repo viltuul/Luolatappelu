@@ -3,11 +3,8 @@ package luolatappelu.peli;
 import java.util.ArrayList;
 import java.util.Random;
 import luolatappelu.objektit.Olio;
-import luolatappelu.objektit.Orkki;
 import luolatappelu.objektit.Pelaaja;
 import luolatappelu.objektit.Seina;
-import luolatappelu.objektit.Seuraaja;
-import luolatappelu.objektit.Tankki;
 import luolatappelu.kayttoliittyma.Kayttoliittyma;
 
 /**
@@ -15,7 +12,6 @@ import luolatappelu.kayttoliittyma.Kayttoliittyma;
  */
 public class Peli {
 
-    private ArrayList<Seina> seinat;
     private Taso taso;
     private Pelaaja pelaaja;
     private Random arpoja;
@@ -23,10 +19,15 @@ public class Peli {
     private Kayttoliittyma kayttoliittyma;
     private StringBuilder tapahtuma;
 
-    public Peli() {
-        this.kayttoliittyma = new Kayttoliittyma(this);
+    /**
+     * Konstruktorissa luodaan taso, pelaaja, satunnaismuuttuja ja asetetaan
+     * vaikeustaso.
+     *
+     * @param kayttoliittyma on pelin tarvitsema käyttöliittymä.
+     */
+    public Peli(Kayttoliittyma kayttoliittyma) {
+        this.kayttoliittyma = kayttoliittyma;
         this.taso = new Taso(this);
-        this.seinat = new ArrayList();
         this.pelaaja = new Pelaaja("Pelaaja", this);
         this.arpoja = new Random();
         this.vaikeustaso = 0;
@@ -39,11 +40,11 @@ public class Peli {
         this.taso = new Taso(this);
         vaikeustaso++;
         pelaaja.kasvataMaksimia();
-        pelaaja.setElamat(pelaaja.getElamat() + 5);
+        pelaaja.parannaPelaajaa();
         taso.uusiTaso(vaikeustaso);
     }
 
-    public int vaikeustaso() {
+    public int getVaikeustaso() {
         return vaikeustaso;
     }
 
@@ -84,6 +85,14 @@ public class Peli {
         return lista;
     }
 
+    /**
+     * Metodi tarkistaa parametrissä olevan olion viereiset ruudut ja palauttaa
+     * listan olioista, jotka sijaitsevat niissä ruuduissa. Lista on tyhjä jos
+     * naapureita ei ole.
+     *
+     * @param olio Tarkistettava olio.
+     * @return Lista naapuriolioista.
+     */
     public ArrayList<Olio> getNaapurit(Olio olio) {
         ArrayList<Olio> lista = new ArrayList();
         if (koordinaatinOliot(olio.getX() + 1, olio.getY()) != null) {
@@ -101,86 +110,56 @@ public class Peli {
         return lista;
     }
 
-//    public void lyoNaapuria(Olio lyoja) {
-//        ArrayList<Olio> lista = getNaapurit(lyoja);
-//        if (!lista.isEmpty()) {
-//            lyoja.lyo(lista.get(arpoja.nextInt(lista.size())));
-//        }
-//    }
     private void liikutaOlioita() {
         for (Olio olio : taso.getOliokanta().getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
                 tapahtumaTekstiksi(olio.lyo(pelaaja));
-            } else if (olio.toString().equals("Ö")) {
-                liikutaOrkkia(olio);
-            } else if (olio.toString().equals("S")) {
-                liikutaSeuraajaa(olio);
-            } else if (olio.toString().equals("T")) {
-                liikutaTankkia(olio);
+            } else {
+                olio.liiku();
+                if (tormaysObjektiin(olio)) {
+                    olio.liikuTakaisin();
+                }
             }
         }
     }
 
     /**
-     * paivita metodi liikuttaa olioita, poistaa kuolleet oliot kentältä,
+     * Pivita metodi liikuttaa olioita, poistaa kuolleet oliot kentältä,
      * tarkistaa onko pelaajalla vielä elämiä jäljellä sekä ilmoittaa jos taso
-     * on läpi.
+     * on läpi. Metodi myös kirjoittaa Ruudukkoon tapahtumienkulun.
      */
     public void paivita() {
-        kayttoliittyma.getRuudukko().kirjoitin(tapahtumienKirjoitin());
-        kayttoliittyma.getRuudukko().pelaajanTiedot(tietojenKirjoitin());
         taso.getOliokanta().poistaKuolleet();
         liikutaOlioita();
         if (pelaaja.getElamat() == 0) {
             kayttoliittyma.peliOhi();
         }
-        System.out.println(pelaaja.getElamat());
+        kayttoliittyma.getRuudukko().kirjoitin(tapahtumienKirjoitin());
+        kayttoliittyma.getRuudukko().pelaajanTiedot(tietojenKirjoitin());
     }
 
-    public String tapahtumienKirjoitin() {
+    private String tapahtumienKirjoitin() {
         this.tapahtuma = new StringBuilder();
         for (Olio olio : taso.getOliokanta().getViholliset()) {
-                tapahtuma.append("\n" + tapahtumaTekstiksi(true) + " ");
+            tapahtuma.append("\n" + tapahtumaTekstiksi(true) + " ");
         }
         return tapahtuma.toString();
     }
-    public String tapahtumaTekstiksi(boolean osuiko){
-        if (osuiko){
+
+    private String tapahtumaTekstiksi(boolean osuiko) {
+        if (osuiko) {
             return "osuma";
         } else {
             return "ohi";
         }
     }
 
-    public String tietojenKirjoitin() {
+    private String tietojenKirjoitin() {
         StringBuilder tietojenTulostin = new StringBuilder();
+        tietojenTulostin.append("Taso: " + vaikeustaso + "\n");
         tietojenTulostin.append("Pelaajan elämät: " + pelaaja.getElamat() + "/" + pelaaja.getMaksimiElamat());
         return tietojenTulostin.toString();
-    }
-
-    private void liikutaOrkkia(Olio olio) {
-        Orkki orkki = (Orkki) olio;
-        orkki.liiku();
-        if (tormaysObjektiin(orkki)) {
-            orkki.liikuTakaisin();
-        }
-    }
-
-    private void liikutaSeuraajaa(Olio olio) {
-        Seuraaja seuraaja = (Seuraaja) olio;
-        seuraaja.liiku();
-        if (tormaysObjektiin(seuraaja)) {
-            seuraaja.liikuTakaisin();
-        }
-    }
-
-    private void liikutaTankkia(Olio olio) {
-        Tankki tankki = (Tankki) olio;
-        tankki.liiku();
-        if (tormaysObjektiin(tankki)) {
-            tankki.liikuTakaisin();
-        }
     }
 
     /**

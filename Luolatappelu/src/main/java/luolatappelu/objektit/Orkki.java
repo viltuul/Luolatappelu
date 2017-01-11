@@ -4,18 +4,28 @@ package luolatappelu.objektit;
  * Orkki on luokan olio aliluokka. Luokka Orkki sisältää orkeille ominaisen
  * liikkumistyylin.
  */
-import luolatappelu.Suunta;
 import java.util.Random;
 
 public class Orkki extends Olio {
 
     private Random random;
 
+    /**
+     * Konstruktori asettaa Orkille Örkki nimen ja luo attribuuttina uuden
+     * Random attribuutin.
+     */
     public Orkki() {
         super("Örkki");
         this.random = new Random();
     }
 
+    /**
+     * Konstruktori jossa voidaan tuoda halutunlainen Random parametri.
+     * Konstruktori on tehty lähinnä testejä varten.
+     *
+     * @param random parametrina tuodaan esimerkiksi halutunlainen Random
+     * muuttuja.
+     */
     public Orkki(Random random) {
         super("Örkki");
         this.random = random;
@@ -23,8 +33,9 @@ public class Orkki extends Olio {
 
     /**
      * Liiku metodi liikuttaa oliota yhden askeleen verran satunnaisesti
-     * arvottuun suuntaan
+     * arvottuun suuntaan.
      */
+    @Override
     public void liiku() {
         super.liiku(valitseSuunta(random.nextInt(4)));
     }

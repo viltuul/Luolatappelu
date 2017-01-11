@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import luolatappelu.objektit.Olio;
 import luolatappelu.objektit.Orkki;
 import luolatappelu.objektit.Pelaaja;
-import luolatappelu.objektit.Seina;
 import luolatappelu.objektit.Seuraaja;
 import luolatappelu.objektit.Tankki;
 
@@ -18,17 +17,25 @@ public class Oliokanta {
     private ArrayList<Tankki> tankit;
     private ArrayList<Olio> viholliset;
 
+    /**
+     * Konstruktorissa luodaan jokaiselle vihollistyypille oma lista sekä yksi
+     * lista joka sisältää kaikki viholliset.
+     */
     public Oliokanta() {
         this.orkit = new ArrayList();
-        this.viholliset = new ArrayList();
         this.seuraajat = new ArrayList();
         this.tankit = new ArrayList();
+        this.viholliset = new ArrayList();
+
     }
 
     public ArrayList<Olio> getViholliset() {
         return viholliset;
     }
 
+    /**
+     * Metodi luo uuden Orkkiolion ja lisää sen orkit sekä viholliset listaan.
+     */
     public void uusiOrkki() {
         Orkki orkki = new Orkki();
         orkit.add(orkki);
@@ -39,6 +46,13 @@ public class Oliokanta {
         return orkit;
     }
 
+    /**
+     * Metodi luo uuden Seuraajaolion ja lisää sen seuraajat sekä viholliset
+     * listaan.
+     *
+     * @param pelaaja Seuraaja tarvitsee pelaajaolion tietoja, jotta se osaa
+     * liikkua oikeaan suuntaan.
+     */
     public void uusiSeuraaja(Pelaaja pelaaja) {
         Seuraaja seuraaja = new Seuraaja(pelaaja);
         seuraajat.add(seuraaja);
@@ -49,6 +63,9 @@ public class Oliokanta {
         return seuraajat;
     }
 
+    /**
+     * Metodi luo uuden Tankkiolion ja liää sen tankit sekä viholliset listaan.
+     */
     public void uusiTankki() {
         Tankki tankki = new Tankki();
         tankit.add(tankki);

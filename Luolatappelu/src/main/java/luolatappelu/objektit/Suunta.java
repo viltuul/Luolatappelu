@@ -1,4 +1,4 @@
-package luolatappelu;
+package luolatappelu.objektit;
 
 public enum Suunta {
 

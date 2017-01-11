@@ -16,15 +16,20 @@ public class Piirtoalusta extends JPanel {
     private Peli peli;
     private Graphics grafiikka;
 
+    /**
+     * Asetetaan piirtoalustalle harmaa taustaväri sekä asetetaan rajat.
+     *
+     * @param peli Peli kiinnitetään attribuuttiin.
+     */
     public Piirtoalusta(Peli peli) {
         super.setBackground(Color.GRAY);
         this.peli = peli;
         super.setBounds(0, 0, 840, 870);
     }
 
-@Override
-public void paintComponent(Graphics grafiikka) {
-    this.grafiikka = grafiikka;
+    @Override
+    public void paintComponent(Graphics grafiikka) {
+        this.grafiikka = grafiikka;
         super.paintComponent(grafiikka);
         piirraPelaaja();
         piirraSeuraajat();
@@ -34,14 +39,14 @@ public void paintComponent(Graphics grafiikka) {
         piirraOviaukko();
     }
 
-    public void piirraPelaaja() {
+    private void piirraPelaaja() {
         Pelaaja pelaaja = peli.getPelaaja();
         piirraVartalo(pelaaja, Color.BLUE);
         this.piirraNaama(pelaaja.getX(), pelaaja.getY(), false);
         piirraMiekka(pelaaja.getX() * 40, pelaaja.getY() * 40);
     }
 
-    public void piirraSeuraajat() {
+    private void piirraSeuraajat() {
         for (Olio olio : peli.getOliokanta().getSeuraajat()) {
             piirraVartalo(olio, Color.RED);
             this.piirraNaama(olio.getX(), olio.getY(), true);
@@ -49,7 +54,7 @@ public void paintComponent(Graphics grafiikka) {
         }
     }
 
-    public void piirraOrkit() {
+    private void piirraOrkit() {
         for (Olio olio : peli.getOliokanta().getOrkit()) {
             piirraVartalo(olio, Color.GREEN);
             this.piirraNaama(olio.getX(), olio.getY(), false);
@@ -57,7 +62,7 @@ public void paintComponent(Graphics grafiikka) {
         }
     }
 
-    public void piirraTankit() {
+    private void piirraTankit() {
         for (Olio olio : peli.getOliokanta().getTankit()) {
             piirraVartalo(olio, Color.YELLOW);
             this.piirraNaama(olio.getX(), olio.getY(), true);
@@ -65,7 +70,7 @@ public void paintComponent(Graphics grafiikka) {
         }
     }
 
-    public void piirraVartalo(Olio olio, Color vari) {
+    private void piirraVartalo(Olio olio, Color vari) {
         grafiikka.setColor(new Color(139, 69, 19));
         grafiikka.fillOval(olio.getX() * 40, olio.getY() * 40 + 27, 12, 8);
         grafiikka.fillOval(olio.getX() * 40 + 20, olio.getY() * 40 + 27, 12, 8);
@@ -78,7 +83,7 @@ public void paintComponent(Graphics grafiikka) {
 
     }
 
-    public void piirraNaama(int x, int y, Boolean vihainen) {
+    private void piirraNaama(int x, int y, Boolean vihainen) {
         grafiikka.setColor(Color.BLACK);
         grafiikka.fillRect(x * 40 + 7, y * 40 + 7, 4, 12);
         grafiikka.fillRect(x * 40 + 18, y * 40 + 7, 4, 12);
@@ -91,21 +96,21 @@ public void paintComponent(Graphics grafiikka) {
         }
     }
 
-    public void piirraKeihas(int x, int y) {
+    private void piirraKeihas(int x, int y) {
         grafiikka.setColor(new Color(139, 69, 0));
         grafiikka.fillRect(x - 10, y + 5, 3, 30);
         grafiikka.setColor(Color.darkGray);
         grafiikka.fillOval(x - 11, y - 2, 5, 10);
     }
 
-    public void piirraMiekka(int x, int y) {
+    private void piirraMiekka(int x, int y) {
         grafiikka.setColor(new Color(139, 69, 0));
         grafiikka.fill3DRect(x - 10, y + 8, 10, 6, true);
         grafiikka.setColor(Color.darkGray);
         grafiikka.fillOval(x - 8, y - 5, 5, 15);
     }
 
-    public void piirraKilpi(int x, int y) {
+    private void piirraKilpi(int x, int y) {
         grafiikka.setColor(Color.darkGray);
         grafiikka.fillRect(x + 6, y + 13, 30, 15);
         grafiikka.setColor(Color.black);
@@ -114,7 +119,6 @@ public void paintComponent(Graphics grafiikka) {
         grafiikka.fillOval(x + 6, y + 15, 30, 20);
         grafiikka.setColor(Color.BLACK);
         grafiikka.drawOval(x + 6, y + 15, 30, 20);
-
         grafiikka.setColor(Color.yellow);
         grafiikka.fillOval(x + 18, y + 18, 4, 4);
         grafiikka.fillOval(x + 24, y + 18, 4, 4);
@@ -122,7 +126,7 @@ public void paintComponent(Graphics grafiikka) {
 
     }
 
-    public void piirraSeinat() {
+    private void piirraSeinat() {
         for (Olio seina : peli.getTaso().getLuolasto().getSeinat()) {
             grafiikka.setColor(Color.DARK_GRAY);
             grafiikka.fillRect(seina.getX() * 40, seina.getY() * 40, 40, 40);
@@ -130,13 +134,12 @@ public void paintComponent(Graphics grafiikka) {
             for (int i = 0; i < 4; i++) {
                 grafiikka.fillOval(seina.getX() * 40, seina.getY() * 40 + (i * 10), 10, 5);
                 grafiikka.fillOval(seina.getX() * 40 + 20, seina.getY() * 40 + (i * 10), 10, 5);
-//                grafiikka.fillOval(seina.getX() * 40 + 10, seina.getY() * 40 + (i * 10 + 5), 10, 5);
                 grafiikka.fillOval(seina.getX() * 40 + 30, seina.getY() * 40 + (i * 10 + 5), 10, 5);
             }
         }
     }
 
-    public void piirraOviaukko() {
+    private void piirraOviaukko() {
         Oviaukko ovi = peli.getTaso().getOvi();
         if (peli.getTaso().isTasoLapi()) {
             grafiikka.setColor(Color.black);

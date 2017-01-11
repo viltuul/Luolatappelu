@@ -8,6 +8,7 @@ package luolatappelu.hahmot;
 import luolatappelu.objektit.Seuraaja;
 import luolatappelu.objektit.Pelaaja;
 import java.util.Random;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.peli.Peli;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -23,7 +24,7 @@ public class SeuraajaTest {
     private Peli peli;
 
     public SeuraajaTest() {
-        this.peli = new Peli();
+        this.peli = new Peli(new Kayttoliittyma());
         this.pelaaja = new Pelaaja("testaaja", peli);
         this.seuraaja = new Seuraaja(pelaaja);
         pelaaja.setX(10);

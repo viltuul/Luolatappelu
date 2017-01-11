@@ -1,6 +1,5 @@
 package luolatappelu.objektit;
 
-import luolatappelu.Suunta;
 import java.util.Random;
 
 /**
@@ -12,6 +11,13 @@ public class Seuraaja extends Olio {
     private Random arpoja;
     private Pelaaja pelaaja;
 
+    /**
+     * Konstruktorissa annetaan oliolli nimi Seuraaja sekä määritellään
+     * attribuutit.
+     *
+     * @param pelaaja parametrin avulla Seuraaja tietää pelaajan sijainnin ja
+     * osaa liikkua siihen suuntaan.
+     */
     public Seuraaja(Pelaaja pelaaja) {
         super("Seuraaja");
         this.arpoja = new Random();
@@ -19,9 +25,9 @@ public class Seuraaja extends Olio {
     }
 
     /**
-     * Toinen konstruktori luotu testejä varten
+     * Toinen konstruktori luotu testejä varten.
      *
-     * @param pelaaja
+     * @param pelaaja parametrin avulla Seuraaja tietää pelaajan sijainnin.
      * @param random Tässä voidaan luoda halutunmukainen Random luokka
      */
     public Seuraaja(Pelaaja pelaaja, Random random) {
@@ -36,6 +42,7 @@ public class Seuraaja extends Olio {
      * Jos taas pelaaja on eri akselilla kuin seuraaja, niin metodi arpoo
      * seuraajan seuraavan liikkumissuunnan.
      */
+    @Override
     public void liiku() {
         int x = pelaaja.getX();
         int y = pelaaja.getY();

@@ -1,19 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package luolatappelu.objektit;
 
 /**
- *
- * @author ville
+ * Oviaukko on objekti, josta pääsee seuraavalle tasolle. Luokka ei tunne muuta
+ * kuin sijainnin.
  */
 public class Oviaukko {
 
     private int x;
     private int y;
-
+/**
+ * Konstruktorissa sijoitetaan oviaukko.
+ * @param x x koorinaatti
+ * @param y y koordinaatti
+ */
     public Oviaukko(int x, int y) {
         this.x = x;
         this.y = y;
@@ -34,5 +33,5 @@ public class Oviaukko {
     public int getY() {
         return y;
     }
-    
+
 }

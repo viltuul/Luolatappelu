@@ -1,12 +1,9 @@
 package luolatappelu.hahmot;
 
 import luolatappelu.objektit.Pelaaja;
-import luolatappelu.Suunta;
+import luolatappelu.objektit.Suunta;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.peli.Peli;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,7 +13,7 @@ public class PelaajaTest {
     private Peli peli;
 
     public PelaajaTest() {
-        this.peli = new Peli();
+        this.peli = new Peli(new Kayttoliittyma());
         this.pelaaja = new Pelaaja("testi", peli);
     }
 

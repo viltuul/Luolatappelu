@@ -28,3 +28,5 @@ Käyttäjän toiminnot: Pelin aloitus, nimen kirjoittaminen ja pelaaminen.
 
 ![kaavio](sekvenssikaavio.png)
 ![kaavio2](sekvenssikaavi2.png)
+
+Peli- ja Käyttöliittymäluokat tuntevat toisensa, mutta käyttöliittymä tuntee myös Piirtoalusta- ja Nappaimistonkuuntelijaluokat. Piirtoalusta ja Nappaimistonkuuntelija käyttää Peliluokkaa joissain metodeissaan. Ruudukko luokan tuntee sekä Peli että Kayttoliittyma luokka. Peliluokka sisältää Tasoluokan. Taso sisältää luolaston sekä Oliokannan. Oliokanta sisältää Olioluokan. Olio on Pelaajan, Seuraajan, Orkin, Tankin, sekä Seinän yliluokka. Seuraajaluokka käyttää Pelaajaa metodissaan. Peli ja Pelaaja tuntee toisensa.

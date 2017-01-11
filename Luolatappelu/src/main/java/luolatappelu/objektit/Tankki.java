@@ -1,18 +1,20 @@
 package luolatappelu.objektit;
 
-import luolatappelu.Suunta;
 import java.util.Random;
 
 /**
  * Tankki on luokan Olio aliluokka. Tankki sisältää tankille ominaiset
- * liikkumismetodit ja konstruktorissa asetetaan enemmän elämiä, sekä erilainen
- * osumatarkkuus.
+ * liikkumismetodit.
  */
 public class Tankki extends Olio {
 
     private Random random;
     private Boolean lepo;
 
+    /**
+     * Konstruktorissa asetetaan oliolle kolme elämää sekä asetetaan parempi
+     * osumistarkkuus kuin muilla olioilla.
+     */
     public Tankki() {
         super("Tankki");
         this.random = new Random();
@@ -25,6 +27,7 @@ public class Tankki extends Olio {
      * Metodi käskee tankin liikkua jos se ei ole liikkunut tai lyönyt
      * viimevuorolla.
      */
+    @Override
     public void liiku() {
         if (lepo) {
             lepo = false;

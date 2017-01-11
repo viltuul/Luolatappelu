@@ -1,10 +1,11 @@
 package luolatappelu.objektit;
 
 import java.util.Random;
-import luolatappelu.Suunta;
 
 /**
- * Luokka on kaikkien olioluokkien yliluokka.
+ * Luokka on kaikkien olioluokkien yliluokka. Olio sisältää olioiden nimet,
+ * elämät, sijainnin, osumatarkkuuden sekä pelilogiikkaa avittavat attribuutit
+ * elossa, ja viimeinenSuunta.
  */
 public class Olio {
 
@@ -12,10 +13,15 @@ public class Olio {
     private int elamat;
     private int x;
     private int y;
+    private double osumatarkkuus;
     private boolean elossa;
     private Suunta viimeinenSuunta;
-    private double osumatarkkuus;
 
+    /**
+     * Konstruktori luo olion ja lisää attribuutteihin tarvittavat parametrit.
+     *
+     * @param nimi Oliolle annettava nimi.
+     */
     public Olio(String nimi) {
         this.nimi = nimi;
         this.elamat = 1;
@@ -45,6 +51,9 @@ public class Olio {
         return elossa;
     }
 
+    /**
+     * Metodi vähentää olion elämiä yhdellä.
+     */
     public void vahennaElamaa() {
         this.elamat--;
     }
@@ -110,6 +119,7 @@ public class Olio {
      * osumatarkkuus.
      *
      * @param lyotava kertoo Oliolle mitä oliota tulee lyödä.
+     * @return palauttaa true jos olio oosuu lyötävään.
      */
     public boolean lyo(Olio lyotava) {
         if (lyotava != null) {
@@ -130,6 +140,13 @@ public class Olio {
 
     public void setOsumatarkkuus(double osumatarkkuus) {
         this.osumatarkkuus = osumatarkkuus;
+    }
+
+    /**
+     * Kaikissa olioluokissa on omanlainen liiku metodi jota voidaan kutsua myös
+     * täältä.
+     */
+    public void liiku() {
     }
 
 }

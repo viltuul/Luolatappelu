@@ -1,6 +1,5 @@
 package luolatappelu.objektit;
 
-import luolatappelu.Suunta;
 import luolatappelu.peli.Peli;
 
 /**
@@ -11,11 +10,19 @@ public class Pelaaja extends Olio {
 
     private Peli peli;
     private int maksimiElamat;
+    private int parannus;
 
+    /**
+     * Konstruktorissa asetetaan pelaajalle haluttu nimi, ja maksimielämät.
+     *
+     * @param nimi pelaajan nimi.
+     * @param peli peli jossa pelaaja on.
+     */
     public Pelaaja(String nimi, Peli peli) {
         super(nimi);
         this.peli = peli;
-        this.maksimiElamat = 9;
+        this.maksimiElamat = 10;
+        this.parannus = 3;
         super.setElamat(maksimiElamat);
     }
 
@@ -32,12 +39,36 @@ public class Pelaaja extends Olio {
         return maksimiElamat;
     }
 
+    public void setMaksimiElamat(int maksimiElamat) {
+        this.maksimiElamat = maksimiElamat;
+    }
+
+    /**
+     * Metodi kasvattaa maksimielämiä yhdellä.
+     */
     public void kasvataMaksimia() {
         maksimiElamat++;
     }
 
-    public void setMaksimiElamat(int maksimiElamat) {
-        this.maksimiElamat = maksimiElamat;
+    /**
+     * Metodi parantaa pelaajaa parannuksen verran.
+     */
+    public void parannaPelaajaa() {
+        this.setElamat(super.getElamat() + parannus);
+    }
+
+    /**
+     * Metodi kasvattaa parannusta.
+     */
+    public void kasvataParannusta() {
+        parannus++;
+    }
+
+    /**
+     * Metodi parantaa pelaajan osumistarkkuutta.
+     */
+    public void kehitaOsumistarkkuuttak() {
+        super.setOsumatarkkuus(super.getOsumatarkkuus() + 0.05);
     }
 
     @Override

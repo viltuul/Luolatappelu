@@ -1,15 +1,13 @@
 package luolatappelu;
 
-import java.util.Scanner;
 import javax.swing.SwingUtilities;
-import luolatappelu.peli.Peli;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner lukija = new Scanner(System.in);
-        Peli peli = new Peli();
-        SwingUtilities.invokeLater(peli.getKayttoliittyma());
+        Kayttoliittyma kl = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kl);
     }
 
 }

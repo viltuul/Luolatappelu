@@ -14,6 +14,10 @@ public class Luolasto {
     private int korkeus;
     private ArrayList<Seina> seinat;
 
+    /**
+     * Konstruktorissa luodaan satunnaismuuttuja, lista seinäolioille sekä
+     * asetetaan luolastolle leveys ja korkeus.
+     */
     public Luolasto() {
         this.arpoja = new Random();
         this.seinat = new ArrayList();
@@ -21,6 +25,12 @@ public class Luolasto {
         this.korkeus = 20;
     }
 
+    /**
+     * Konstruktori on tehty lähinnä testejä varten. Muuten samanlainen kuin
+     * aiempi, mutta tässä parametrina tuodaan satunnaismuuttuja.
+     *
+     * @param arpoja parametrinä esimerkiksi halutunlainen satunnaismuuttuja.
+     */
     public Luolasto(Random arpoja) {
         this.arpoja = arpoja;
         this.seinat = new ArrayList();
@@ -56,7 +66,7 @@ public class Luolasto {
             luola2();
         } else if (arpa == 3) {
             luola3();
-        } else if (arpa == 4)  {
+        } else if (arpa == 4) {
             luola4();
         }
     }

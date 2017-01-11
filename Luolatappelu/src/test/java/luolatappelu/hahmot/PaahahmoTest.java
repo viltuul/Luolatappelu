@@ -6,7 +6,8 @@
 package luolatappelu.hahmot;
 
 import luolatappelu.objektit.Pelaaja;
-import luolatappelu.Suunta;
+import luolatappelu.objektit.Suunta;
+import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.peli.Peli;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,7 +20,7 @@ public class PaahahmoTest {
 private Pelaaja pelaaja;
 private Peli peli;
     public PaahahmoTest() {
-        this.peli = new Peli();
+        this.peli = new Peli(new Kayttoliittyma());
         this.pelaaja = new Pelaaja("testi", peli);
     }
 

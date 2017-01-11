@@ -17,7 +17,8 @@ public class Taso {
     private Oviaukko ovi;
 
     /**
-     * Taso konstruktori luo uuden Luolaston sekä uuden oliokannan.
+     * Taso konstruktori luo satunnaismuuttujan, uuden Luolaston sekä uuden
+     * oliokannan.
      *
      * @param peli Peli jolle luodaan uusi taso.
      */
@@ -97,9 +98,14 @@ public class Taso {
         }
     }
 
-    public void uusiTaso(int vaikeusTaso) {
-        System.out.println("Tämä taso on " + vaikeusTaso + ". taso!");
-        uudetOliot(vaikeusTaso);
+    /**
+     * Metodissa luodaan uusi taso. Metodi siis luo uudet oliot, uuden
+     * luolaston, ja sijoittaa kaikki oliot sekä oviaukon.
+     *
+     * @param vaikeustaso kertoo monesko taso on menossa.
+     */
+    public void uusiTaso(int vaikeustaso) {
+        uudetOliot(vaikeustaso);
         luolasto.uusiLuola();
         sijoitaPelaaja();
         sijoitaViholliset();
@@ -113,7 +119,6 @@ public class Taso {
      */
     public boolean isTasoLapi() {
         if (oliot.getElossaOlevat().isEmpty()) {
-            System.out.println("Paina space aukon päällä niin pääset seuraavalle tasolle");
             return true;
         }
         return false;
@@ -123,11 +128,14 @@ public class Taso {
         return ovi;
     }
 
+    /**
+     * Metodi sijoittaa oviaukon kohtaan luolastossa, jossa ei ole olioita.
+     */
     public void sijoitaOviaukko() {
         while (true) {
             int x = arpoja.nextInt(18) + 1;
             int y = arpoja.nextInt(18) + 1;
-            if (peli.koordinaatinOliot(x, y).size() == 0) {
+            if (peli.koordinaatinOliot(x, y).isEmpty()) {
                 this.ovi = new Oviaukko(x, y);
                 break;
             }

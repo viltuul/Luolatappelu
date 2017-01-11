@@ -3,7 +3,7 @@ package luolatappelu.kayttoliittyma;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import luolatappelu.Suunta;
+import luolatappelu.objektit.Suunta;
 import luolatappelu.objektit.Pelaaja;
 import luolatappelu.peli.Peli;
 
@@ -18,6 +18,13 @@ public class Nappaimistonkuuntelija implements KeyListener {
     private Peli peli;
     private Pelaaja pelaaja;
 
+    /**
+     * Konstruktorissa tuodaan komponentti sekä peli ja kiinnitetään ne luokan
+     * attribuutteihin.
+     *
+     * @param komponentti JFrame ikkuna jossa peli on.
+     * @param peli peli jota pelataan.
+     */
     public Nappaimistonkuuntelija(Component komponentti, Peli peli) {
         this.komponentti = komponentti;
         this.peli = peli;
