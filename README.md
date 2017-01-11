@@ -6,6 +6,7 @@
 
 [Aihemäärittely](dokumentaatio/aihemäärittely.md)
 
+[Ohjeet](dokumentaatio/ohjeet.md)
 
 [Pit raportti](https://htmlpreview.github.io/?https://github.com/viltuul/Luolatappelu/blob/master/dokumentaatio/201701090054/index.html)
 
