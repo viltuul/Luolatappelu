@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import luolatappelu.objektit.Olio;
 import luolatappelu.objektit.Orkki;
 import luolatappelu.objektit.Pelaaja;
+import luolatappelu.objektit.Puuseina;
 import luolatappelu.objektit.Seuraaja;
 import luolatappelu.objektit.Tankki;
 
@@ -16,6 +17,7 @@ public class Oliokanta {
     private ArrayList<Seuraaja> seuraajat;
     private ArrayList<Tankki> tankit;
     private ArrayList<Olio> viholliset;
+    private ArrayList<Puuseina> puuseinat;
 
     /**
      * Konstruktorissa luodaan jokaiselle vihollistyypille oma lista sekä yksi
@@ -25,8 +27,8 @@ public class Oliokanta {
         this.orkit = new ArrayList();
         this.seuraajat = new ArrayList();
         this.tankit = new ArrayList();
+        this.puuseinat = new ArrayList();
         this.viholliset = new ArrayList();
-
     }
 
     public ArrayList<Olio> getViholliset() {
@@ -77,12 +79,30 @@ public class Oliokanta {
     }
 
     /**
+     * Metodi luo uuden Puuseinaolion ja lisää sen puuseinat sekä viholliset
+     * listaan.
+     */
+    public void uusiPuuseina() {
+        Puuseina puuseina = new Puuseina();
+        puuseinat.add(puuseina);
+    }
+
+    public ArrayList<Puuseina> getPuuseinat() {
+        return puuseinat;
+    }
+
+    /**
      * Metodi siirtää kaikki kuolleet oliot pois peliruudulta.
      */
     public void poistaKuolleet() {
         for (Olio olio : viholliset) {
             if (!olio.isElossa()) {
                 olio.setX(99999999);
+            }
+        }
+        for (Puuseina puuseina : puuseinat) {
+            if (!puuseina.isElossa()) {
+                puuseina.setY(9999);
             }
         }
     }

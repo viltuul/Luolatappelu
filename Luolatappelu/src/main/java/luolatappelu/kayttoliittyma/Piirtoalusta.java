@@ -37,6 +37,7 @@ public class Piirtoalusta extends JPanel {
         piirraTankit();
         piirraSeinat();
         piirraOviaukko();
+        piirraPuuseinat();
     }
 
     private void piirraPelaaja() {
@@ -128,10 +129,10 @@ public class Piirtoalusta extends JPanel {
 
     private void piirraSeinat() {
         for (Olio seina : peli.getTaso().getLuolasto().getSeinat()) {
-            grafiikka.setColor(Color.DARK_GRAY);
+            grafiikka.setColor(Color.black);
             grafiikka.fillRect(seina.getX() * 40, seina.getY() * 40, 40, 40);
-            grafiikka.setColor(Color.BLACK);
             for (int i = 0; i < 4; i++) {
+                grafiikka.setColor(Color.darkGray);
                 grafiikka.fillOval(seina.getX() * 40, seina.getY() * 40 + (i * 10), 10, 5);
                 grafiikka.fillOval(seina.getX() * 40 + 20, seina.getY() * 40 + (i * 10), 10, 5);
                 grafiikka.fillOval(seina.getX() * 40 + 30, seina.getY() * 40 + (i * 10 + 5), 10, 5);
@@ -148,5 +149,12 @@ public class Piirtoalusta extends JPanel {
         }
         grafiikka.fillOval(ovi.getX() * 40, ovi.getY() * 40, 40, 40);
 
+    }
+
+    private void piirraPuuseinat() {
+        for (Olio olio : peli.getOliokanta().getPuuseinat()) {
+            grafiikka.setColor(new Color(210, 105, 30));
+            grafiikka.fillRect(olio.getX() * 40, olio.getY() * 40, 40, 40);
+        }
     }
 }

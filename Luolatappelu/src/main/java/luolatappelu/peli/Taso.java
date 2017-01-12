@@ -1,9 +1,10 @@
 package luolatappelu.peli;
 
+import java.util.ArrayList;
 import java.util.Random;
 import luolatappelu.objektit.Olio;
 import luolatappelu.objektit.Oviaukko;
-import luolatappelu.objektit.Seina;
+import luolatappelu.objektit.Puuseina;
 
 /**
  * Taso luokka sisältää tason luomiseen tarvittavat metodit.
@@ -47,7 +48,9 @@ public class Taso {
      * tai seinien päälle.
      */
     public void sijoitaViholliset() {
-        for (Olio sijoitettava : oliot.getViholliset()) {
+        ArrayList<Olio> lista = oliot.getViholliset();
+        lista.addAll(oliot.getPuuseinat());
+        for (Olio sijoitettava : lista) {
             while (true) {
                 int x = arpoja.nextInt(luolasto.getLeveys() - 2) + 1;
                 int y = arpoja.nextInt(luolasto.getKorkeus() - 2) + 1;
@@ -71,6 +74,10 @@ public class Taso {
      * @param vaikeusTaso kertoo metodille monesko taso on menossa.
      */
     public void uudetOliot(int vaikeusTaso) {
+        this.oliot = new Oliokanta();
+        for (int i = 0; i < 10; i++) {
+            oliot.uusiPuuseina();
+        }
         if (vaikeusTaso % 4 == 0) {
             bonustasonOliot(vaikeusTaso);
         } else {
@@ -78,8 +85,7 @@ public class Taso {
         }
     }
 
-    private void normaalinTasonOliot(int vaikeusTaso) {
-        this.oliot = new Oliokanta();
+    public void normaalinTasonOliot(int vaikeusTaso) {
         for (int i = 0; i < 4 + vaikeusTaso; i++) {
             double arpa = arpoja.nextDouble();
             if (arpa < 0.4) {
@@ -92,8 +98,7 @@ public class Taso {
         }
     }
 
-    private void bonustasonOliot(int vaikeusTaso) {
-        this.oliot = new Oliokanta();
+    public void bonustasonOliot(int vaikeusTaso) {
         for (int i = 0; i < 4 + vaikeusTaso; i++) {
             oliot.uusiSeuraaja(peli.getPelaaja());
         }
