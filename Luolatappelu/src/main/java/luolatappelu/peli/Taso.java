@@ -71,7 +71,7 @@ public class Taso {
      * @param vaikeusTaso kertoo metodille monesko taso on menossa.
      */
     public void uudetOliot(int vaikeusTaso) {
-        if (vaikeusTaso % 5 == 0) {
+        if (vaikeusTaso % 4 == 0) {
             bonustasonOliot(vaikeusTaso);
         } else {
             normaalinTasonOliot(vaikeusTaso);
@@ -108,6 +108,9 @@ public class Taso {
     public void uusiTaso(int vaikeustaso) {
         uudetOliot(vaikeustaso);
         luolasto.uusiLuola();
+        if (vaikeustaso % 12 != 0) {
+            luolasto.uudetSeinat();
+        }
         sijoitaPelaaja();
         sijoitaViholliset();
         sijoitaOviaukko();

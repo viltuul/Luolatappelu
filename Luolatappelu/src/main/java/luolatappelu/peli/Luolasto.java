@@ -57,6 +57,9 @@ public class Luolasto {
     public void uusiLuola() {
         seinat.clear();
         rakennaReunat();
+    }
+
+    public void uudetSeinat() {
         int arpa = arpoja.nextInt(5);
         if (arpa == 0) {
             luola0();
