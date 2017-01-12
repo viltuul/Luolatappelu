@@ -44,6 +44,7 @@ public class Kayttoliittyma implements Runnable {
         luoKomponentitPeliin();
         peliIkkuna.pack();
         peliIkkuna.setVisible(true);
+        kirjoitaNimiIkkuna();
     }
 
     /**
@@ -56,6 +57,39 @@ public class Kayttoliittyma implements Runnable {
         peliIkkuna.add(alusta);
         Nappaimistonkuuntelija nk = new Nappaimistonkuuntelija(peliIkkuna, peli);
         peliIkkuna.addKeyListener(nk);
+    }
+
+    /**
+     * Metodi kysyy käyttäjältä nimeä, jonka jälkeen asettaa sen pelaajan
+     * nimeksi.
+     */
+    public void kirjoitaNimiIkkuna() {
+        String nimi = JOptionPane.showInputDialog(null, "Kirjoita nimesi");
+        if (nimi.isEmpty()) {
+            peli.getPelaaja().setNimi("Pelaaja");
+        } else {
+            peli.getPelaaja().setNimi(nimi);
+        }
+    }
+
+    public void kehitysIkkuna() {
+        Object[] vaihtoehdot = {"Elämiä", "Parantuvuutta", "Osumistarkkuutta"};
+        int vaihtoehtoNro = JOptionPane.showOptionDialog(null,
+                "Valitse yksi",
+                "Kehityit",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                vaihtoehdot,
+                vaihtoehdot[1]);
+
+        if (vaihtoehtoNro == 0) {
+            peli.getPelaaja().kasvataMaksimia();
+        } else if (vaihtoehtoNro == 1) {
+            peli.getPelaaja().kasvataParannusta();
+        } else {
+            peli.getPelaaja().kehitaOsumistarkkuuttak();
+        }
     }
 
     /**

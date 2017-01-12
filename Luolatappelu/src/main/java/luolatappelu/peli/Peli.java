@@ -41,9 +41,12 @@ public class Peli {
     public void uusiTaso() {
         this.taso = new Taso(this);
         vaikeustaso++;
-        pelaaja.kasvataMaksimia();
-        pelaaja.parannaPelaajaa();
         taso.uusiTaso(vaikeustaso);
+        kayttoliittyma.getRuudukko().kirjoitin("Tämä on " + vaikeustaso + ". taso.");
+        if (vaikeustaso > 1) {
+            kayttoliittyma.kehitysIkkuna();
+            pelaaja.parannaPelaajaa();
+        }
     }
 
     public int getVaikeustaso() {
@@ -115,9 +118,12 @@ public class Peli {
     private void liikutaOlioita() {
         for (Olio olio : taso.getOliokanta().getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
-            if (lista.contains(pelaaja)) {
-                olio.lyo(pelaaja);
-                kirjoitin.lyontitapahtuma(olio,pelaaja);
+            if (lista.contains(pelaaja) && !olio.toString().equals("P")) {
+                if (olio.lyo(pelaaja)) {
+                    kirjoitin.lyontitapahtuma(olio, pelaaja, true);
+                } else {
+                    kirjoitin.lyontitapahtuma(olio, pelaaja, false);
+                }
             } else {
                 olio.liiku();
                 if (tormaysObjektiin(olio)) {
@@ -128,7 +134,7 @@ public class Peli {
     }
 
     /**
-     * Pivita metodi liikuttaa olioita, poistaa kuolleet oliot kentältä,
+     * Paivita metodi liikuttaa olioita, poistaa kuolleet oliot kentältä,
      * tarkistaa onko pelaajalla vielä elämiä jäljellä sekä ilmoittaa jos taso
      * on läpi. Metodi myös kirjoittaa Ruudukkoon tapahtumienkulun.
      */
@@ -138,7 +144,7 @@ public class Peli {
         if (pelaaja.getElamat() <= 0) {
             kayttoliittyma.peliOhi();
         }
-        kayttoliittyma.getRuudukko().kirjoitin(kirjoitin.tapahtumienKirjoitin());
+        kayttoliittyma.getRuudukko().kirjoitin(kirjoitin.getTapahtuma());
         kayttoliittyma.getRuudukko().pelaajanTiedot(kirjoitin.tietojenKirjoitin());
     }
 

@@ -81,7 +81,7 @@ public class PeliTest {
         assertEquals(peli.getVaikeustaso(), 1);
         assertEquals(peli.getPelaaja().getX(), 1);
         assertEquals(peli.getPelaaja().getY(), 19);
-        assertEquals(peli.getOliokanta().getElossaOlevat().size(), 5);
+        assertEquals(15, peli.getOliokanta().getElossaOlevat().size());
         peli.uusiTaso();
         assertEquals(peli.getVaikeustaso(), 2);
     }

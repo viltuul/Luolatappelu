@@ -49,10 +49,10 @@ public class TasoTest {
 
     @Test
     public void bonustasonVihollisetTest() {
-        taso.uudetOliot(5);
+        taso.uudetOliot(4);
         assertEquals(0, taso.getOliokanta().getOrkit().size());
         assertEquals(0, taso.getOliokanta().getTankit().size());
-        assertEquals(9, taso.getOliokanta().getViholliset().size());
+        assertEquals(8, taso.getOliokanta().getViholliset().size());
         assertFalse(taso.isTasoLapi());
     }
 
