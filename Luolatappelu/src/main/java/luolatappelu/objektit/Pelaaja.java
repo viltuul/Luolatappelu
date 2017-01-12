@@ -18,8 +18,8 @@ public class Pelaaja extends Olio {
      * @param nimi pelaajan nimi.
      * @param peli peli jossa pelaaja on.
      */
-    public Pelaaja(String nimi, Peli peli) {
-        super(nimi);
+    public Pelaaja(Peli peli) {
+        super("Pelaaja");
         this.peli = peli;
         this.maksimiElamat = 10;
         this.parannus = 3;
@@ -62,6 +62,14 @@ public class Pelaaja extends Olio {
      */
     public void kasvataParannusta() {
         parannus++;
+    }
+
+    public int getParannus() {
+        return parannus;
+    }
+
+    public void setParannus(int arvo) {
+        parannus = arvo;
     }
 
     /**

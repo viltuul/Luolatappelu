@@ -21,25 +21,27 @@ public class Kayttoliittyma implements Runnable {
     private JFrame peliIkkuna;
 
     /**
-     * Konstruktorissa luodaan Peli, Piirtoalusta sekä Ruudukko luokat.
+     * Konstruktorissa luodaan Piirtoalusta sekä Ruudukko luokat.
      *
      */
     public Kayttoliittyma() {
+
         this.peli = new Peli(this);
         this.alusta = new Piirtoalusta(peli);
         this.ruudukko = new Ruudukko();
     }
 
     /**
-     * Metodi käynnistää pelin ja kokoaa ikkunan jossa pelaaminen tapahtuu.
+     * Metodi luo sekä käynnistää pelin ja kokoaa ikkunan jossa pelaaminen
+     * tapahtuu.
      */
     @Override
     public void run() {
         peli.uusiTaso();
-        peliIkkuna = new JFrame("Luolatappelu");
+        this.peliIkkuna = new JFrame("Luolatappelu");
         peliIkkuna.setPreferredSize(new Dimension(1300, 870));
         peliIkkuna.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        luoKomponentit();
+        luoKomponentitPeliin();
         peliIkkuna.pack();
         peliIkkuna.setVisible(true);
     }
@@ -48,7 +50,7 @@ public class Kayttoliittyma implements Runnable {
      * Metodissa luodaan ikkunan komponentit ja kiinnitetään siihen
      * Nappaimistonkuuntelija.
      */
-    public void luoKomponentit() {
+    public void luoKomponentitPeliin() {
         peliIkkuna.add(ruudukko);
         ruudukko.setFocusable(false);
         peliIkkuna.add(alusta);
@@ -57,11 +59,13 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * peliOhi metodi lopettaa pelin ja sulkee ikkunan.
+     * peliOhi metodi lopettaa pelin ja avaa aloitusikkunan.
      */
     public void peliOhi() {
-        JOptionPane.showMessageDialog(null, "Kuolit, käynnistä peli uudestaan aloittaaksesi");
+        JOptionPane.showMessageDialog(null, "Kuolit, peli alkaa alusta uudestaan");
         peliIkkuna.dispose();
+        peli.nollaaKaikki();
+        run();
     }
 
     public Ruudukko getRuudukko() {

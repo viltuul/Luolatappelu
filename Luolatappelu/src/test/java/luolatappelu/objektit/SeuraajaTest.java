@@ -25,7 +25,7 @@ public class SeuraajaTest {
 
     public SeuraajaTest() {
         this.peli = new Peli(new Kayttoliittyma());
-        this.pelaaja = new Pelaaja("testaaja", peli);
+        this.pelaaja = new Pelaaja(peli);
         this.seuraaja = new Seuraaja(pelaaja);
         pelaaja.setX(10);
         pelaaja.setY(10);

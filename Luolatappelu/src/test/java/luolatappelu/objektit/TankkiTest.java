@@ -22,7 +22,7 @@ public class TankkiTest {
         this.tankki = new Tankki();
         tankki.setX(4);
         tankki.setY(4);
-        this.pelaaja = new Pelaaja("testi", new Peli(new Kayttoliittyma()));
+        this.pelaaja = new Pelaaja(new Peli(new Kayttoliittyma()));
     }
 
     @Test

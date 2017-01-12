@@ -18,6 +18,7 @@ public class Peli {
     private int vaikeustaso;
     private Kayttoliittyma kayttoliittyma;
     private StringBuilder tapahtuma;
+    private Kirjoitin kirjoitin;
 
     /**
      * Konstruktorissa luodaan taso, pelaaja, satunnaismuuttuja ja asetetaan
@@ -28,8 +29,9 @@ public class Peli {
     public Peli(Kayttoliittyma kayttoliittyma) {
         this.kayttoliittyma = kayttoliittyma;
         this.taso = new Taso(this);
-        this.pelaaja = new Pelaaja("Pelaaja", this);
+        this.pelaaja = new Pelaaja(this);
         this.arpoja = new Random();
+        this.kirjoitin = new Kirjoitin(this);
         this.vaikeustaso = 0;
     }
 
@@ -114,7 +116,8 @@ public class Peli {
         for (Olio olio : taso.getOliokanta().getViholliset()) {
             ArrayList<Olio> lista = this.getNaapurit(olio);
             if (lista.contains(pelaaja)) {
-                tapahtumaTekstiksi(olio.lyo(pelaaja));
+                olio.lyo(pelaaja);
+                kirjoitin.lyontitapahtuma(olio,pelaaja);
             } else {
                 olio.liiku();
                 if (tormaysObjektiin(olio)) {
@@ -132,34 +135,11 @@ public class Peli {
     public void paivita() {
         taso.getOliokanta().poistaKuolleet();
         liikutaOlioita();
-        if (pelaaja.getElamat() == 0) {
+        if (pelaaja.getElamat() <= 0) {
             kayttoliittyma.peliOhi();
         }
-        kayttoliittyma.getRuudukko().kirjoitin(tapahtumienKirjoitin());
-        kayttoliittyma.getRuudukko().pelaajanTiedot(tietojenKirjoitin());
-    }
-
-    private String tapahtumienKirjoitin() {
-        this.tapahtuma = new StringBuilder();
-        for (Olio olio : taso.getOliokanta().getViholliset()) {
-            tapahtuma.append("\n" + tapahtumaTekstiksi(true) + " ");
-        }
-        return tapahtuma.toString();
-    }
-
-    private String tapahtumaTekstiksi(boolean osuiko) {
-        if (osuiko) {
-            return "osuma";
-        } else {
-            return "ohi";
-        }
-    }
-
-    private String tietojenKirjoitin() {
-        StringBuilder tietojenTulostin = new StringBuilder();
-        tietojenTulostin.append("Taso: " + vaikeustaso + "\n");
-        tietojenTulostin.append("Pelaajan elämät: " + pelaaja.getElamat() + "/" + pelaaja.getMaksimiElamat());
-        return tietojenTulostin.toString();
+        kayttoliittyma.getRuudukko().kirjoitin(kirjoitin.tapahtumienKirjoitin());
+        kayttoliittyma.getRuudukko().pelaajanTiedot(kirjoitin.tietojenKirjoitin());
     }
 
     /**
@@ -179,6 +159,18 @@ public class Peli {
 
     public Runnable getKayttoliittyma() {
         return kayttoliittyma;
+    }
+
+    /**
+     * Metodi palauttaa kaikki pelaajan ja pelin tiedot alkuasentoon.
+     */
+    public void nollaaKaikki() {
+        pelaaja.setMaksimiElamat(10);
+        pelaaja.setElamat(10);
+        pelaaja.setOsumatarkkuus(0.5);
+        pelaaja.setNimi("Pelaaja");
+        pelaaja.setParannus(3);
+        vaikeustaso = 0;
     }
 
 }

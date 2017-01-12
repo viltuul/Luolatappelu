@@ -35,6 +35,10 @@ public class Olio {
         return nimi;
     }
 
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
+    }
+
     public int getElamat() {
         return elamat;
     }

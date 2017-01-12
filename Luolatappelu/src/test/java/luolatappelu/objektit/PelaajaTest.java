@@ -14,12 +14,12 @@ public class PelaajaTest {
 
     public PelaajaTest() {
         this.peli = new Peli(new Kayttoliittyma());
-        this.pelaaja = new Pelaaja("testi", peli);
+        this.pelaaja = new Pelaaja(peli);
     }
 
     @Test
     public void konstruktoriToimii() {
-        assertEquals(pelaaja.getNimi(), "testi");
+        assertEquals(pelaaja.getNimi(), "Pelaaja");
         assertEquals(pelaaja.getElamat(), 10);
         assertEquals(pelaaja.toString(), "@");
     }
@@ -70,6 +70,53 @@ public class PelaajaTest {
     public void kehitaOsumistarkkuuttaTest() {
         pelaaja.kehitaOsumistarkkuuttak();
         double osuminen = 0.55;
-        assertEquals(osuminen, pelaaja.getOsumatarkkuus(),0.001);
+        assertEquals(osuminen, pelaaja.getOsumatarkkuus(), 0.001);
+    }
+
+    @Test
+    public void luodaanPaahahmo() {
+        pelaaja.setNimi("testi");
+        assertEquals(pelaaja.getNimi(), "testi");
+        assertEquals(pelaaja.getElamat(), 10);
+    }
+
+    @Test
+    public void liikuMetodiToimiiEka() {
+        pelaaja.liiku(Suunta.OIKEA);
+        assertEquals(pelaaja.getX(), 1);
+        pelaaja.liiku(Suunta.VASEN);
+        assertEquals(pelaaja.getX(), 0);
+        assertEquals(pelaaja.getY(), 0);
+    }
+
+    @Test
+    public void liikuMetodiToimiiToka() {
+        pelaaja.liiku(Suunta.ALAS);
+        pelaaja.liiku(Suunta.ALAS);
+        pelaaja.liiku(Suunta.ALAS);
+        pelaaja.liiku(Suunta.OIKEA);
+        assertEquals(pelaaja.getY(), 3);
+        assertEquals(pelaaja.getX(), 1);
+        pelaaja.liiku(Suunta.YLOS);
+        pelaaja.liiku(Suunta.YLOS);
+        pelaaja.liiku(Suunta.YLOS);
+        pelaaja.liiku(Suunta.YLOS);
+        assertEquals(pelaaja.getY(), -1);
+        assertEquals(pelaaja.getX(), 1);
+    }
+
+    @Test
+    public void toimiMetodiTest() {
+        peli.uusiTaso();
+        Olio vihu = peli.getTaso().getOliokanta().getViholliset().get(0);
+        pelaaja.setX(1);
+        pelaaja.setY(1);
+        vihu.setX(2);
+        vihu.setY(1);
+        int elamat = vihu.getElamat();
+        pelaaja.setOsumatarkkuus(1.0);
+        pelaaja.toimi(Suunta.OIKEA);
+        assertEquals(1, pelaaja.getX());
+        assertEquals(elamat - 1, vihu.getElamat());
     }
 }
