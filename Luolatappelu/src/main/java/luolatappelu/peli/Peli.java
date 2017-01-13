@@ -42,7 +42,6 @@ public class Peli {
         this.taso = new Taso(this);
         vaikeustaso++;
         taso.uusiTaso(vaikeustaso);
-        kayttoliittyma.getRuudukko().kirjoitin("Tämä on " + vaikeustaso + ". taso.");
         if (vaikeustaso > 1) {
             kayttoliittyma.kehitysIkkuna();
             pelaaja.parannaPelaajaa();
@@ -74,17 +73,14 @@ public class Peli {
      */
     public ArrayList<Olio> koordinaatinOliot(int x, int y) {
         ArrayList<Olio> lista = new ArrayList();
-        if (pelaaja.getX() == x && pelaaja.getY() == y) {
-            lista.add(pelaaja);
-        }
-        for (Olio olio : taso.getOliokanta().getViholliset()) {
+        ArrayList<Olio> kaikki = new ArrayList();
+        kaikki.add(pelaaja);
+        kaikki.addAll(taso.getOliokanta().getPuuseinat());
+        kaikki.addAll(taso.getOliokanta().getViholliset());
+        kaikki.addAll(taso.getLuolasto().getSeinat());
+        for (Olio olio : kaikki) {
             if (olio.getX() == x && olio.getY() == y) {
                 lista.add(olio);
-            }
-        }
-        for (Seina seina : taso.getLuolasto().getSeinat()) {
-            if (seina.getX() == x && seina.getY() == y) {
-                lista.add(seina);
             }
         }
         return lista;
@@ -178,5 +174,18 @@ public class Peli {
         pelaaja.setParannus(3);
         vaikeustaso = 0;
     }
+
+    public boolean isTasoLapi() {
+        if (taso.getOliokanta().getElossaOlevat().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Kirjoitin getKirjoitin() {
+        return kirjoitin;
+    }
+    
 
 }

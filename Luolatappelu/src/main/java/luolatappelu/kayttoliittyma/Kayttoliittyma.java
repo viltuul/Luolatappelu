@@ -64,14 +64,21 @@ public class Kayttoliittyma implements Runnable {
      * nimeksi.
      */
     public void kirjoitaNimiIkkuna() {
-        String nimi = JOptionPane.showInputDialog(null, "Kirjoita nimesi");
-        if (nimi.isEmpty()) {
-            peli.getPelaaja().setNimi("Pelaaja");
+        String nimi = JOptionPane.showInputDialog("Kirjoita nimesi", null);
+        if (nimi != null) {
+            if (!nimi.isEmpty()) {
+                peli.getPelaaja().setNimi(nimi);
+            }
         } else {
-            peli.getPelaaja().setNimi(nimi);
+            peli.getPelaaja().setNimi("Pelaaja");
         }
     }
 
+    /**
+     * Kun taso päästään läpi niin pelaaja kehittyy ja näytölle ponnahtaa
+     * huomautus ikkuna jossa pyydetään pelaajaa valitsemaan haluamansa
+     * kehityskohde.
+     */
     public void kehitysIkkuna() {
         Object[] vaihtoehdot = {"Elämiä", "Parantuvuutta", "Osumistarkkuutta"};
         int vaihtoehtoNro = JOptionPane.showOptionDialog(null,
@@ -81,7 +88,7 @@ public class Kayttoliittyma implements Runnable {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 vaihtoehdot,
-                vaihtoehdot[1]);
+                vaihtoehdot[0]);
 
         if (vaihtoehtoNro == 0) {
             peli.getPelaaja().kasvataMaksimia();

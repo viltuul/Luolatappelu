@@ -113,10 +113,12 @@ public class Pelaaja extends Olio {
         if (peli.koordinaatinOliot(x, y).isEmpty()) {
             super.setX(x);
             super.setY(y);
-        } else if (super.lyo(peli.koordinaatinOliot(x, y).get(0))) {
-            
         } else {
-
+            if (super.lyo(peli.koordinaatinOliot(x, y).get(0))) {
+                peli.getKirjoitin().lyontitapahtuma(this, peli.koordinaatinOliot(x, y).get(0), true);
+            } else {
+                peli.getKirjoitin().lyontitapahtuma(this, peli.koordinaatinOliot(x, y).get(0), false);
+            }
         }
     }
 

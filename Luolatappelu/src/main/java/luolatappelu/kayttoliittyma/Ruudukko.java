@@ -3,31 +3,46 @@ package luolatappelu.kayttoliittyma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
 
 /**
  * Ruudukko luokassa luodaan tekstiruudukko grafiikoiden viereen.
  */
 public class Ruudukko extends JTextArea {
 
-    private JTextPane tuloste;
+    private JScrollPane rulla;
+    private JTextArea ylaruutu;
     private JTextArea pelaajanTiedot;
+    private StringBuilder tuloste;
 
     /**
      * Asetetaan ruudukolle taustaväri ja rajat. Luodaan myös esillepano ja
      * lisätään tarvittavat komponentit siihen.
      */
     public Ruudukko() {
-        super.setBackground(Color.white);
-        super.setBounds(840, 0, 460, 870);
+        super.setBounds(840, 0, 440, 870);
         super.setLayout(new GridLayout(2, 1));
-        this.tuloste = new JTextPane();
+        this.ylaruutu = new JTextArea();
+        this.rulla = new JScrollPane(ylaruutu);
+        super.add(rulla);
+        
+        rulla.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         this.pelaajanTiedot = new JTextArea();
-        super.add(tuloste);
         super.add(pelaajanTiedot);
-        tuloste.setEnabled(false);
+        ylaruutu.setEnabled(false);
         pelaajanTiedot.setEnabled(false);
+        ylaruutu.setBackground(Color.black);
+        pelaajanTiedot.setBackground(Color.BLACK);
+
+    }
+
+    public void tekstinTuloste() {
+
     }
 
     /**
@@ -36,8 +51,8 @@ public class Ruudukko extends JTextArea {
      * @param teksti Peli luokka antaa tekstin.
      */
     public void kirjoitin(String teksti) {
-        tuloste.setFont(new Font("Calibri", 3, 20));
-        tuloste.setText(teksti);
+        ylaruutu.setFont(new Font("Calibri", 3, 16));
+        ylaruutu.setText(teksti);
     }
 
     /**
@@ -47,6 +62,7 @@ public class Ruudukko extends JTextArea {
      */
     public void pelaajanTiedot(String tiedot) {
         pelaajanTiedot.setFont(new Font("", 4, 20));
+        pelaajanTiedot.setForeground(Color.green);
         pelaajanTiedot.setText(tiedot);
     }
 }

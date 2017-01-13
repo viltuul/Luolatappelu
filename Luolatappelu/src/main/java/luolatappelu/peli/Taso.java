@@ -49,7 +49,6 @@ public class Taso {
      */
     public void sijoitaViholliset() {
         ArrayList<Olio> lista = oliot.getViholliset();
-        lista.addAll(oliot.getPuuseinat());
         for (Olio sijoitettava : lista) {
             while (true) {
                 int x = arpoja.nextInt(luolasto.getLeveys() - 2) + 1;
@@ -61,6 +60,19 @@ public class Taso {
                 }
             }
         }
+        ArrayList<Puuseina> toinen = oliot.getPuuseinat();
+        for (Puuseina sijoitettava : toinen) {
+            while (true) {
+                int x = arpoja.nextInt(luolasto.getLeveys() - 2) + 1;
+                int y = arpoja.nextInt(luolasto.getKorkeus() - 2) + 1;
+                sijoitettava.setX(x);
+                sijoitettava.setY(y);
+                if (peli.koordinaatinOliot(x, y).size() < 2) {
+                    break;
+                }
+            }
+        }
+
     }
 
     public Oliokanta getOliokanta() {

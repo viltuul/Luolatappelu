@@ -77,13 +77,14 @@ public class PeliTest {
     public void uudenTasonTestaaminen1() {
         peli.getPelaaja().setElamat(5);
         peli.uusiTaso();
+        peli.uusiTaso();
         assertEquals(8, peli.getPelaaja().getElamat());
-        assertEquals(peli.getVaikeustaso(), 1);
+        assertEquals(2, peli.getVaikeustaso());
         assertEquals(peli.getPelaaja().getX(), 1);
         assertEquals(peli.getPelaaja().getY(), 19);
-        assertEquals(15, peli.getOliokanta().getElossaOlevat().size());
+        assertEquals(6, peli.getOliokanta().getElossaOlevat().size());
         peli.uusiTaso();
-        assertEquals(peli.getVaikeustaso(), 2);
+        assertEquals(peli.getVaikeustaso(), 3);
     }
 
     @Test

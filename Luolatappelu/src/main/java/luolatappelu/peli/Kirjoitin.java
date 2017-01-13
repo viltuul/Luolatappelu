@@ -39,6 +39,9 @@ public class Kirjoitin {
             tapahtuma.append(lyoja.getNimi() + " ei osunut olioon " + lyotava.getNimi() + "\n");
         }
     }
+    public void olioKuoli(Olio olio){
+        tapahtuma.append("Olio " + olio + "kuoli.");
+    }
 
     /**
      * Tietojen kirjoitin kirjoittaa pelaajan nykyiset elämät, parannuksen ja
