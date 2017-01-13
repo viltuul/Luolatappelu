@@ -64,7 +64,7 @@ public class Kayttoliittyma implements Runnable {
      * nimeksi.
      */
     public void kirjoitaNimiIkkuna() {
-        String nimi = JOptionPane.showInputDialog("Kirjoita nimesi", null);
+        String nimi = JOptionPane.showInputDialog(peliIkkuna, "Kirjoita nimesi");
         if (nimi != null) {
             if (!nimi.isEmpty()) {
                 peli.getPelaaja().setNimi(nimi);
@@ -81,7 +81,7 @@ public class Kayttoliittyma implements Runnable {
      */
     public void kehitysIkkuna() {
         Object[] vaihtoehdot = {"Elämiä", "Parantuvuutta", "Osumistarkkuutta"};
-        int vaihtoehtoNro = JOptionPane.showOptionDialog(null,
+        int vaihtoehtoNro = JOptionPane.showOptionDialog(peliIkkuna,
                 "Valitse yksi",
                 "Kehityit",
                 JOptionPane.YES_NO_CANCEL_OPTION,
