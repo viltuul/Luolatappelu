@@ -60,6 +60,14 @@ public class Taso {
                 }
             }
         }
+    }
+
+    /**
+     * Metodi sijoittaa puuseinat satunnaisesti arvottuihin paikkoihin
+     * luolastossa. Metodi myös tarkistaa, ettei viholliset sijoitu toisten
+     * olioiden päälle.
+     */
+    public void sijoitaPuuseinat() {
         ArrayList<Puuseina> toinen = oliot.getPuuseinat();
         for (Puuseina sijoitettava : toinen) {
             while (true) {
@@ -97,6 +105,11 @@ public class Taso {
         }
     }
 
+    /**
+     * Metodi luo normaalin tason oliot. Eli arpoo jokaisen olion erikseen.
+     *
+     * @param vaikeusTaso kertoo kuinka monta oliota luodaan.
+     */
     public void normaalinTasonOliot(int vaikeusTaso) {
         for (int i = 0; i < 4 + vaikeusTaso; i++) {
             double arpa = arpoja.nextDouble();
@@ -110,6 +123,11 @@ public class Taso {
         }
     }
 
+    /**
+     * Metodi luo pelkästään seuraajaolioita.
+     *
+     * @param vaikeusTaso kertoo kunka monta oliota luodaan.
+     */
     public void bonustasonOliot(int vaikeusTaso) {
         for (int i = 0; i < 4 + vaikeusTaso; i++) {
             oliot.uusiSeuraaja(peli.getPelaaja());
@@ -130,6 +148,7 @@ public class Taso {
         }
         sijoitaPelaaja();
         sijoitaViholliset();
+        sijoitaPuuseinat();
         sijoitaOviaukko();
     }
 

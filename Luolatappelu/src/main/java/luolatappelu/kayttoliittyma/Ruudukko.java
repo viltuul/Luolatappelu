@@ -3,11 +3,8 @@ package luolatappelu.kayttoliittyma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 
 /**
@@ -41,10 +38,6 @@ public class Ruudukko extends JTextArea {
 
     }
 
-    public void tekstinTuloste() {
-
-    }
-
     /**
      * Kirjoittaa tapahtumien kuvauksen ikkunan oikeaan laitaan.
      *
@@ -56,7 +49,7 @@ public class Ruudukko extends JTextArea {
     }
 
     /**
-     * Kirjoittaa pelaajan tiedot ikkunan oikeaan laitaan.
+     * Kirjoittaa pelaajan tiedot ikkunan oikeaan alalaitaan.
      *
      * @param tiedot Peli luokka antaa tiedot.
      */

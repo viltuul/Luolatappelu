@@ -79,8 +79,7 @@ public class Oliokanta {
     }
 
     /**
-     * Metodi luo uuden Puuseinaolion ja lisää sen puuseinat sekä viholliset
-     * listaan.
+     * Metodi luo uuden Puuseinaolion ja lisää sen puuseinat listaan.
      */
     public void uusiPuuseina() {
         Puuseina puuseina = new Puuseina();
@@ -97,9 +96,15 @@ public class Oliokanta {
     public void poistaKuolleet() {
         for (Olio olio : viholliset) {
             if (!olio.isElossa()) {
-                olio.setX(99999999);
+                olio.setX(olio.hashCode() + 9999999);
             }
         }
+    }
+
+    /**
+     * Metodi siirtää tuhoutuneet puuseinat pois peliruudulta.
+     */
+    public void poistaTuhoutunutPuuseina() {
         for (Puuseina puuseina : puuseinat) {
             if (!puuseina.isElossa()) {
                 puuseina.setY(9999);

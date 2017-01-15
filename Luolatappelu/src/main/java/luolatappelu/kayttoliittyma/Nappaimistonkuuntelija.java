@@ -53,6 +53,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
                 peli.uusiTaso();
             }
         }
+        komponentti.repaint();
         peli.paivita();
         komponentti.repaint();
     }

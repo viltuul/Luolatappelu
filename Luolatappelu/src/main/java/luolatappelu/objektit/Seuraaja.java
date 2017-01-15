@@ -12,7 +12,7 @@ public class Seuraaja extends Olio {
     private Pelaaja pelaaja;
 
     /**
-     * Konstruktorissa annetaan oliolli nimi Seuraaja sekä määritellään
+     * Konstruktorissa annetaan oliolle nimi Seuraaja sekä määritellään
      * attribuutit.
      *
      * @param pelaaja parametrin avulla Seuraaja tietää pelaajan sijainnin ja

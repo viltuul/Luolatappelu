@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import luolatappelu.peli.Peli;
 
@@ -21,7 +20,7 @@ public class Kayttoliittyma implements Runnable {
     private JFrame peliIkkuna;
 
     /**
-     * Konstruktorissa luodaan Piirtoalusta sekä Ruudukko luokat.
+     * Konstruktorissa luodaan Peli, Piirtoalusta sekä Ruudukko luokat.
      *
      */
     public Kayttoliittyma() {
@@ -76,7 +75,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Kun taso päästään läpi niin pelaaja kehittyy ja näytölle ponnahtaa
-     * huomautus ikkuna jossa pyydetään pelaajaa valitsemaan haluamansa
+     * huomautusikkuna jossa pyydetään pelaajaa valitsemaan haluamansa
      * kehityskohde.
      */
     public void kehitysIkkuna() {
@@ -100,7 +99,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * peliOhi metodi lopettaa pelin ja avaa aloitusikkunan.
+     * peliOhi metodi lopettaa pelin ja aloittaa sen alusta.
      */
     public void peliOhi() {
         JOptionPane.showMessageDialog(null, "Kuolit, peli alkaa alusta uudestaan");

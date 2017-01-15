@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import luolatappelu.objektit.Olio;
 import luolatappelu.objektit.Pelaaja;
-import luolatappelu.objektit.Seina;
 import luolatappelu.kayttoliittyma.Kayttoliittyma;
 
 /**
@@ -36,7 +35,7 @@ public class Peli {
     }
 
     /**
-     * uusiTaso metodi luo uuden tason ja lisää yhdellä attribuuttia leveli.
+     * uusiTaso metodi luo uuden tason ja lisää yhdellä vaikeustasoa.
      */
     public void uusiTaso() {
         this.taso = new Taso(this);
@@ -136,6 +135,7 @@ public class Peli {
      */
     public void paivita() {
         taso.getOliokanta().poistaKuolleet();
+        taso.getOliokanta().poistaTuhoutunutPuuseina();
         liikutaOlioita();
         if (pelaaja.getElamat() <= 0) {
             kayttoliittyma.peliOhi();
@@ -175,17 +175,8 @@ public class Peli {
         vaikeustaso = 0;
     }
 
-    public boolean isTasoLapi() {
-        if (taso.getOliokanta().getElossaOlevat().isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public Kirjoitin getKirjoitin() {
         return kirjoitin;
     }
-    
 
 }

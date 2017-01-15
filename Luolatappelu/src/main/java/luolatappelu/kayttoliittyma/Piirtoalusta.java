@@ -142,7 +142,7 @@ public class Piirtoalusta extends JPanel {
 
     private void piirraOviaukko() {
         Oviaukko ovi = peli.getTaso().getOvi();
-        if (peli.isTasoLapi()) {
+        if (peli.getTaso().isTasoLapi()) {
             grafiikka.setColor(Color.black);
         } else {
             grafiikka.setColor(Color.gray);

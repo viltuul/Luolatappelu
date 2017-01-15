@@ -59,6 +59,10 @@ public class Luolasto {
         rakennaReunat();
     }
 
+    /**
+     * Metodi arpoo viidestä seinävaihtoehdosta yhden ja luo sen mukaiset seinät
+     * luolastolle.
+     */
     public void uudetSeinat() {
         int arpa = arpoja.nextInt(5);
         if (arpa == 0) {

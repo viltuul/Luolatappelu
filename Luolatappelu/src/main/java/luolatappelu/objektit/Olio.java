@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Luokka on kaikkien olioluokkien yliluokka. Olio sisältää olioiden nimet,
  * elämät, sijainnin, osumatarkkuuden sekä pelilogiikkaa avittavat attribuutit
- * elossa, ja viimeinenSuunta.
+ * elossa, ja Suunnan viimeinenSuunta.
  */
 public class Olio {
 

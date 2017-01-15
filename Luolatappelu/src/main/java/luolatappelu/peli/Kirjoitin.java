@@ -16,7 +16,7 @@ public class Kirjoitin {
     /**
      * Konstruktorissa tuodaan vain peliluokka attribuutiksi luokalle.
      *
-     * @param peli
+     * @param peli Peli jota pelataan.
      */
     public Kirjoitin(Peli peli) {
         this.peli = peli;
@@ -32,15 +32,27 @@ public class Kirjoitin {
         return tapahtuma.toString();
     }
 
+    /**
+     * Kirjoittaa ylös lyöntitapahtuman kutsuttaessa. Jos olio kuolee niin
+     * metodi ilmoittaa myös siitä.
+     *
+     * @param lyoja Olio joka lyö.
+     * @param lyotava Olio jota lyödään.
+     * @param osuiko Totuusarvo joka kertoo osuiko lyönti.
+     */
     public void lyontitapahtuma(Olio lyoja, Olio lyotava, boolean osuiko) {
         if (osuiko) {
             tapahtuma.append(lyoja.getNimi() + " osui olioon " + lyotava.getNimi() + "\n");
+            if (lyotava.getElamat() == 0) {
+                if (lyotava.toString().equals("P")) {
+                    tapahtuma.append("Olio " + lyotava.getNimi() + " tuhoutui. \n");
+                } else {
+                    tapahtuma.append("Olio " + lyotava.getNimi() + " kuoli. \n");
+                }
+            }
         } else {
             tapahtuma.append(lyoja.getNimi() + " ei osunut olioon " + lyotava.getNimi() + "\n");
         }
-    }
-    public void olioKuoli(Olio olio){
-        tapahtuma.append("Olio " + olio + "kuoli.");
     }
 
     /**

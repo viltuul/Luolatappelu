@@ -15,7 +15,6 @@ public class Pelaaja extends Olio {
     /**
      * Konstruktorissa asetetaan pelaajalle haluttu nimi, ja maksimielämät.
      *
-     * @param nimi pelaajan nimi.
      * @param peli peli jossa pelaaja on.
      */
     public Pelaaja(Peli peli) {
