@@ -13,10 +13,17 @@ public class Orkki extends Olio {
     /**
      * Konstruktori asettaa Orkille Örkki nimen ja luo attribuuttina uuden
      * Random attribuutin.
+     *
+     * @param vaikeustaso jos vaikeustaso on 50 ja yli niin orkit ovat
+     * voimakkaampia.
      */
-    public Orkki() {
+    public Orkki(int vaikeustaso) {
         super("Örkki");
         this.random = new Random();
+        if (vaikeustaso > 49) {
+            super.setElamat(3);
+            super.setOsumatarkkuus(0.9);
+        }
     }
 
     /**

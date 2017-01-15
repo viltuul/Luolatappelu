@@ -19,7 +19,7 @@ public class TankkiTest {
     private Pelaaja pelaaja;
 
     public TankkiTest() {
-        this.tankki = new Tankki();
+        this.tankki = new Tankki(1);
         tankki.setX(4);
         tankki.setY(4);
         this.pelaaja = new Pelaaja(new Peli(new Kayttoliittyma()));

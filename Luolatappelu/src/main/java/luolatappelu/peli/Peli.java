@@ -139,8 +139,14 @@ public class Peli {
         liikutaOlioita();
         kayttoliittyma.getRuudukko().kirjoitin(kirjoitin.getTapahtuma());
         kayttoliittyma.getRuudukko().pelaajanTiedot(kirjoitin.tietojenKirjoitin());
+        if (vaikeustaso == 50) {
+            kirjoitin.ilmoitaVihollistenVoimistumisesta();
+        }
         if (pelaaja.getElamat() <= 0) {
             kayttoliittyma.peliOhi();
+        }
+        if (vaikeustaso > 100) {
+            kayttoliittyma.peliLapi();
         }
     }
 

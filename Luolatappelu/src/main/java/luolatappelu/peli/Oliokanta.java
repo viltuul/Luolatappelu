@@ -37,9 +37,11 @@ public class Oliokanta {
 
     /**
      * Metodi luo uuden Orkkiolion ja lisää sen orkit sekä viholliset listaan.
+     *
+     * @param vaikeustaso kertoo luotavalle oliolle vaikeustason.
      */
-    public void uusiOrkki() {
-        Orkki orkki = new Orkki();
+    public void uusiOrkki(int vaikeustaso) {
+        Orkki orkki = new Orkki(vaikeustaso);
         orkit.add(orkki);
         viholliset.add(orkki);
     }
@@ -52,11 +54,12 @@ public class Oliokanta {
      * Metodi luo uuden Seuraajaolion ja lisää sen seuraajat sekä viholliset
      * listaan.
      *
+     * @param vaikeustaso kertoo luotavalle oliolle vaikeustason.
      * @param pelaaja Seuraaja tarvitsee pelaajaolion tietoja, jotta se osaa
      * liikkua oikeaan suuntaan.
      */
-    public void uusiSeuraaja(Pelaaja pelaaja) {
-        Seuraaja seuraaja = new Seuraaja(pelaaja);
+    public void uusiSeuraaja(int vaikeustaso, Pelaaja pelaaja) {
+        Seuraaja seuraaja = new Seuraaja(vaikeustaso, pelaaja);
         seuraajat.add(seuraaja);
         viholliset.add(seuraaja);
     }
@@ -67,9 +70,11 @@ public class Oliokanta {
 
     /**
      * Metodi luo uuden Tankkiolion ja liää sen tankit sekä viholliset listaan.
+     *
+     * @param vaikeustaso kertoo luotavalle oliolle vaikeustason.
      */
-    public void uusiTankki() {
-        Tankki tankki = new Tankki();
+    public void uusiTankki(int vaikeustaso) {
+        Tankki tankki = new Tankki(vaikeustaso);
         tankit.add(tankki);
         viholliset.add(tankki);
     }

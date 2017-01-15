@@ -74,7 +74,7 @@ public class Pelaaja extends Olio {
     /**
      * Metodi parantaa pelaajan osumistarkkuutta.
      */
-    public void kehitaOsumistarkkuuttak() {
+    public void kehitaOsumistarkkuutta() {
         super.setOsumatarkkuus(super.getOsumatarkkuus() + 0.05);
     }
 

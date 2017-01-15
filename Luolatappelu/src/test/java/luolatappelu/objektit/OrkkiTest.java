@@ -19,7 +19,7 @@ public class OrkkiTest {
     private Orkki orkki;
 
     public OrkkiTest() {
-        this.orkki = new Orkki();
+        this.orkki = new Orkki(1);
     }
 
     @Test

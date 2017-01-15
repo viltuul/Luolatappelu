@@ -114,11 +114,11 @@ public class Taso {
         for (int i = 0; i < 4 + vaikeusTaso; i++) {
             double arpa = arpoja.nextDouble();
             if (arpa < 0.4) {
-                oliot.uusiOrkki();
-            } else if (arpa >= 0.4 && arpa < 0.7) {
-                oliot.uusiSeuraaja(peli.getPelaaja());
+                oliot.uusiOrkki(vaikeusTaso);
+            } else if (arpa >= 0.4 && arpa < 0.8) {
+                oliot.uusiSeuraaja(vaikeusTaso, peli.getPelaaja());
             } else {
-                oliot.uusiTankki();
+                oliot.uusiTankki(vaikeusTaso);
             }
         }
     }
@@ -130,7 +130,7 @@ public class Taso {
      */
     public void bonustasonOliot(int vaikeusTaso) {
         for (int i = 0; i < 4 + vaikeusTaso; i++) {
-            oliot.uusiSeuraaja(peli.getPelaaja());
+            oliot.uusiSeuraaja(vaikeusTaso, peli.getPelaaja());
         }
     }
 

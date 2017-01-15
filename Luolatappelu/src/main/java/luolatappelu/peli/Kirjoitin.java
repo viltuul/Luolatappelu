@@ -12,6 +12,7 @@ public class Kirjoitin {
     private StringBuilder tapahtuma;
     private StringBuilder tiedot;
     private Peli peli;
+    private boolean voimistumisestaIlmoitettu;
 
     /**
      * Konstruktorissa tuodaan vain peliluokka attribuutiksi luokalle.
@@ -21,6 +22,7 @@ public class Kirjoitin {
     public Kirjoitin(Peli peli) {
         this.peli = peli;
         this.tapahtuma = new StringBuilder();
+        this.voimistumisestaIlmoitettu = false;
     }
 
     /**
@@ -52,6 +54,19 @@ public class Kirjoitin {
             }
         } else {
             tapahtuma.append(lyoja.getNimi() + " ei osunut olioon " + lyotava.getNimi() + "\n");
+        }
+    }
+
+    /**
+     * Metodi ilmoittaa vihollisten voimistumisesta.
+     */
+    public void ilmoitaVihollistenVoimistumisesta() {
+        if (!voimistumisestaIlmoitettu) {
+            tapahtuma.append("\n \n \n \n \n");
+            tapahtuma.append("HUOMIO! \n \n");
+            tapahtuma.append("Viholliset voimistuvat huomattavasti");
+            tapahtuma.append("\n \n \n \n \n");
+            voimistumisestaIlmoitettu = true;
         }
     }
 

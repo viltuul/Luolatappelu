@@ -27,7 +27,7 @@ public class PelaajaTest {
     @Test
     public void pelaajaLyoKunEdessaOnVihollinen() {
         peli.uusiTaso();
-        peli.getOliokanta().uusiOrkki();
+        peli.getOliokanta().uusiOrkki(1);
         peli.getOliokanta().getOrkit().get(0).setX(1);
         peli.getOliokanta().getOrkit().get(0).setY(1);
         pelaaja.setX(1);
@@ -68,7 +68,7 @@ public class PelaajaTest {
 
     @Test
     public void kehitaOsumistarkkuuttaTest() {
-        pelaaja.kehitaOsumistarkkuuttak();
+        pelaaja.kehitaOsumistarkkuutta();
         double osuminen = 0.55;
         assertEquals(osuminen, pelaaja.getOsumatarkkuus(), 0.001);
     }

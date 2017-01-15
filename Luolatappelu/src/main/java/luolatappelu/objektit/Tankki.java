@@ -14,13 +14,21 @@ public class Tankki extends Olio {
     /**
      * Konstruktorissa asetetaan oliolle kolme elämää sekä asetetaan parempi
      * osumistarkkuus kuin muilla olioilla.
+     *
+     * @param vaikeustaso jos vaikeustaso on 50 ja yli niin tankit ovat
+     * voimakkaampia.
      */
-    public Tankki() {
+    public Tankki(int vaikeustaso) {
         super("Tankki");
         this.random = new Random();
         this.lepo = true;
         super.setElamat(3);
         super.setOsumatarkkuus(0.8);
+        if (vaikeustaso > 49) {
+            super.setElamat(6);
+            super.setOsumatarkkuus(1);
+
+        }
     }
 
     /**

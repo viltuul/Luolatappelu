@@ -8,7 +8,6 @@ package luolatappelu.peli;
 import java.util.ArrayList;
 import luolatappelu.kayttoliittyma.Kayttoliittyma;
 import luolatappelu.objektit.Olio;
-import luolatappelu.objektit.Orkki;
 import luolatappelu.objektit.Seina;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -42,7 +41,7 @@ public class PeliTest {
     @Test
     public void orkkienLisaaminenJaSijoitus() {
         for (int i = 0; i < 5; i++) {
-            peli.getOliokanta().uusiOrkki();
+            peli.getOliokanta().uusiOrkki(1);
         }
         assertEquals(peli.getOliokanta().getOrkit().size(), 5);
         assertEquals(5, peli.getOliokanta().getViholliset().size());
@@ -51,7 +50,7 @@ public class PeliTest {
     @Test
     public void seuraajienLuonti() {
         for (int i = 0; i < 5; i++) {
-            peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
+            peli.getOliokanta().uusiSeuraaja(1, peli.getPelaaja());
         }
         assertEquals(5, peli.getOliokanta().getSeuraajat().size());
         assertEquals(5, peli.getOliokanta().getViholliset().size());
@@ -66,8 +65,8 @@ public class PeliTest {
 
     @Test
     public void getNaapuritTesti() {
-        peli.getOliokanta().uusiOrkki();
-        peli.getOliokanta().uusiSeuraaja(peli.getPelaaja());
+        peli.getOliokanta().uusiOrkki(1);
+        peli.getOliokanta().uusiSeuraaja(1, peli.getPelaaja());
         peli.getOliokanta().getOrkit().get(0).setX(1);
         peli.getOliokanta().getSeuraajat().get(0).setY(1);
         assertEquals(peli.getNaapurit(peli.getPelaaja()), peli.getOliokanta().getViholliset());
@@ -91,7 +90,7 @@ public class PeliTest {
     public void olioLyoJosPelaajaOnVieressa() {
         peli.getTaso().sijoitaPelaaja();
         int elamat = peli.getPelaaja().getElamat();
-        peli.getOliokanta().uusiOrkki();
+        peli.getOliokanta().uusiOrkki(1);
         peli.getOliokanta().getViholliset().get(0).setX(2);
         peli.getOliokanta().getViholliset().get(0).setY(19);
         peli.getOliokanta().getViholliset().get(0).setOsumatarkkuus(1.0);
@@ -116,13 +115,13 @@ public class PeliTest {
 
     @Test
     public void naapurienTestaus() {
-        peli.getOliokanta().uusiOrkki();
+        peli.getOliokanta().uusiOrkki(1);
         assertEquals(new ArrayList<Olio>(), peli.getNaapurit(peli.getOliokanta().getViholliset().get(0)));
     }
 
     @Test
     public void olioEiLiikuJosYmparoituOlioilla() {
-        peli.getOliokanta().uusiTankki();
+        peli.getOliokanta().uusiTankki(1);
         Olio tankki = peli.getOliokanta().getViholliset().get(0);
         Seina seina1 = new Seina(1, 0);
         peli.getTaso().getLuolasto().getSeinat().add(seina1);

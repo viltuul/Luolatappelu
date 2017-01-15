@@ -15,13 +15,18 @@ public class Seuraaja extends Olio {
      * Konstruktorissa annetaan oliolle nimi Seuraaja sekä määritellään
      * attribuutit.
      *
+     * @param vaikeustaso jos vaikeustaso on 50 ja yli niin seuraajat ovat
+     * voimakkaampia.
      * @param pelaaja parametrin avulla Seuraaja tietää pelaajan sijainnin ja
      * osaa liikkua siihen suuntaan.
      */
-    public Seuraaja(Pelaaja pelaaja) {
+    public Seuraaja(int vaikeustaso, Pelaaja pelaaja) {
         super("Seuraaja");
         this.arpoja = new Random();
         this.pelaaja = pelaaja;
+        if (vaikeustaso > 49) {
+            super.setOsumatarkkuus(1.0);
+        }
     }
 
     /**

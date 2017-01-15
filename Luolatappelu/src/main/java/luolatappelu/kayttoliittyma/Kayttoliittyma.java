@@ -89,12 +89,12 @@ public class Kayttoliittyma implements Runnable {
                 vaihtoehdot,
                 vaihtoehdot[0]);
 
-        if (vaihtoehtoNro == 0) {
-            peli.getPelaaja().kasvataMaksimia();
+        if (vaihtoehtoNro == 2) {
+            peli.getPelaaja().kehitaOsumistarkkuutta();
         } else if (vaihtoehtoNro == 1) {
             peli.getPelaaja().kasvataParannusta();
         } else {
-            peli.getPelaaja().kehitaOsumistarkkuuttak();
+            peli.getPelaaja().kasvataMaksimia();
         }
     }
 
@@ -106,6 +106,14 @@ public class Kayttoliittyma implements Runnable {
         peliIkkuna.dispose();
         peli.nollaaKaikki();
         run();
+    }
+
+    /**
+     * Metodi ilmoittaa pelin olevan läpipelattu ja sammuttaa pelin.
+     */
+    public void peliLapi() {
+        JOptionPane.showMessageDialog(null, "Pääsit pelin läpi, mene nyt ulos leikkimään!");
+        peliIkkuna.dispose();
     }
 
     public Ruudukko getRuudukko() {

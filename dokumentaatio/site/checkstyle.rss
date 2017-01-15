@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 17,
+      <title>File: 19,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -130,6 +130,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.peli.Kirjoitin.java">luolatappelu/peli/Kirjoitin.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#luolatappelu.kayttoliittyma.Nappaimistonkuuntelija.java">luolatappelu/kayttoliittyma/Nappaimistonkuuntelija.java</a>
                 </td>
                 <td>
@@ -187,6 +201,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#luolatappelu.peli.Oliokanta.java">luolatappelu/peli/Oliokanta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#luolatappelu.objektit.Puuseina.java">luolatappelu/objektit/Puuseina.java</a>
                 </td>
                 <td>
                   0
