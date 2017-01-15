@@ -14,3 +14,4 @@ Päivä | Tunnit | Kuvaus
 10.01.17 | 2.0h | Ruudukko luokan koodausta
 11.01.17 | 5.0h | Javadoc, hiukan testausta sekä koodausta. Käyttöohjeiden kirjoitus.
 12.01.17 | 5.0h | Koodausta
+14.01.17 | 4.0h | Viimeistelyä joka osa-alueelta
