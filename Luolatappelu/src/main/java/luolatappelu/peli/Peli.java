@@ -137,11 +137,11 @@ public class Peli {
         taso.getOliokanta().poistaKuolleet();
         taso.getOliokanta().poistaTuhoutunutPuuseina();
         liikutaOlioita();
+        kayttoliittyma.getRuudukko().kirjoitin(kirjoitin.getTapahtuma());
+        kayttoliittyma.getRuudukko().pelaajanTiedot(kirjoitin.tietojenKirjoitin());
         if (pelaaja.getElamat() <= 0) {
             kayttoliittyma.peliOhi();
         }
-        kayttoliittyma.getRuudukko().kirjoitin(kirjoitin.getTapahtuma());
-        kayttoliittyma.getRuudukko().pelaajanTiedot(kirjoitin.tietojenKirjoitin());
     }
 
     /**
