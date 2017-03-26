@@ -1,4 +1,4 @@
-package luolatappelu.kayttoliittyma;
+    package luolatappelu.kayttoliittyma;
 
 import java.awt.Component;
 import java.awt.event.KeyEvent;
